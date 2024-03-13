@@ -383,14 +383,8 @@
             const minutesSpan = clock.querySelector(".minutes");
             const secondsSpan = clock.querySelector(".seconds");
 
-            // Check if there's already a deadline saved in localStorage
-            let deadline = localStorage.getItem("deadline");
-
-            // If not, set a new deadline 30 days from now and save it
-            if (!deadline) {
-                deadline = new Date(Date.parse(new Date()) + 30 * 24 * 60 * 60 * 1000);
-                localStorage.setItem("deadline", deadline);
-            }
+            // Set the deadline to April 15, 2024
+            let deadline = 'April 15, 2024';
 
             function updateClock() {
                 const t = getTimeRemaining(deadline);
@@ -402,7 +396,6 @@
 
                 if (t.total <= 0) {
                     clearInterval(timeinterval);
-                    localStorage.removeItem("deadline"); // Remove deadline from localStorage once it's passed
                 }
             }
 
@@ -415,7 +408,6 @@
             initializeClock("countdown-clock");
         });
     </script>
-
 </body>
 
 </html>
