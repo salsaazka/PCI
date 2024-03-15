@@ -12,6 +12,8 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <link rel="stylesheet" href="{{ asset('assets/icomoon.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +26,8 @@
         color: #949393;
         margin: 0;
         max-height: 100vh;
-        overflow-y: hidden;
+        min-height: 100vh;
+        overflow-x: hidden;
     }
 
     .logo img {
@@ -49,19 +52,16 @@
         display: flex;
     }
 
-    .container {
-        width: 530px;
-        margin: 170px auto;
+    .div-1 {
+        width: 66.66%;
     }
 
-    #body-wrap .col-8 {
-        width: 70%;
+    .div-2 {
+        width: 33.33%;
     }
 
-    #body-wrap .col-4 {
-        width: 30%;
-        height: 950px;
-        overflow: hidden;
+    #body-wrap {
+        height: 100vh;
     }
 
     header#header {
@@ -69,7 +69,12 @@
     }
 
     .main-content {
+        width: 100%;
         color: #fff;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        justify-content: center;
     }
 
     .main-content h1 {
@@ -79,11 +84,15 @@
         margin-bottom: 0;
     }
 
+    .main-content h5 {
+        color: #000;
+    }
+
     #countdown-clock {
         font-size: 30px;
         display: flex;
         flex-wrap: wrap;
-        margin: 50px 0;
+        margin: 20px 0;
     }
 
     #countdown-clock .time {
@@ -183,10 +192,6 @@
     }
 
     @media (max-width: 999px) {
-        .container {
-            padding-left: 70px;
-        }
-
         #body-wrap .col-4 {
             width: 40%;
             margin-left: -48px;
@@ -196,21 +201,31 @@
 
     @media (max-width: 769px) {
         body {
-            overflow-x: auto;
+            overflow-y: auto;
+            overflow-x: hidden
         }
 
-        #body-wrap .col-8 {
+        .div-1 {
             width: 100%;
         }
 
-        #body-wrap .col-4 {
+        .div-2 {
             display: none !important;
         }
     }
 
     @media (max-width: 599px) {
-        .container {
-            width: 100%;
+
+        .main-content .page-title h1 {
+            font-size: 30px;
+        }
+
+        .main-content .page-title h5 {
+            font-size: 14px;
+        }
+
+        .main-content ul li {
+            font-size: 12px;
         }
 
         #body-wrap .page-title {
@@ -222,16 +237,39 @@
             margin-left: -438px;
             opacity: 0.1;
         }
+
+        #form p {
+            font-size: 14px
+        }
+
+        #countdown-clock .time {
+            padding: 18px;
+        }
+
+        #countdown-clock .time .days {
+            font-size: 26px;
+        }
+
+        #countdown-clock .time .hours {
+            font-size: 26px;
+        }
+
+        #countdown-clock .time .minutes {
+            font-size: 26px;
+        }
+
+        #countdown-clock .time .seconds {
+            font-size: 26px;
+        }
+
+        #countdown-clock .time small {
+            font-size: 10px;
+        }
     }
 
     @media (max-width: 540px) {
-        .container {
-            padding-right: 30px;
-            padding-left: 30px;
-        }
-
-        .main-content h1 {
-            font-size: 2.4em;
+        #countdown-clock .time {
+            padding: 14px;
         }
 
         #form .form-group {
@@ -252,60 +290,96 @@
             margin-left: -108px;
         }
     }
+
+    @media (max-width: 410px) {
+
+        #countdown-clock .time .days {
+            font-size: 26px;
+        }
+
+        #countdown-clock .time small {
+            font-size: 10px;
+        }
+    }
 </style>
 
 <body>
     <div id="body-wrap">
-        <div class="row">
-            <div class="col-8">
-                <div class="container">
-                    <header id="header">
-                        <div class="logo">
-                            <img src="{{ asset('assets/images/logo.png') }}" alt="logo" />
-                        </div>
-                    </header>
+        <div class="d-flex align-items-center w-100">
+            <div class="div-1" style="height: 100vh">
+                <div class="container d-flex flex-column align-items-center justify-content-center"
+                    style="height: 100vh">
+                    <div>
+                        <header id="header">
+                            <div class="logo">
+                                <img src="{{ asset('assets/images/logo.png') }}" alt="logo" />
+                            </div>
+                        </header>
 
-                    <div class="main-content">
-                        <div class="page-title">
-                            <h1>We are launching soon!</h1>
+                        <div class="main-content">
+                            <div class="page-title">
+                                <h1>We are launching soon!</h1>
 
-                            <div id="countdown-clock">
-                                <div class="time">
-                                    <span class="days"></span>
-                                    <small>Days</small>
+                                <div class="pt-2">
+                                    <h5>General Trading Company</h5>
+                                    <ul>
+                                        <li style="color:#222630">Commodities for Export</li>
+                                        <li style="color:#222630">ZEOLITES:</li>
+                                        <ul>
+                                            <li style="color:#222630">Desiccant/ Silica Gel</li>
+                                            <li style="color:#222630">Water Purification Filtration System</li>
+                                            <li style="color:#222630">Fertilizer Media</li>
+                                            <li style="color:#222630">Nuclear Waste Reprocessing</li>
+                                        </ul>
+                                        <li style="color:#222630">Cat Litter Manufacturing, Formulation and  Business Consultation</li>
+                                        <li style="color:#222630">Sachainchi supplier</li>
+                                    </ul>
+                                    <h5 class="mt-1">Human Resources Training, Development, and Consulting Company</h5>
+                                    <ul>
+                                        <li style="color:#222630">Coaching Training</li>
+                                        <li style="color:#222630">Leadership Training</li>
+                                        <li style="color:#222630">UKM (Indonesian Local) Business Consulting</li>
+                                    </ul>
                                 </div>
-                                <div class="time">
-                                    <span class="hours"></span>
-                                    <small>Hours</small>
-                                </div>
-                                <div class="time">
-                                    <span class="minutes"></span>
-                                    <small>Minutes</small>
-                                </div>
-                                <div class="time">
-                                    <span class="seconds"></span>
-                                    <small>Seconds</small>
+
+                                <div id="countdown-clock">
+                                    <div class="time">
+                                        <span class="days"></span>
+                                        <small>Days</small>
+                                    </div>
+                                    <div class="time">
+                                        <span class="hours"></span>
+                                        <small>Hours</small>
+                                    </div>
+                                    <div class="time">
+                                        <span class="minutes"></span>
+                                        <small>Minutes</small>
+                                    </div>
+                                    <div class="time">
+                                        <span class="seconds"></span>
+                                        <small>Seconds</small>
+                                    </div>
                                 </div>
                             </div>
+                            <!--page-title-->
+
+                            <form id="form">
+                                <p>
+                                    You can contact me via WhatsApp, click for more information.
+                                </p>
+
+                                <div class="form-group">
+                                    <a href="https://wa.me/62811955198" class="submit-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                            <path
+                                                d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                                        </svg>
+                                        <span>Contact</span>
+                                    </a>
+                                </div>
+                            </form>
                         </div>
-                        <!--page-title-->
-
-                        <form id="form">
-                            <p>
-                                You can contact me via WhatsApp, click for more information.
-                            </p>
-
-                            <div class="form-group">
-                                <a href="https://wa.me/62811955198" class="submit-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-                                        <path
-                                            d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-                                    </svg>
-                                    <span>Contact</span>
-                                </a>
-                            </div>
-                        </form>
                     </div>
                     <!--main-content-->
 
@@ -351,13 +425,21 @@
             </div>
             <!--col-8-->
 
-            <div class="col-4">
+            <div class="div-2">
                 <img src="{{ asset('assets/images/sideimg.jpg') }}" alt="wallpaper" class="sideimg" />
             </div>
         </div>
         <!--row-->
     </div>
     <!--body-wrap-->
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+    </script>
+
 
     <script type="text/javascript">
         function getTimeRemaining(endtime) {
