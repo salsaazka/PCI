@@ -48,6 +48,26 @@
         </a>
     </div>
 
+    <div class="d-flex flex-column justify-content-center mb-5">
+        <div class="product-title mt-5 mb-3">
+            Comprehensive Solutions for Your <br> Business Growth!
+        </div>
+        <div class="d-flex justify-content-center gap-5 mt-4">
+            <div>
+                <p class="product-subtitle">80 Variant</p>
+                <p class="product-small-subtitle">of Goods</p>
+            </div>
+            <div>
+                <p class="product-subtitle">150 Distributor</p>
+                <p class="product-small-subtitle">Around the World</p>
+            </div>
+            <div>
+                <p class="product-subtitle">4.9</p>
+                <p class="product-small-subtitle">Users Rating</p>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('footer')
