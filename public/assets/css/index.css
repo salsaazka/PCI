@@ -124,3 +124,130 @@ body {
     line-height: 30px;
     text-align: center;
 }
+
+.best-selling-product-title {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 72px;
+}
+
+.view-all-product-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: #241F33;
+    font-size: 20px;
+}
+
+.best-selling-card-group {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.product-card {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px 0px #00000026;
+}
+
+.product-card > .card-image {
+    width: 100%;
+    height: 200px;
+}
+
+.product-card > .card-image > img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.product-card > .card-title {
+    margin-top: 20px;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 29px;
+    text-align: center;
+}
+
+.product-card > .card-price {
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 29px;
+    text-align: center;
+    color: #0B4B9C;
+    margin-top: 4px;
+}
+
+.product-card > .card-subtitle {
+    margin-top: 32px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+    color: #777777;
+}
+
+.card-detail-button {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: center;
+    color: #241F33;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.image-overlay-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.image-overlay-container-small {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 50%;
+}
+
+.image-overlay-image {
+    width: 100%;
+    display: block;
+}
+
+.image-overlay-image-small {
+    width: 100%;
+    display: block;
+    height: 100%;
+}
+
+.image-overlay-text {
+    position: absolute;
+    bottom: 20%;
+    left: 10%; 
+    color: black;
+}
+
+.image-overlay-product-title {
+    font-size: 64px;
+    font-weight: 300;
+}
+
+.shop-now-btn {
+    color: #000000; /* Button text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 30px; /* Space above the button *//
+}
+
+/* Make sure your button is visible on the overlay */
+.shop-now-btn:hover {
+    background-color: #e9e9e9; /* Button hover background color */
+}
+
+.product-mini-gallery {
+    max-height: 70vh;
+}
