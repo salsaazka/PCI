@@ -79,73 +79,81 @@
             </a>
         </div>
 
-        <div class="best-selling-card-group gap-4 mt-3 mb-5">
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
-                </div>
-                <div class="card-title">
-                    Sacha inchi
-                </div>
-                <div class="card-price">
-                    Rp. 150.000
-                </div>
-                <div class="card-subtitle">
-                    In a world dominated by modern medicine, the age-old wisdom
-                </div>
-                <div class="card-detail-button">
-                    DETAILS
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
-                </div>
-                <div class="card-title">
-                    Sacha inchi
-                </div>
-                <div class="card-price">
-                    Rp. 150.000
-                </div>
-                <div class="card-subtitle">
-                    In a world dominated by modern medicine, the age-old wisdom
-                </div>
-                <div class="card-detail-button">
-                    DETAILS
+        <div class="row best-selling-card-group mt-3 mb-5">
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                    </div>
+                    <div class="card-title">
+                        Sacha inchi
+                    </div>
+                    <div class="card-price">
+                        Rp. 150.000
+                    </div>
+                    <div class="card-subtitle">
+                        In a world dominated by modern medicine, the age-old wisdom
+                    </div>
+                    <div class="card-detail-button">
+                        DETAILS
+                    </div>
                 </div>
             </div>
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
-                </div>
-                <div class="card-title">
-                    Sacha inchi
-                </div>
-                <div class="card-price">
-                    Rp. 150.000
-                </div>
-                <div class="card-subtitle">
-                    In a world dominated by modern medicine, the age-old wisdom
-                </div>
-                <div class="card-detail-button">
-                    DETAILS
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                    </div>
+                    <div class="card-title">
+                        Sacha inchi
+                    </div>
+                    <div class="card-price">
+                        Rp. 150.000
+                    </div>
+                    <div class="card-subtitle">
+                        In a world dominated by modern medicine, the age-old wisdom
+                    </div>
+                    <div class="card-detail-button">
+                        DETAILS
+                    </div>
                 </div>
             </div>
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                    </div>
+                    <div class="card-title">
+                        Sacha inchi
+                    </div>
+                    <div class="card-price">
+                        Rp. 150.000
+                    </div>
+                    <div class="card-subtitle">
+                        In a world dominated by modern medicine, the age-old wisdom
+                    </div>
+                    <div class="card-detail-button">
+                        DETAILS
+                    </div>
                 </div>
-                <div class="card-title">
-                    Sacha inchi
-                </div>
-                <div class="card-price">
-                    Rp. 150.000
-                </div>
-                <div class="card-subtitle">
-                    In a world dominated by modern medicine, the age-old wisdom
-                </div>
-                <div class="card-detail-button">
-                    DETAILS
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                    </div>
+                    <div class="card-title">
+                        Sacha inchi
+                    </div>
+                    <div class="card-price">
+                        Rp. 150.000
+                    </div>
+                    <div class="card-subtitle">
+                        In a world dominated by modern medicine, the age-old wisdom
+                    </div>
+                    <div class="card-detail-button">
+                        DETAILS
+                    </div>
                 </div>
             </div>
         </div>
@@ -177,11 +185,334 @@
                 </div>
             </div>
         </div>
+
+        <div class="product-catalogue mt-5">
+            <div class="best-selling-product-title">Best Selling Products</div>
+            <div class="product-catalogue-navbar">
+                <ul class="nav nav-tabs product-nav gap-5 mb-4" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link active" data-bs-toggle="tab" href="#catalogue-1" aria-selected="true" role="tab">Semua</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link" data-bs-toggle="tab" href="#catalogue-2" aria-selected="false" role="tab" tabindex="-1">Semua 2</a>
+                    </li>
+                </ul>
+                  <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active show" id="catalogue-1" role="tabpanel">
+                     <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="product-card">
+                                <div class="card-image">
+                                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    Sacha inchi
+                                </div>
+                                <div class="card-price">
+                                    Rp. 150.000
+                                </div>
+                                <div class="card-subtitle">
+                                    In a world dominated by modern medicine, the age-old wisdom
+                                </div>
+                                <div class="card-detail-button">
+                                    DETAILS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="product-card">
+                                <div class="card-image">
+                                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    Sacha inchi
+                                </div>
+                                <div class="card-price">
+                                    Rp. 150.000
+                                </div>
+                                <div class="card-subtitle">
+                                    In a world dominated by modern medicine, the age-old wisdom
+                                </div>
+                                <div class="card-detail-button">
+                                    DETAILS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="product-card">
+                                <div class="card-image">
+                                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    Sacha inchi
+                                </div>
+                                <div class="card-price">
+                                    Rp. 150.000
+                                </div>
+                                <div class="card-subtitle">
+                                    In a world dominated by modern medicine, the age-old wisdom
+                                </div>
+                                <div class="card-detail-button">
+                                    DETAILS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="product-card">
+                                <div class="card-image">
+                                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    Sacha inchi
+                                </div>
+                                <div class="card-price">
+                                    Rp. 150.000
+                                </div>
+                                <div class="card-subtitle">
+                                    In a world dominated by modern medicine, the age-old wisdom
+                                </div>
+                                <div class="card-detail-button">
+                                    DETAILS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="product-card">
+                                <div class="card-image">
+                                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    Sacha inchi
+                                </div>
+                                <div class="card-price">
+                                    Rp. 150.000
+                                </div>
+                                <div class="card-subtitle">
+                                    In a world dominated by modern medicine, the age-old wisdom
+                                </div>
+                                <div class="card-detail-button">
+                                    DETAILS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="product-card">
+                                <div class="card-image">
+                                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    Sacha inchi
+                                </div>
+                                <div class="card-price">
+                                    Rp. 150.000
+                                </div>
+                                <div class="card-subtitle">
+                                    In a world dominated by modern medicine, the age-old wisdom
+                                </div>
+                                <div class="card-detail-button">
+                                    DETAILS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="product-card">
+                                <div class="card-image">
+                                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    Sacha inchi
+                                </div>
+                                <div class="card-price">
+                                    Rp. 150.000
+                                </div>
+                                <div class="card-subtitle">
+                                    In a world dominated by modern medicine, the age-old wisdom
+                                </div>
+                                <div class="card-detail-button">
+                                    DETAILS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="product-card">
+                                <div class="card-image">
+                                    <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    Sacha inchi
+                                </div>
+                                <div class="card-price">
+                                    Rp. 150.000
+                                </div>
+                                <div class="card-subtitle">
+                                    In a world dominated by modern medicine, the age-old wisdom
+                                </div>
+                                <div class="card-detail-button">
+                                    DETAILS
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                    </div>
+                    <div class="tab-pane fade" id="catalogue-2" role="tabpanel">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                <div class="product-card">
+                                    <div class="card-image">
+                                        <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                    </div>
+                                    <div class="card-title">
+                                        Sacha inchi
+                                    </div>
+                                    <div class="card-price">
+                                        Rp. 150.000
+                                    </div>
+                                    <div class="card-subtitle">
+                                        In a world dominated by modern medicine, the age-old wisdom
+                                    </div>
+                                    <div class="card-detail-button">
+                                        DETAILS
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                <div class="product-card">
+                                    <div class="card-image">
+                                        <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                    </div>
+                                    <div class="card-title">
+                                        Sacha inchi
+                                    </div>
+                                    <div class="card-price">
+                                        Rp. 150.000
+                                    </div>
+                                    <div class="card-subtitle">
+                                        In a world dominated by modern medicine, the age-old wisdom
+                                    </div>
+                                    <div class="card-detail-button">
+                                        DETAILS
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                <div class="product-card">
+                                    <div class="card-image">
+                                        <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                    </div>
+                                    <div class="card-title">
+                                        Sacha inchi
+                                    </div>
+                                    <div class="card-price">
+                                        Rp. 150.000
+                                    </div>
+                                    <div class="card-subtitle">
+                                        In a world dominated by modern medicine, the age-old wisdom
+                                    </div>
+                                    <div class="card-detail-button">
+                                        DETAILS
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                <div class="product-card">
+                                    <div class="card-image">
+                                        <img src="{{asset('assets/images/card-example-image.png')}}" alt="">
+                                    </div>
+                                    <div class="card-title">
+                                        Sacha inchi
+                                    </div>
+                                    <div class="card-price">
+                                        Rp. 150.000
+                                    </div>
+                                    <div class="card-subtitle">
+                                        In a world dominated by modern medicine, the age-old wisdom
+                                    </div>
+                                    <div class="card-detail-button">
+                                        DETAILS
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="d-flex justify-content-center mt-4 mb-5">
+                <button class="browse-all-btn">
+                    BROWSE ALL 
+                    <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.1775 0.989186L3.52673 0.559353C3.67461 0.377351 3.91373 0.377351 4.06003 0.559353L7.11822 4.32136C7.26609 4.50336 7.26609 4.79766 7.11822 4.97773L4.06003 8.74168C3.91215 8.92368 3.67304 8.92368 3.52673 8.74168L3.1775 8.31184C3.02805 8.1279 3.0312 7.8278 3.18379 7.64773L5.07942 5.42499H0.558218C0.34899 5.42499 0.180664 5.21782 0.180664 4.9603V4.34072C0.180664 4.08321 0.34899 3.87604 0.558218 3.87604H5.07942L3.18379 1.6533C3.02962 1.47323 3.02648 1.17312 3.1775 0.989186Z" fill="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="px-5">
+        <div class="featured-product-container">
+            <div class="d-flex gap-4 justify-content-around">
+                <div class="featured-product-image">
+                    <img src="{{asset('assets/images/silica-preview.png')}}" alt="">
+                </div>
+                <div class="featured-product-text-group">
+                    <div class="featured-product-subtitle">SILICA GEL</div>
+                    <div class="featured-product-title">Promosi Produk Perlindungan Kelembaban!</div>
+                    <div class="featured-product-description">solusi terbaik untuk menjaga barang-barang berharga Anda tetap segar dan kering! Silica Gel, mitra terpercaya dalam perlindungan kelembaban, hadir untuk menjaga keindahan dan kualitas barang-barang Anda.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="social-media-container mb-5">
+        <div class="social-media-title">
+            Get in Touch
+        </div>
+        <div class="d-flex gap-4 justify-content-center">
+            <div class="social-media-card">
+                <div class="social-media-icon">
+                    <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.9344 4.125C26.5594 6.75 28.1844 10.1875 28.1844 13.9375C28.1844 21.5625 21.8094 27.8125 14.1219 27.8125C11.8094 27.8125 9.55938 27.1875 7.49688 26.125L0.184376 28L2.12188 20.8125C0.934376 18.75 0.246876 16.375 0.246876 13.875C0.246876 6.25 6.49688 0 14.1219 0C17.8719 0 21.3719 1.5 23.9344 4.125ZM14.1219 25.4375C20.4969 25.4375 25.8094 20.25 25.8094 13.9375C25.8094 10.8125 24.4969 7.9375 22.3094 5.75C20.1219 3.5625 17.2469 2.375 14.1844 2.375C7.80938 2.375 2.62188 7.5625 2.62188 13.875C2.62188 16.0625 3.24688 18.1875 4.37188 20.0625L4.68438 20.5L3.49688 24.75L7.87188 23.5625L8.24688 23.8125C10.0594 24.875 12.0594 25.4375 14.1219 25.4375ZM20.4969 16.8125C20.8094 17 21.0594 17.0625 21.1219 17.25C21.2469 17.375 21.2469 18.0625 20.9344 18.875C20.6219 19.6875 19.2469 20.4375 18.6219 20.5C17.4969 20.6875 16.6219 20.625 14.4344 19.625C10.9344 18.125 8.68438 14.625 8.49688 14.4375C8.30938 14.1875 7.12188 12.5625 7.12188 10.8125C7.12188 9.125 7.99688 8.3125 8.30938 7.9375C8.62188 7.5625 8.99688 7.5 9.24688 7.5C9.43438 7.5 9.68438 7.5 9.87188 7.5C10.1219 7.5 10.3719 7.4375 10.6844 8.125C10.9344 8.8125 11.6844 10.5 11.7469 10.6875C11.8094 10.875 11.8719 11.0625 11.7469 11.3125C11.1219 12.625 10.3719 12.5625 10.7469 13.1875C12.1219 15.5 13.4344 16.3125 15.4969 17.3125C15.8094 17.5 15.9969 17.4375 16.2469 17.25C16.4344 17 17.1219 16.1875 17.3094 15.875C17.5594 15.5 17.8094 15.5625 18.1219 15.6875C18.4344 15.8125 20.1219 16.625 20.4969 16.8125Z" fill="#241F33"/>
+                    </svg>    
+                </div>
+                <div class="social-media-card-title">
+                    Let's Talk
+                </div>
+                <div class="social-media-card-subtitle">
+                    With me via whatsapp
+                </div>
+            </div>
+            <div class="social-media-card">
+                <div class="social-media-icon">
+                    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.1844 6.8125C18.1219 6.8125 21.3719 10.0625 21.3719 14C21.3719 18 18.1219 21.1875 14.1844 21.1875C10.1844 21.1875 6.99688 18 6.99688 14C6.99688 10.0625 10.1844 6.8125 14.1844 6.8125ZM14.1844 18.6875C16.7469 18.6875 18.8094 16.625 18.8094 14C18.8094 11.4375 16.7469 9.375 14.1844 9.375C11.5594 9.375 9.49688 11.4375 9.49688 14C9.49688 16.625 11.6219 18.6875 14.1844 18.6875ZM23.3094 6.5625C23.3094 7.5 22.5594 8.25 21.6219 8.25C20.6844 8.25 19.9344 7.5 19.9344 6.5625C19.9344 5.625 20.6844 4.875 21.6219 4.875C22.5594 4.875 23.3094 5.625 23.3094 6.5625ZM28.0594 8.25C28.1844 10.5625 28.1844 17.5 28.0594 19.8125C27.9344 22.0625 27.4344 24 25.8094 25.6875C24.1844 27.3125 22.1844 27.8125 19.9344 27.9375C17.6219 28.0625 10.6844 28.0625 8.37188 27.9375C6.12188 27.8125 4.18438 27.3125 2.49688 25.6875C0.871876 24 0.371876 22.0625 0.246876 19.8125C0.121876 17.5 0.121876 10.5625 0.246876 8.25C0.371876 6 0.871876 4 2.49688 2.375C4.18438 0.75 6.12188 0.25 8.37188 0.125C10.6844 0 17.6219 0 19.9344 0.125C22.1844 0.25 24.1844 0.75 25.8094 2.375C27.4344 4 27.9344 6 28.0594 8.25ZM25.0594 22.25C25.8094 20.4375 25.6219 16.0625 25.6219 14C25.6219 12 25.8094 7.625 25.0594 5.75C24.5594 4.5625 23.6219 3.5625 22.4344 3.125C20.5594 2.375 16.1844 2.5625 14.1844 2.5625C12.1219 2.5625 7.74688 2.375 5.93438 3.125C4.68438 3.625 3.74688 4.5625 3.24688 5.75C2.49688 7.625 2.68438 12 2.68438 14C2.68438 16.0625 2.49688 20.4375 3.24688 22.25C3.74688 23.5 4.68438 24.4375 5.93438 24.9375C7.74688 25.6875 12.1219 25.5 14.1844 25.5C16.1844 25.5 20.5594 25.6875 22.4344 24.9375C23.6219 24.4375 24.6219 23.5 25.0594 22.25Z" fill="#241F33"/>
+                    </svg>
+                </div>
+                <div class="social-media-card-title">
+                    Follow Activity
+                </div>
+                <div class="social-media-card-subtitle">
+                    112k active members
+                </div>
+            </div>
+            <div class="social-media-card">
+                <div class="social-media-icon">
+                    <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 3.58008C0 2.65182 0.368749 1.76158 1.02513 1.1052C1.6815 0.448827 2.57174 0.0800781 3.5 0.0800781H24.5C25.4283 0.0800781 26.3185 0.448827 26.9749 1.1052C27.6313 1.76158 28 2.65182 28 3.58008V17.5801C28 18.5083 27.6313 19.3986 26.9749 20.055C26.3185 20.7113 25.4283 21.0801 24.5 21.0801H3.5C2.57174 21.0801 1.6815 20.7113 1.02513 20.055C0.368749 19.3986 0 18.5083 0 17.5801V3.58008ZM3.5 1.83008C3.03587 1.83008 2.59075 2.01445 2.26256 2.34264C1.93437 2.67083 1.75 3.11595 1.75 3.58008V3.95983L14 11.3098L26.25 3.95983V3.58008C26.25 3.11595 26.0656 2.67083 25.7374 2.34264C25.4092 2.01445 24.9641 1.83008 24.5 1.83008H3.5ZM26.25 6.00033L18.011 10.9441L26.25 16.0138V6.00033ZM26.1905 18.0333L16.3205 11.9591L14 13.3503L11.6795 11.9591L1.8095 18.0316C1.90894 18.404 2.12855 18.7331 2.43423 18.9679C2.73991 19.2027 3.11455 19.33 3.5 19.3301H24.5C24.8852 19.3301 25.2597 19.2031 25.5653 18.9686C25.871 18.7342 26.0907 18.4054 26.1905 18.0333ZM1.75 16.0138L9.989 10.9441L1.75 6.00033V16.0138Z" fill="black"/>
+                    </svg>    
+                </div>
+                <div class="social-media-card-title">
+                    Contact Me
+                </div>
+                <div class="social-media-card-subtitle">
+                    For further business
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
 
 @section('footer')
+    @include('template.footer')
 @endsection
 
 @section('script')
