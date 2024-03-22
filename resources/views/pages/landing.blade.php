@@ -48,7 +48,7 @@
         </a>
     </div>
 
-    <div class="d-flex flex-column justify-content-center mb-5">
+    <div class="d-flex flex-column justify-content-center mb-5" id="about">
         <div class="product-title mt-5 mb-3">
             Comprehensive Solutions for Your <br> Business Growth!
         </div>
@@ -186,7 +186,7 @@
             </div>
         </div>
 
-        <div class="product-catalogue mt-5">
+        <div class="product-catalogue mt-5" id="product">
             <div class="best-selling-product-title">Best Selling Products</div>
             <div class="product-catalogue-navbar">
                 <ul class="nav nav-tabs product-nav gap-5 mb-4" role="tablist">
@@ -462,7 +462,87 @@
         </div>
     </div>
 
-    <div class="social-media-container mb-5">
+    
+    <div class="container best-product-catalogue" id="article">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="best-selling-product-title">Artikel</div>
+            <a class="d-flex view-all-product-link align-items-center">
+                <span class="me-1">View All Products</span>
+                <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 6.99997C0.5 6.80106 0.579018 6.61029 0.71967 6.46964C0.860322 6.32899 1.05109 6.24997 1.25 6.24997H18.9395L14.219 1.53097C14.0782 1.39014 13.9991 1.19913 13.9991 0.999971C13.9991 0.800807 14.0782 0.609801 14.219 0.468971C14.3598 0.328141 14.5508 0.249023 14.75 0.249023C14.9492 0.249023 15.1402 0.328141 15.281 0.468971L21.281 6.46897C21.3508 6.53864 21.4063 6.6214 21.4441 6.71252C21.4819 6.80364 21.5013 6.90132 21.5013 6.99997C21.5013 7.09862 21.4819 7.1963 21.4441 7.28742C21.4063 7.37854 21.3508 7.4613 21.281 7.53097L15.281 13.531C15.1402 13.6718 14.9492 13.7509 14.75 13.7509C14.5508 13.7509 14.3598 13.6718 14.219 13.531C14.0782 13.3901 13.9991 13.1991 13.9991 13C13.9991 12.8008 14.0782 12.6098 14.219 12.469L18.9395 7.74997H1.25C1.05109 7.74997 0.860322 7.67095 0.71967 7.5303C0.579018 7.38965 0.5 7.19888 0.5 6.99997Z" fill="black"/>
+                </svg>    
+            </a>
+        </div>
+
+        <div class="row best-selling-card-group mt-3 mb-5">
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="article-card">
+                    <div class="card-image">
+                        <img src="{{asset('assets/images/article-1.png')}}" alt="">
+                    </div>
+                    <div class="card-title">
+                        Provide a brief overview of the medicinal properties
+                    </div>
+                    <div class="card-subtitle">
+                        In a world dominated by modern medicine, the age-old wisdom
+                    </div>
+                    <div class="card-detail-button">
+                        DETAILS
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="article-card">
+                    <div class="card-image">
+                        <img src="{{asset('assets/images/article-2.png')}}" alt="">
+                    </div>
+                    <div class="card-title">
+                        Explore the origins of herbal medicine
+                    </div>
+                    <div class="card-subtitle">
+                        In a world dominated by modern medicine, the age-old wisdom
+                    </div>
+                    <div class="card-detail-button">
+                        DETAILS
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="article-card">
+                    <div class="card-image">
+                        <img src="{{asset('assets/images/article-3.png')}}" alt="">
+                    </div>
+                    <div class="card-title">
+                        Harnessing Nature’s Pharmacy The Power of Herbal Medicine
+                    </div>
+                    <div class="card-subtitle">
+                        In a world dominated by modern medicine, the age-old wisdom
+                    </div>
+                    <div class="card-detail-button">
+                        DETAILS
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="article-card">
+                    <div class="card-image">
+                        <img src="{{asset('assets/images/article-4.png')}}" alt="">
+                    </div>
+                    <div class="card-title">
+                        Bridge the gap between tradition and modern science
+                    </div>
+                    <div class="card-subtitle">
+                        In a world dominated by modern medicine, the age-old wisdom
+                    </div>
+                    <div class="card-detail-button">
+                        DETAILS
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="social-media-container mb-5" id="contact">
         <div class="social-media-title">
             Get in Touch
         </div>
@@ -478,19 +558,6 @@
                 </div>
                 <div class="social-media-card-subtitle">
                     With me via whatsapp
-                </div>
-            </div>
-            <div class="social-media-card">
-                <div class="social-media-icon">
-                    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.1844 6.8125C18.1219 6.8125 21.3719 10.0625 21.3719 14C21.3719 18 18.1219 21.1875 14.1844 21.1875C10.1844 21.1875 6.99688 18 6.99688 14C6.99688 10.0625 10.1844 6.8125 14.1844 6.8125ZM14.1844 18.6875C16.7469 18.6875 18.8094 16.625 18.8094 14C18.8094 11.4375 16.7469 9.375 14.1844 9.375C11.5594 9.375 9.49688 11.4375 9.49688 14C9.49688 16.625 11.6219 18.6875 14.1844 18.6875ZM23.3094 6.5625C23.3094 7.5 22.5594 8.25 21.6219 8.25C20.6844 8.25 19.9344 7.5 19.9344 6.5625C19.9344 5.625 20.6844 4.875 21.6219 4.875C22.5594 4.875 23.3094 5.625 23.3094 6.5625ZM28.0594 8.25C28.1844 10.5625 28.1844 17.5 28.0594 19.8125C27.9344 22.0625 27.4344 24 25.8094 25.6875C24.1844 27.3125 22.1844 27.8125 19.9344 27.9375C17.6219 28.0625 10.6844 28.0625 8.37188 27.9375C6.12188 27.8125 4.18438 27.3125 2.49688 25.6875C0.871876 24 0.371876 22.0625 0.246876 19.8125C0.121876 17.5 0.121876 10.5625 0.246876 8.25C0.371876 6 0.871876 4 2.49688 2.375C4.18438 0.75 6.12188 0.25 8.37188 0.125C10.6844 0 17.6219 0 19.9344 0.125C22.1844 0.25 24.1844 0.75 25.8094 2.375C27.4344 4 27.9344 6 28.0594 8.25ZM25.0594 22.25C25.8094 20.4375 25.6219 16.0625 25.6219 14C25.6219 12 25.8094 7.625 25.0594 5.75C24.5594 4.5625 23.6219 3.5625 22.4344 3.125C20.5594 2.375 16.1844 2.5625 14.1844 2.5625C12.1219 2.5625 7.74688 2.375 5.93438 3.125C4.68438 3.625 3.74688 4.5625 3.24688 5.75C2.49688 7.625 2.68438 12 2.68438 14C2.68438 16.0625 2.49688 20.4375 3.24688 22.25C3.74688 23.5 4.68438 24.4375 5.93438 24.9375C7.74688 25.6875 12.1219 25.5 14.1844 25.5C16.1844 25.5 20.5594 25.6875 22.4344 24.9375C23.6219 24.4375 24.6219 23.5 25.0594 22.25Z" fill="#241F33"/>
-                    </svg>
-                </div>
-                <div class="social-media-card-title">
-                    Follow Activity
-                </div>
-                <div class="social-media-card-subtitle">
-                    112k active members
                 </div>
             </div>
             <div class="social-media-card">
@@ -516,4 +583,15 @@
 @endsection
 
 @section('script')
+<script>
+      $(document).ready(function() {
+        $('.nav-item .nav-link').on('click', function() {
+        // Remove 'nav-active' class from all nav links
+        $('.nav-item .nav-link').removeClass('nav-active');
+
+        // Add 'nav-active' class to the clicked nav link
+        $(this).addClass('nav-active');
+        });
+    });
+</script>
 @endsection
