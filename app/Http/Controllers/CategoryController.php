@@ -12,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $dataCategory = Category::all();
+        // return view('', compact('dataCategory'));
     }
 
     /**
@@ -20,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        // return view('');
     }
 
     /**
@@ -28,7 +29,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'desc' => 'required',
+        ]);
+
+        Category::create([
+            'title' => $request->title,
+            'desc' => $request->desc,
+        ]);
+        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -42,24 +52,35 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $dataCategory = Category::where('id', $id)->first();
+        // return view('', compact('dataCategory'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'desc' => 'required',
+        ]);
+
+        Category::where('id', $id)->update([
+            'title' => $request->title,
+            'desc' => $request->desc,
+        ]);
+        // return redirect()->route('')->with('edit', 'Data berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        Category::where('id', $id)->delete();
+         // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
     }
 }

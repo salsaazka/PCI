@@ -12,7 +12,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $dataContact = Contact::all();
+        // return view('', compact('dataContact'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        // return view('');
     }
 
     /**
@@ -28,7 +29,24 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'contact' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
+        ]);
+
+        $image = $request->file('image');
+        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+
+        $dPath = public_path('/assets/img/data/');
+        $image->move($dPath, $imgName);
+
+        Contact::create([
+            'title' => $request->title,
+            'contact' => $request->contact,
+            'image' => $imgName
+        ]);
+        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -42,24 +60,43 @@ class ContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contact $contact)
+    public function edit($id)
     {
-        //
+        $dataContact = Contact::where('id', $id)->first();
+        // return view('', compact('dataContact'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'contact' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
+        ]);
+
+        $image = $request->file('image');
+        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+
+        $dPath = public_path('/assets/img/data/');
+        $image->move($dPath, $imgName);
+
+        Contact::where('id', $id)->update([
+            'title' => $request->title,
+            'contact' => $request->contact,
+            'image' => $imgName
+        ]);
+        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        //
+        Contact::where('id', $id)->delete();
+         // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
     }
 }

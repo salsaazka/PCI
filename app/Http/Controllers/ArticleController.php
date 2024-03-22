@@ -12,7 +12,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $dataArticle = Article::all();
+         // return view('', compact('dataArticle'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+         // return view('');
     }
 
     /**
@@ -28,7 +29,24 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'desc' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
+        ]);
+
+        $image = $request->file('image');
+        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+
+        $dPath = public_path('/assets/img/data/');
+        $image->move($dPath, $imgName);
+
+        Article::create([
+            'title' => $request->title,
+            'image' => $imgName,
+            'desc' => $request->desc,
+        ]);
+        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -42,24 +60,43 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-        //
+        $dataArticle = Article::where('id', $id)->first();
+         // return view('', compact('dataArticle'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'desc' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
+        ]);
+
+        $image = $request->file('image');
+        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+
+        $dPath = public_path('/assets/img/data/');
+        $image->move($dPath, $imgName);
+
+        Article::where('id', $id)->update([
+            'title' => $request->title,
+            'image' => $imgName,
+            'desc' => $request->desc,
+        ]);
+        // return redirect()->route('')->with('edit', 'Data berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
-        //
+        Article::where('id', $id)->delete();
+          // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
     }
 }

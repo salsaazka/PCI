@@ -12,7 +12,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $dataPayment = Payment::all();
+        // return view('', compact('dataPayment'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+         // return view('');
     }
 
     /**
@@ -28,7 +29,16 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'bank_name' => 'required',
+            'no_bank' => 'required',
+        ]);
+
+        Payment::create([
+            'bank_name' => $request->bank_name,
+            'no_bank' => $request->no_bank,
+        ]);
+        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -42,24 +52,35 @@ class PaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Payment $payment)
+    public function edit($id)
     {
-        //
+        $dataPayment = Payment::where('id', $id)->first();
+        // return view('', compact('dataPayment'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Payment $payment)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'bank_name' => 'required',
+            'no_bank' => 'required',
+        ]);
+
+        Payment::where('id', $id)->update([
+            'bank_name' => $request->bank_name,
+            'no_bank' => $request->no_bank,
+        ]);
+        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Payment $payment)
+    public function destroy($id)
     {
-        //
+        Payment::where('id', $id)->delete();
+        // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
     }
 }

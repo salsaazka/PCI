@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -12,7 +14,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $dataCart = Cart::all();
+        // return view('', compact('dataCart'));
     }
 
     /**
@@ -20,7 +23,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+       // return view('');
     }
 
     /**
@@ -28,7 +31,16 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'product_id' => 'required',
+        ]);
+
+        Cart::create([
+            'user_id' => $request->user_id,
+            'product_id' => $request->product_id,
+        ]);
+        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -42,24 +54,36 @@ class CartController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cart $cart)
+    public function edit($id)
     {
-        //
+        
+        $dataCart = Cart::where('id', $id)->first();
+        // return view('', compact('dataCart'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'product_id' => 'required',
+        ]);
+
+        Cart::where('id', $id)->update([
+            'user_id' => $request->user_id,
+            'product_id' => $request->product_id,
+        ]);
+        // return redirect()->route('')->with('edit', 'Data berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $cart)
+    public function destroy($id)
     {
-        //
+        Cart::where('id', $id)->delete();
+         // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
     }
 }

@@ -12,7 +12,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        $dataBanner = Banner::all();
+         // return view('', compact('dataBanner'));
     }
 
     /**
@@ -20,7 +21,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        // return view('');
     }
 
     /**
@@ -28,7 +29,24 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'desc' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
+        ]);
+
+        $image = $request->file('image');
+        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+
+        $dPath = public_path('/assets/img/data/');
+        $image->move($dPath, $imgName);
+
+        Banner::create([
+            'title' => $request->title,
+            'image' => $imgName,
+            'desc' => $request->desc,
+        ]);
+        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -42,24 +60,43 @@ class BannerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Banner $banner)
+    public function edit($id)
     {
-        //
+        $dataBanner = Banner::where('id', $id)->first();
+         // return view('', compact('dataBanner'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Banner $banner)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'desc' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
+        ]);
+
+        $image = $request->file('image');
+        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+
+        $dPath = public_path('/assets/img/data/');
+        $image->move($dPath, $imgName);
+
+        Banner::where('id', $id)->update([
+            'title' => $request->title,
+            'image' => $imgName,
+            'desc' => $request->desc,
+        ]);
+         // return redirect()->route('')->with('edit', 'Data berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Banner $banner)
+    public function destroy($id)
     {
-        //
+        Banner::where('id', $id)->delete();
+          // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
     }
 }

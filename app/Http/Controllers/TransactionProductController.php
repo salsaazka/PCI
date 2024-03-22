@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TransactionProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class TransactionProductController extends Controller
@@ -12,7 +13,8 @@ class TransactionProductController extends Controller
      */
     public function index()
     {
-        //
+        $dataTransactionProduct = TransactionProduct::all();
+         // return view('', compact('dataTransactionProduct));
     }
 
     /**
@@ -20,7 +22,7 @@ class TransactionProductController extends Controller
      */
     public function create()
     {
-        //
+         // return view('');
     }
 
     /**
@@ -28,7 +30,16 @@ class TransactionProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_id' => 'required',
+            'count' => 'required',
+        ]);
+
+        TransactionProduct::create([
+            'product_id' => $request->product_id,
+            'count' => $request->count,
+        ]);
+        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -42,24 +53,35 @@ class TransactionProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TransactionProduct $transactionProduct)
+    public function edit($id)
     {
-        //
+        $dataTransactionProduct = TransactionProduct::where('id', $id)->first();
+         // return view('', compact('dataTransactionProduct));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TransactionProduct $transactionProduct)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'product_id' => 'required',
+            'count' => 'required',
+        ]);
+
+        TransactionProduct::where('id', $id)->update([
+            'product_id' => $request->product_id,
+            'count' => $request->count,
+        ]);
+        // return redirect()->route('')->with('edit', 'Data berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TransactionProduct $transactionProduct)
+    public function destroy($id)
     {
-        //
+        TransactionProduct::where('id', $id)->delete();
+        // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\TransactionProduct;
+use App\Models\User;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -12,7 +15,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $dataTransaction = Transaction::all();
+        // return view('', compact('dataTransaction'));
     }
 
     /**
@@ -20,7 +24,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        // return view('');
     }
 
     /**
@@ -28,7 +32,21 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'total_price' => 'required',
+        ]);
+
+        Transaction::create([
+            'user_id' => $request->user_id,
+            'payment_id' => $request->payment_id,
+            'transaction_product_id' => $request->transaction_product_id,
+            'total_price' => $request->total_price,
+            'total_count' => $request->total_count,
+            'proof_payment' => $request->proof_payment,
+
+        ]);
+        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -42,24 +60,40 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transaction $transaction)
+    public function edit($id)
     {
-        //
+        $dataTransaction = Transaction::where('id', $id)->first();
+        // return view('', compact('dataTransaction'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'total_price' => 'required',
+        ]);
+
+        Transaction::where('id', $id)->update([
+            'user_id' => $request->user_id,
+            'payment_id' => $request->payment_id,
+            'transaction_product_id' => $request->transaction_product_id,
+            'total_price' => $request->total_price,
+            'total_count' => $request->total_count,
+            'proof_payment' => $request->proof_payment,
+
+        ]);
+        // return redirect()->route('')->with('edit', 'Data berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Transaction $transaction)
+    public function destroy($id)
     {
-        //
+        Transaction::where('id', $id)->delete();
+        // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
     }
 }
