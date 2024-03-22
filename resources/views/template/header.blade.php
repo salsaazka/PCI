@@ -6,19 +6,19 @@
       <div id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link nav-active" aria-current="page" href="{{ URL::to('/home') }}">HOME</a>
+            <a class="nav-link nav-active" id="nav-home" aria-current="page" href="#">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">ABOUT US</a>
+            <a class="nav-link" id="nav-about" href="#about">ABOUT US</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">PRODUCTS</a>
+            <a class="nav-link" id="nav-product" href="#product">PRODUCTS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">NEWS</a>
+            <a class="nav-link" id="nav-article" href="#article">NEWS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">CONTACT US</a>
+            <a class="nav-link" id="nav-contact" href="#contact">CONTACT US</a>
           </li>
           <li class="nav-item">
             <a class="nav-link cart" href="#">
