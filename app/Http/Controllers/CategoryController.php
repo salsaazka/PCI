@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         $dataCategory = Category::all();
-        // return view('', compact('dataCategory'));
+        return view('admin.pages.category', compact('dataCategory'));
     }
 
     /**

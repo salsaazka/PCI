@@ -11,7 +11,7 @@ class AboutController extends Controller
     public function index()
     {
         $dataAbout = About::all();
-        // return view('', compact('dataAbout'));
+        return view('admin.pages.about', compact('dataAbout'));
     }
 
    

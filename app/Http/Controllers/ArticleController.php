@@ -13,7 +13,7 @@ class ArticleController extends Controller
     public function index()
     {
         $dataArticle = Article::all();
-         // return view('', compact('dataArticle'));
+        //  return view(, compact('dataArticle'));
     }
 
     /**

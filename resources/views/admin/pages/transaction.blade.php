@@ -12,40 +12,55 @@
                                 <h6 class="fw-semibold mb-0">Id</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Assigned</h6>
+                                <h6 class="fw-semibold mb-0">User</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Name</h6>
+                                <h6 class="fw-semibold mb-0">Payment</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Priority</h6>
+                                <h6 class="fw-semibold mb-0">Transaction product</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Budget</h6>
+                                <h6 class="fw-semibold mb-0">Total price</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Total count</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Proof Payment</h6>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($dataTransaction as $transaction)
                         <tr>
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">1</h6>
+                                <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
                             </td>
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-1">Sunil Joshi</h6>
-                                <span class="fw-normal">Web Designer</span>
+                                <h6 class="fw-semibold mb-1">{{ $transaction->user_id }}</h6>
+                                {{-- <span class="fw-normal">Web Designer</span> --}}
                             </td>
                             <td class="border-bottom-0">
-                                <p class="mb-0 fw-normal">Elite Admin</p>
+                                <h6 class="fw-semibold mb-1">{{ $transaction->payment_id }}</h6>
                             </td>
                             <td class="border-bottom-0">
-                                <div class="d-flex align-items-center gap-2">
-                                    <span class="badge bg-primary rounded-3 fw-semibold">Low</span>
-                                </div>
+                                <h6 class="fw-semibold mb-1">{{ $transaction->transaction_product_id }}</h6>
                             </td>
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0 fs-4">$3.9</h6>
+                                <h6 class="fw-semibold mb-1">{{ $transaction->total_price }}</h6>
+                            </td>
+                            <td class="border-bottom-0">
+                                <h6 class="fw-semibold mb-1">{{ $transaction->total_count }}</h6>
+                            </td>
+                            <td class="border-bottom-0">
+                                <h6 class="fw-semibold mb-1">{{ $transaction->proof_payment }}</h6>
                             </td>
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

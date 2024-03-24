@@ -12,40 +12,49 @@
                                 <h6 class="fw-semibold mb-0">Id</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Assigned</h6>
+                                <h6 class="fw-semibold mb-0">Logo</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Name</h6>
+                                <h6 class="fw-semibold mb-0">Address</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Priority</h6>
+                                <h6 class="fw-semibold mb-0">No telp</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Budget</h6>
+                                <h6 class="fw-semibold mb-0">Email</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Desc</h6>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach ($dataAbout as $about)
                         <tr>
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">1</h6>
+                                <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
                             </td>
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-1">Sunil Joshi</h6>
-                                <span class="fw-normal">Web Designer</span>
+                                <h6 class="fw-semibold mb-1">{{ $about->logo }}</h6>
+                                {{-- <span class="fw-normal">Web Designer</span> --}}
                             </td>
                             <td class="border-bottom-0">
-                                <p class="mb-0 fw-normal">Elite Admin</p>
+                                <h6 class="fw-semibold mb-1">{{ $about->address }}</h6>
                             </td>
                             <td class="border-bottom-0">
-                                <div class="d-flex align-items-center gap-2">
-                                    <span class="badge bg-primary rounded-3 fw-semibold">Low</span>
-                                </div>
+                                <h6 class="fw-semibold mb-1">{{ $about->no_telp }}</h6>
                             </td>
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0 fs-4">$3.9</h6>
+                                <h6 class="fw-semibold mb-1">{{ $about->email }}</h6>
+                            </td>
+                            <td class="border-bottom-0">
+                                <h6 class="fw-semibold mb-1">{{ $about->des }}</h6>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -12,40 +12,49 @@
                                 <h6 class="fw-semibold mb-0">Id</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Assigned</h6>
-                            </th>
-                            <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0">Name</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Priority</h6>
+                                <h6 class="fw-semibold mb-0">Email</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Budget</h6>
+                                <h6 class="fw-semibold mb-0">No telp</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Address</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Role</h6>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($dataUser as $user)
                         <tr>
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">1</h6>
+                                <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
                             </td>
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-1">Sunil Joshi</h6>
-                                <span class="fw-normal">Web Designer</span>
+                                <h6 class="fw-semibold mb-1">{{ $user->name }}</h6>
+                                <span class="fw-normal">{{ $user->division }}</span>
                             </td>
                             <td class="border-bottom-0">
-                                <p class="mb-0 fw-normal">Elite Admin</p>
+                                <h6 class="fw-semibold mb-1">{{ $user->email }}</h6>
                             </td>
                             <td class="border-bottom-0">
-                                <div class="d-flex align-items-center gap-2">
-                                    <span class="badge bg-primary rounded-3 fw-semibold">Low</span>
-                                </div>
+                                <h6 class="fw-semibold mb-1">{{ $user->no_telp }}</h6>
                             </td>
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0 fs-4">$3.9</h6>
+                                <h6 class="fw-semibold mb-1">{{ $user->address }}</h6>
+                            </td>
+                            <td class="border-bottom-0">
+                                <h6 class="fw-semibold mb-1">{{ $user->role }}</h6>
                             </td>
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

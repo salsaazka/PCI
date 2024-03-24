@@ -13,7 +13,7 @@ class BannerController extends Controller
     public function index()
     {
         $dataBanner = Banner::all();
-         // return view('', compact('dataBanner'));
+         return view('admin.pages.banner', compact('dataBanner'));
     }
 
     /**
