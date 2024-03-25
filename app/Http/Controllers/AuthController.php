@@ -14,49 +14,50 @@ class AuthController extends Controller
         return view('admin.pages.user', compact('dataUser'));
     }
 
-    // public function signIn()
-    // {
-    //      return view('Auth.sign-in');
-    // }
+    public function signIn()
+    {
+         return view('auth.login');
+    }
 
     public function auth(Request $request)
     {
         $request->validate([
-            'username' => 'required|exists:users,username',
+            'email' => 'required|exists:users,email',
             'password' => 'required'
         ],
         [
-            'username.exists' => "Username ini tidak tersedia"
+            'email.exists' => "email ini tidak tersedia"
         ]);
 
-        $user = $request->only('username', 'password');
+        $user = $request->only('email', 'password');
         if (Auth::attempt($user)) {
-            return redirect()->route('dashboard');
+            return redirect()->route('admin-dashboard');
         } else {
             return redirect('/')->with('fail', 'Gagal login, silahkan periksa dan coba lagi!');
         }
     }
 
-    // public function signUp()
-    // {
-    //     return view('Auth.sign-up');
-    // }
+    public function signUp()
+    {
+        return view('auth.register');
+    }
 
     public function register(Request $request)
     {
         $request->validate = ([
             'name' => 'required|min:3|max:50',
-            'username' => 'required|min:3|max:50',
             'email' => 'required',
             'password' => 'required',
         ]);
         User::create([
             'name' => $request->name,
-            'username' => $request->username,
             'email' => $request->email,
+            'no_telp' => $request->no_telp,
+            'address' => $request->address,
+            'division' => $request->division,
             'password' => Hash::make($request->password),
         ]);
-        return redirect('/')->with('success', 'Selamat anda berhasil registrasi');
+        return redirect('/sign-in')->with('success', 'Selamat anda berhasil registrasi');
     }
 
     public function user()
@@ -68,13 +69,11 @@ class AuthController extends Controller
     {
         $request->validate = ([
             'name' => 'required|min:3|max:50',
-            'username' => 'required|min:3|max:50',
             'email' => 'required',
             'password' => 'required',
         ]);
         User::create([
             'name' => $request->name,
-            'username' => $request->username,
             'email' => $request->email,
             'role' => $request->role,
             'no_telp' => $request->no_telp,

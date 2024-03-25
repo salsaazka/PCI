@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('no_telp');
-            $table->text('address');
-            $table->string('division');
-            $table->enum('role', ['user', 'admin', 'coach']);
+            $table->text('address')->nullable();
+            $table->string('division')->nullable();
+            $table->enum('role', ['user', 'admin', 'coach'])->default('user');
             $table->rememberToken();
             $table->timestamps();
         });

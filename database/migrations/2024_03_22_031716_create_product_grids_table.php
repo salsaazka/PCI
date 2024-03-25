@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_grids', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('category_id');
+            $table->bigInteger('category_id')->nullable();
             $table->string('title');
             $table->string('image');
             $table->text('desc');

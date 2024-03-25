@@ -38,13 +38,13 @@ Route::get('/general-trading', function () {
 
 // Auth
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+// Route::get('/login', function () {
+//     return view('auth.login');
+// })->name('login');
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+// Route::get('/register', function () {
+//     return view('auth.register');
+// })->name('register');
 
 // End Auth
 
@@ -79,11 +79,17 @@ Route::get('/general-trading/admin', function () {
 // Route::get('/general-trading/admin/contact', function () {
 //     return view('admin.pages.contact');
 // })->name('admin-contact');
+Route::get('/sign-in', [AuthController::class, 'signIn'])->name('signIn');
+Route::post('/sign-in', [AuthController::class, 'auth'])->name('auth.login');
+Route::get('/sign-up', [AuthController::class, 'signUp'])->name('signUp');
+Route::post('/sign-up', [AuthController::class, 'register'])->name('auth.register');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::prefix('/user')->name('user.')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('index');
     Route::get('/create-user', [AuthController::class, 'user'])->name('create');
     Route::post('/create-user', [AuthController::class, 'createUser'])->name('store');
+
     // Route::get('/edit{id}', [AuthController::class, 'edit'])->name('edit');
     // Route::patch('/update/{id}', [AuthController::class, 'update'])->name('update');
     // Route::delete('/delete/{id}', [AuthController::class, 'destroy'])->name('destroy');

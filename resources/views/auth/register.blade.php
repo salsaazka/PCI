@@ -25,24 +25,30 @@
                 </a>
                 <p class="text-center">Comprehensive Solutions for Your
                     Business Growth!</p>
-                <form>
+                <form action="{{ route('auth.register') }}" method="POST">
+                  @csrf
                   <div class="mb-3">
                     <label for="exampleInputtext1" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
+                    <input type="text" name="name" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
                   </div>
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                   </div>
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">No Telp</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="exampleInputTelp" class="form-label">No Telp</label>
+                    <input type="number" name="no_telp" class="form-control" id="exampleInputTelp" aria-describedby="emailHelp">
                   </div>
-                  <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</a>
+                  <div class="mb-3">
+                    <label for="exampleInputAdd" class="form-label">Address</label>
+                    <input type="text" name="address" class="form-control" id="exampleInputAdd" aria-describedby="emailHelp">
+                  </div>
+                  <button class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" type="submit">Sign Up</button>
+                  <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{ route('signIn') }}" class="text-dark font-weight-bolder">Sign in</a></p>
                 </form>
               </div>
             </div>
