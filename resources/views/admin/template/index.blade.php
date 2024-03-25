@@ -45,7 +45,7 @@
                             <span class="hide-menu">Pages</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Route::currentRouteName() === 'admin-about' ? 'active' : '' }}" href="{{ route('admin-about') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'about.index' ? 'active' : '' }}" href="{{ route('about.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user"></i>
                                 </span>
@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Route::currentRouteName() === 'admin-user' ? 'active' : '' }}" href="{{ route('admin-user') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'user.index' ? 'active' : '' }}" href="{{ route('user.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user-plus"></i>
                                 </span>
@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Route::currentRouteName() === 'admin-product' ? 'active' : '' }}" href="{{ route('admin-product') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'product.index' ? 'active' : '' }}" href="{{ route('product.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-box"></i>
                                 </span>
@@ -69,7 +69,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Route::currentRouteName() === 'admin-banner' ? 'active' : '' }}" href="{{ route('admin-banner') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'banner.index' ? 'active' : '' }}" href="{{ route('banner.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-chalkboard"></i>
                                 </span>
@@ -77,7 +77,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Route::currentRouteName() === 'admin-category' ? 'active' : '' }}" href="{{ route('admin-category') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'category.index' ? 'active' : '' }}" href="{{ route('category.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-pin"></i>
                                 </span>
@@ -85,7 +85,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Route::currentRouteName() === 'admin-transaction' ? 'active' : '' }}" href="{{ route('admin-transaction') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'transaction.index' ? 'active' : '' }}" href="{{ route('transaction.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-brand-cashapp"></i>
                                 </span>
@@ -93,7 +93,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Route::currentRouteName() === 'admin-contact' ? 'active' : '' }}" href="{{ route('admin-contact') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'contact.index' ? 'active' : '' }}" href="{{ route('contact.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-phone"></i>
                                 </span>

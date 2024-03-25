@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        // return view('');
+        return view('admin.create.category');
     }
 
     /**
@@ -38,7 +38,7 @@ class CategoryController extends Controller
             'title' => $request->title,
             'desc' => $request->desc,
         ]);
-        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
+        return redirect()->route('category.index')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**

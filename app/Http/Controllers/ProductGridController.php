@@ -39,7 +39,7 @@ class ProductGridController extends Controller
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image->move($dPath, $imgName);
 
         ProductGrid::create([
@@ -82,7 +82,7 @@ class ProductGridController extends Controller
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image->move($dPath, $imgName);
 
         ProductGrid::where('id', $id)->update([

@@ -38,7 +38,7 @@ class ArticleController extends Controller
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image->move($dPath, $imgName);
 
         Article::create([
@@ -80,7 +80,7 @@ class ArticleController extends Controller
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image->move($dPath, $imgName);
 
         Article::where('id', $id)->update([

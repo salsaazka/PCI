@@ -24,7 +24,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        // return view('');
+        return view('admin.create.transaction');
     }
 
     /**
@@ -33,7 +33,7 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required',
+            // 'user_id' => 'required',
             'total_price' => 'required',
         ]);
 
@@ -46,7 +46,7 @@ class TransactionController extends Controller
             'proof_payment' => $request->proof_payment,
 
         ]);
-        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
+        return redirect()->route('transaction.index')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**

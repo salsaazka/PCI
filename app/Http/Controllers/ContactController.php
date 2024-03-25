@@ -21,7 +21,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        // return view('');
+        return view('admin.create.contact');
     }
 
     /**
@@ -38,7 +38,7 @@ class ContactController extends Controller
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image->move($dPath, $imgName);
 
         Contact::create([
@@ -46,7 +46,7 @@ class ContactController extends Controller
             'contact' => $request->contact,
             'image' => $imgName
         ]);
-        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
+        return redirect()->route('contact.index')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -80,7 +80,7 @@ class ContactController extends Controller
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image->move($dPath, $imgName);
 
         Contact::where('id', $id)->update([

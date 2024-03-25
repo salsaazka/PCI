@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('no_telp');
             $table->text('address');
             $table->string('division');
-            $table->enum('role', ['']);
+            $table->enum('role', ['user', 'admin', 'coach']);
             $table->rememberToken();
             $table->timestamps();
         });

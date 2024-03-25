@@ -21,7 +21,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        // return view('');
+        return view('admin.create.banner');
     }
 
     /**
@@ -38,7 +38,7 @@ class BannerController extends Controller
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image->move($dPath, $imgName);
 
         Banner::create([
@@ -46,7 +46,7 @@ class BannerController extends Controller
             'image' => $imgName,
             'desc' => $request->desc,
         ]);
-        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
+        return redirect()->route('banner.index')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -63,7 +63,7 @@ class BannerController extends Controller
     public function edit($id)
     {
         $dataBanner = Banner::where('id', $id)->first();
-         // return view('', compact('dataBanner'));
+        //  return view(, compact('dataBanner'));
     }
 
     /**
@@ -80,7 +80,7 @@ class BannerController extends Controller
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image->move($dPath, $imgName);
 
         Banner::where('id', $id)->update([
@@ -97,6 +97,6 @@ class BannerController extends Controller
     public function destroy($id)
     {
         Banner::where('id', $id)->delete();
-          // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
+          return redirect()->route('banner.index')->with('delete', 'Data berhasil dihapus');
     }
 }

@@ -17,7 +17,7 @@ class AboutController extends Controller
    
     public function create()
     {
-        // return view('');
+        return view('admin.create.about');
     }
 
     
@@ -35,7 +35,7 @@ class AboutController extends Controller
             'email' => $request->email,
             'desc' => $request->desc,
         ]);
-        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
+        return redirect()->route('about.index')->with('add', 'Data berhasil ditambahkan');
     }
 
     
@@ -48,7 +48,7 @@ class AboutController extends Controller
     public function edit($id)
     {
         $dataAbout = About::where('id', $id)->first();
-         // return view('', compact('dataAbout'));
+         return view('admin.pages.about', compact('dataAbout'));
     }
 
     /**
@@ -68,7 +68,7 @@ class AboutController extends Controller
             'email' => $request->email,
             'desc' => $request->desc,
         ]);
-        // return redirect()->route('')->with('edit', 'Data berhasil diubah');
+        return redirect()->route('about.index')->with('edit', 'Data berhasil diubah');
     }
 
     /**
@@ -77,6 +77,6 @@ class AboutController extends Controller
     public function destroy($id)
     {
         About::where('id', $id)->delete();
-        // return redirect()->route('')->with('edit', 'Data berhasil dihapus');
+        return redirect()->route('about.index')->with('delete', 'Data berhasil dihapus');
     }
 }

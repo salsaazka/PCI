@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
         'no_telp',
         'address',
-        'divison',
+        'division',
         'role',
     ];
 

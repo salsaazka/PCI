@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // return view('');
+        return view('admin.create.product');
     }
 
     /**
@@ -37,32 +37,32 @@ class ProductController extends Controller
         
         // image 1
         $image_1 = $request->file('image_1');
-        $imgName_1 = time() . rand() . '.' . $image_1->getClientOriginalExtension();
+        $imgName_1 = time() . rand() . '.' . $image_1->getClientOriginalExtension_1();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image_1->move($dPath, $imgName_1);
 
         // image 2
         $image_2 = $request->file('image_2');
-        $imgName_2 = time() . rand() . '.' . $image_2->getClientOriginalExtension();
+        $imgName_2 = time() . rand() . '.' . $image_2->getClientOriginalExtension_2();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image_2->move($dPath, $imgName_2);
 
         
         // image 3
         $image_3 = $request->file('image_3');
-        $imgName_3 = time() . rand() . '.' . $image_3->getClientOriginalExtension();
+        $imgName_3 = time() . rand() . '.' . $image_3->getClientOriginalExtension_3();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image_3->move($dPath, $imgName_3);
 
         
         // image 4
         $image_4 = $request->file('image_4');
-        $imgName_4 = time() . rand() . '.' . $image_4->getClientOriginalExtension();
+        $imgName_4 = time() . rand() . '.' . $image_4->getClientOriginalExtension_4();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image_2->move($dPath, $imgName_4);
 
 
@@ -79,7 +79,7 @@ class ProductController extends Controller
             'image_3' => $imgName_3,
             'image_4' => $imgName_4,
         ]);
-        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
+        return redirect()->route('product.index')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -113,14 +113,14 @@ class ProductController extends Controller
         $image_1 = $request->file('image_1');
         $imgName_1 = time() . rand() . '.' . $image_1->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image_1->move($dPath, $imgName_1);
 
         // image 2
         $image_2 = $request->file('image_2');
         $imgName_2 = time() . rand() . '.' . $image_2->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image_2->move($dPath, $imgName_2);
 
         
@@ -128,7 +128,7 @@ class ProductController extends Controller
         $image_3 = $request->file('image_3');
         $imgName_3 = time() . rand() . '.' . $image_3->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image_3->move($dPath, $imgName_3);
 
         
@@ -136,7 +136,7 @@ class ProductController extends Controller
         $image_4 = $request->file('image_4');
         $imgName_4 = time() . rand() . '.' . $image_4->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/img/data/');
+        $dPath = public_path('/assets/images/data/');
         $image_2->move($dPath, $imgName_4);
 
 
