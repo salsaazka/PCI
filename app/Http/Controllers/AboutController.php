@@ -7,29 +7,34 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    
+
     public function index()
     {
         $dataAbout = About::all();
         return view('admin.pages.about', compact('dataAbout'));
     }
 
-   
+
     public function create()
     {
         return view('admin.create.about');
     }
 
-    
+
     public function store(Request $request)
     {
         $request->validate([
-            'logo' => 'required',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'desc' => 'required',
         ]);
 
+        $logo = $request->file('logo');
+        $logoName = time() . '.' . $logo->getClientOriginalExtension();
+        $dPath = public_path('/assets/images/data/');
+        $logo->move($dPath, $logoName);
+
         About::create([
-            'logo' => $request->logo,
+            'logo' => $logoName,
             'address' => $request->address,
             'no_telp' => $request->no_telp,
             'email' => $request->email,
@@ -38,13 +43,13 @@ class AboutController extends Controller
         return redirect()->route('about.index')->with('add', 'Data berhasil ditambahkan');
     }
 
-    
+
     public function show(About $about)
     {
         //
     }
 
-    
+
     public function edit($id)
     {
         $dataAbout = About::where('id', $id)->first();

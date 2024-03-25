@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PT. PRIJADI CAHAYA INDONESIA</title>
     <link rel="stylesheet" href="{{ asset('assets-admin/css/styles.min.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropify/dist/css/dropify.min.css">
 </head>
 
 <body>
@@ -153,11 +154,13 @@
     </div>
     <script src="{{ asset('assets-admin/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dropify/dist/js/dropify.min.js"></script>
     <script src="{{ asset('assets-admin/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('assets-admin/js/app.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/simplebar/dist/simplebar.js') }}"></script>
     <script src="{{ asset('assets-admin/js/dashboard.js') }}"></script>
+    @yield('script-admin')
 </body>
 
 </html>
