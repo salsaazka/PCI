@@ -53,7 +53,7 @@ class AboutController extends Controller
     public function edit($id)
     {
         $dataAbout = About::where('id', $id)->first();
-         return view('admin.pages.about', compact('dataAbout'));
+         return view('admin.edit.about', compact('dataAbout'));
     }
 
     /**

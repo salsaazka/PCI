@@ -3,8 +3,9 @@
 @section('content-admin')
 <div class="card">
     <div class="card-body">
-    <form action="{{ route('product.store') }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
+    <form action="{{ route('product.update', $dataProduct->id) }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
         @csrf
+        @method('PATCH')
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">
@@ -15,7 +16,8 @@
                     type="text"
                     class="form-control"
                     name="title"
-                    aria-describedby="publisher"
+                    value="{{ $dataProduct->title }}"
+                    aria-describedby=""
                     placeholder="Masukan title"
                 />
                 </div>
@@ -29,6 +31,7 @@
                     type="textarea"
                     class="form-control"
                     name="desc"
+                    value="{{ $dataProduct->desc }}"
                     aria-describedby="desc"
                     placeholder="Masukan Description"
                 />
@@ -46,7 +49,8 @@
                     type="number"
                     class="form-control"
                     name="price"
-                    aria-describedby="publisher"
+                    value="{{ $dataProduct->price }}"
+                    aria-describedby=""
                     placeholder="Masukan price"
                 />
                 </div>
@@ -60,7 +64,8 @@
                     type="number"
                     class="form-control"
                     name="stock"
-                    aria-describedby="publisher"
+                    value="{{ $dataProduct->stock }}"
+                    aria-describedby=""
                     placeholder="Masukan stock"
                 />
                 </div>
@@ -74,7 +79,8 @@
                     type="text"
                     class="form-control"
                     name="unit"
-                    aria-describedby="desc"
+                    value="{{ $dataProduct->unit }}"
+                    aria-describedby=""
                     placeholder="Masukan Unit"
                 />
                 </div>
@@ -86,7 +92,7 @@
                     <label for="" class="form-label"
                         >Upload Image</label
                     >
-                    <input type="file" name="image_1" class="form-control" id="inputGroupFile01">
+                    <input type="file" name="image_1" value="{{ $dataProduct->image_1 }}" class="form-control" id="inputGroupFile01">
                 </div>
             </div>
             <div class="col-6">
@@ -94,7 +100,7 @@
                     <label for="" class="form-label"
                         >Upload Image</label
                     >
-                    <input type="file" name="image_2" class="form-control" id="inputGroupFile02">
+                    <input type="file" name="image_2" value="{{ $dataProduct->image_2 }}" class="form-control" id="inputGroupFile02">
                 </div>
             </div>
         </div>
@@ -105,7 +111,7 @@
                     <label for="" class="form-label"
                         >Upload Image</label
                     >
-                    <input type="file" name="image_3" class="form-control" id="inputGroupFile03">
+                    <input type="file" name="image_3" value="{{ $dataProduct->image_3 }}" class="form-control" id="inputGroupFile03">
                 </div>
             </div>
             <div class="col-6">
@@ -113,7 +119,7 @@
                     <label for="" class="form-label"
                         >Upload Image</label
                     >
-                    <input type="file" name="image_4" class="form-control" id="inputGroupFile04">
+                    <input type="file" name="image_4" value="{{ $dataProduct->image_4 }}" class="form-control" id="inputGroupFile04">
                 </div>
             </div>
         </div>

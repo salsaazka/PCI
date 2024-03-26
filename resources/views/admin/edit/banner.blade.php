@@ -3,14 +3,14 @@
 @section('content-admin')
 <div class="card">
     <div class="card-body">
-    <form action="{{ route('banner.store') }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
+    <form action="{{ route('banner.update', $dataBanner->id) }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
         @csrf
-
+        @method('PATCH')
         <div class="mb-3">
             <label for="" class="form-label"
                 >Upload Image</label
             >
-            <input type="file" name="image" class="form-control" id="inputGroupFile02">
+            <input type="file" name="image" value="{{ $dataBanner->image }}" class="form-control" id="inputGroupFile02">
         </div>
 
        
@@ -25,6 +25,7 @@
                     type="text"
                     class="form-control"
                     name="title"
+                    value="{{ $dataBanner->title }}"
                     aria-describedby="publisher"
                     placeholder="Masukan title"
                 />
@@ -39,6 +40,7 @@
                     type="textarea"
                     class="form-control"
                     name="desc"
+                    value="{{ $dataBanner->desc }}"
                     aria-describedby="desc"
                     placeholder="Masukan Description"
                 />

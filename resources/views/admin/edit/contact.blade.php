@@ -3,14 +3,14 @@
 @section('content-admin')
 <div class="card">
     <div class="card-body">
-    <form action="{{ route('banner.store') }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
+    <form action="{{ route('contact.update', $dataContact->id) }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
         @csrf
-
+        @method('PATCH')
         <div class="mb-3">
             <label for="" class="form-label"
                 >Upload Image</label
             >
-            <input type="file" name="image" class="form-control" id="inputGroupFile02">
+            <input type="file" name="image" value="{{ $dataContact->image }}" class="form-control" id="inputGroupFile02">
         </div>
 
        
@@ -25,7 +25,8 @@
                     type="text"
                     class="form-control"
                     name="title"
-                    aria-describedby="publisher"
+                    value="{{ $dataContact->title }}"
+                    aria-describedby="title"
                     placeholder="Masukan title"
                 />
                 </div>
@@ -33,14 +34,15 @@
             <div class="col-6">
                 <div class="mb-3">
                 <label for="" class="form-label"
-                    >Description</label
+                    >Contact</label
                 >
                 <input
-                    type="textarea"
+                    type="text"
                     class="form-control"
-                    name="desc"
-                    aria-describedby="desc"
-                    placeholder="Masukan Description"
+                    name="contact"
+                    value="{{ $dataContact->contact }}"
+                    aria-describedby=""
+                    placeholder="Masukan Contact"
                 />
                 </div>
             </div>

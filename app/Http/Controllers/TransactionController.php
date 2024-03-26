@@ -63,7 +63,7 @@ class TransactionController extends Controller
     public function edit($id)
     {
         $dataTransaction = Transaction::where('id', $id)->first();
-        // return view('', compact('dataTransaction'));
+        return view('admin.edit.transaction', compact('dataTransaction'));
     }
 
     /**
@@ -85,7 +85,7 @@ class TransactionController extends Controller
             'proof_payment' => $request->proof_payment,
 
         ]);
-        // return redirect()->route('')->with('edit', 'Data berhasil diubah');
+        return redirect()->route('transaction.index')->with('edit', 'Data berhasil diubah');
     }
 
     /**
@@ -94,6 +94,6 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         Transaction::where('id', $id)->delete();
-        // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
+        return redirect()->route('transaction.index')->with('delete', 'Data berhasil dihapus');
     }
 }

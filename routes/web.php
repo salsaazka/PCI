@@ -32,9 +32,9 @@ Route::get('/general-trading', function () {
     return view('pages.landing');
 })->name('landing');
 
-Route::get('/general-trading/product', function () {
-    return view('pages.list-product');
-})->name('list-product');
+// Route::get('/general-trading/product', function () {
+//     return view('pages.list-product');
+// })->name('list-product');
 
 // Auth
 
@@ -48,9 +48,9 @@ Route::get('/general-trading/product', function () {
 
 // End Auth
 
-Route::get('/general-trading/admin', function () {
-    return view('admin.pages.dashboard');
-})->name('admin-dashboard');
+// Route::get('/general-trading/admin', function () {
+//     return view('admin.pages.dashboard');
+// })->name('admin-dashboard');
 
 // Route::get('/general-trading/admin/product', function () {
 //     return view('admin.pages.product');
@@ -79,22 +79,26 @@ Route::get('/general-trading/admin', function () {
 // Route::get('/general-trading/admin/contact', function () {
 //     return view('admin.pages.contact');
 // })->name('admin-contact');
-Route::get('/sign-in', [AuthController::class, 'signIn'])->name('signIn');
-Route::post('/sign-in', [AuthController::class, 'auth'])->name('auth.login');
-Route::get('/sign-up', [AuthController::class, 'signUp'])->name('signUp');
-Route::post('/sign-up', [AuthController::class, 'register'])->name('auth.register');
+Route::get('/general-trading/admin', [AuthController::class, 'dashboard'])->name('dashboard');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::prefix('/user')->name('user.')->group(function () {
+Route::middleware('isGuest')->group(function () {
+    Route::get('/sign-in', [AuthController::class, 'signIn'])->name('signIn');
+    Route::post('/sign-in', [AuthController::class, 'auth'])->name('auth.login');
+    Route::get('/sign-up', [AuthController::class, 'signUp'])->name('signUp');
+    Route::post('/sign-up', [AuthController::class, 'register'])->name('auth.register');
+});
+
+Route::middleware('isLogin')->prefix('/user')->name('user.')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('index');
     Route::get('/create-user', [AuthController::class, 'user'])->name('create');
     Route::post('/create-user', [AuthController::class, 'createUser'])->name('store');
 
-    // Route::get('/edit{id}', [AuthController::class, 'edit'])->name('edit');
-    // Route::patch('/update/{id}', [AuthController::class, 'update'])->name('update');
-    // Route::delete('/delete/{id}', [AuthController::class, 'destroy'])->name('destroy');
+    Route::get('/edit{id}', [AuthController::class, 'editUser'])->name('edit');
+    Route::patch('/update/{id}', [AuthController::class, 'updateUser'])->name('update');
+    Route::delete('/delete/{id}', [AuthController::class, 'deleteUser'])->name('destroy');
 });
-Route::prefix('/about')->name('about.')->group(function () {
+Route::middleware('isLogin')->prefix('/about')->name('about.')->group(function () {
     Route::get('/', [AboutController::class, 'index'])->name('index');
     Route::get('/create-about', [AboutController::class, 'create'])->name('create');
     Route::post('/create-about', [AboutController::class, 'store'])->name('store');
@@ -103,7 +107,7 @@ Route::prefix('/about')->name('about.')->group(function () {
     Route::delete('/delete/{id}', [AboutController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('/article')->name('article.')->group(function () {
+Route::middleware('isLogin')->prefix('/article')->name('article.')->group(function () {
     Route::get('/', [ArticleController::class, 'index'])->name('index');
     Route::get('/create-article', [ArticleController::class, 'create'])->name('create');
     Route::post('/create-article', [ArticleController::class, 'store'])->name('store');
@@ -112,7 +116,7 @@ Route::prefix('/article')->name('article.')->group(function () {
     Route::delete('/delete/{id}', [ArticleController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('/banner')->name('banner.')->group(function () {
+Route::middleware('isLogin')->prefix('/banner')->name('banner.')->group(function () {
     Route::get('/', [BannerController::class, 'index'])->name('index');
     Route::get('/create-banner', [BannerController::class, 'create'])->name('create');
     Route::post('/create-banner', [BannerController::class, 'store'])->name('store');
@@ -121,7 +125,7 @@ Route::prefix('/banner')->name('banner.')->group(function () {
     Route::delete('/delete/{id}', [BannerController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('/cart')->name('cart.')->group(function () {
+Route::middleware('isLogin')->prefix('/cart')->name('cart.')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('index');
     Route::get('/create-cart', [CartController::class, 'create'])->name('create');
     Route::post('/create-cart', [CartController::class, 'store'])->name('store');
@@ -130,7 +134,7 @@ Route::prefix('/cart')->name('cart.')->group(function () {
     Route::delete('/delete/{id}', [CartController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('/category')->name('category.')->group(function () {
+Route::middleware('isLogin')->prefix('/category')->name('category.')->group(function () {
     Route::get('/', [CategoryController::class, 'index'])->name('index');
     Route::get('/create-category', [CategoryController::class, 'create'])->name('create');
     Route::post('/create-category', [CategoryController::class, 'store'])->name('store');
@@ -139,7 +143,7 @@ Route::prefix('/category')->name('category.')->group(function () {
     Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('/contact')->name('contact.')->group(function () {
+Route::middleware('isLogin')->prefix('/contact')->name('contact.')->group(function () {
     Route::get('/', [ContactController::class, 'index'])->name('index');
     Route::get('/create-contact', [ContactController::class, 'create'])->name('create');
     Route::post('/create-contact', [ContactController::class, 'store'])->name('store');
@@ -148,7 +152,7 @@ Route::prefix('/contact')->name('contact.')->group(function () {
     Route::delete('/delete/{id}', [ContactController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('/payment')->name('payment.')->group(function () {
+Route::middleware('isLogin')->prefix('/payment')->name('payment.')->group(function () {
     Route::get('/', [PaymentController::class, 'index'])->name('index');
     Route::get('/create-payment', [PaymentController::class, 'create'])->name('create');
     Route::post('/create-payment', [PaymentController::class, 'store'])->name('store');
@@ -157,7 +161,7 @@ Route::prefix('/payment')->name('payment.')->group(function () {
     Route::delete('/delete/{id}', [PaymentController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('/product')->name('product.')->group(function () {
+Route::middleware('isLogin')->prefix('/product')->name('product.')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index');
     Route::get('/create-product', [ProductController::class, 'create'])->name('create');
     Route::post('/create-product', [ProductController::class, 'store'])->name('store');
@@ -166,7 +170,7 @@ Route::prefix('/product')->name('product.')->group(function () {
     Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('/productgrid')->name('productgrid.')->group(function () {
+Route::middleware('isLogin')->prefix('/productgrid')->name('productgrid.')->group(function () {
     Route::get('/', [ProductGridController::class, 'index'])->name('index');
     Route::get('/create-productgrid', [ProductGridController::class, 'create'])->name('create');
     Route::post('/create-productgrid', [ProductGridController::class, 'store'])->name('store');
@@ -175,7 +179,7 @@ Route::prefix('/productgrid')->name('productgrid.')->group(function () {
     Route::delete('/delete/{id}', [ProductGridController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('/transaction')->name('transaction.')->group(function () {
+Route::middleware('isLogin')->prefix('/transaction')->name('transaction.')->group(function () {
     Route::get('/', [TransactionController::class, 'index'])->name('index');
     Route::get('/create-transaction', [TransactionController::class, 'create'])->name('create');
     Route::post('/create-transaction', [TransactionController::class, 'store'])->name('store');

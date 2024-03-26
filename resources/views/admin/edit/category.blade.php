@@ -3,18 +3,9 @@
 @section('content-admin')
 <div class="card">
     <div class="card-body">
-    <form action="{{ route('banner.store') }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
+    <form action="{{ route('category.update', $dataCategory->id) }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
         @csrf
-
-        <div class="mb-3">
-            <label for="" class="form-label"
-                >Upload Image</label
-            >
-            <input type="file" name="image" class="form-control" id="inputGroupFile02">
-        </div>
-
-       
-
+        @method('PATCH')
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">
@@ -25,6 +16,7 @@
                     type="text"
                     class="form-control"
                     name="title"
+                    value="{{  $dataCategory->title }}"
                     aria-describedby="publisher"
                     placeholder="Masukan title"
                 />
@@ -39,6 +31,7 @@
                     type="textarea"
                     class="form-control"
                     name="desc"
+                    value="{{  $dataCategory->desc }}"
                     aria-describedby="desc"
                     placeholder="Masukan Description"
                 />

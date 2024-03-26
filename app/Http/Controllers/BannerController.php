@@ -63,7 +63,7 @@ class BannerController extends Controller
     public function edit($id)
     {
         $dataBanner = Banner::where('id', $id)->first();
-        //  return view(, compact('dataBanner'));
+         return view('admin.edit.banner', compact('dataBanner'));
     }
 
     /**
@@ -88,7 +88,7 @@ class BannerController extends Controller
             'image' => $imgName,
             'desc' => $request->desc,
         ]);
-         // return redirect()->route('')->with('edit', 'Data berhasil diubah');
+         return redirect()->route('banner.index')->with('edit', 'Data berhasil diubah');
     }
 
     /**

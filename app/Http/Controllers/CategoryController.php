@@ -55,7 +55,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $dataCategory = Category::where('id', $id)->first();
-        // return view('', compact('dataCategory'));
+        return view('admin.edit.category', compact('dataCategory'));
     }
 
     /**
@@ -72,7 +72,7 @@ class CategoryController extends Controller
             'title' => $request->title,
             'desc' => $request->desc,
         ]);
-        // return redirect()->route('')->with('edit', 'Data berhasil diubah');
+        return redirect()->route('category.index')->with('edit', 'Data berhasil diubah');
     }
 
     /**
@@ -81,6 +81,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::where('id', $id)->delete();
-         // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
+         return redirect()->route('category.index')->with('delete', 'Data berhasil dihapus');
     }
 }

@@ -14,6 +14,11 @@ class AuthController extends Controller
         return view('admin.pages.user', compact('dataUser'));
     }
 
+    public function dashboard()
+    {
+        return view('admin.pages.dashboard');
+    }
+
     public function signIn()
     {
          return view('auth.login');
@@ -31,7 +36,7 @@ class AuthController extends Controller
 
         $user = $request->only('email', 'password');
         if (Auth::attempt($user)) {
-            return redirect()->route('admin-dashboard');
+            return redirect('/general-trading/admin');
         } else {
             return redirect('/')->with('fail', 'Gagal login, silahkan periksa dan coba lagi!');
         }
@@ -84,24 +89,26 @@ class AuthController extends Controller
         return redirect()->route('user.index')->with('success', 'Selamat, anda berhasil membuat akun!');
     }
 
-    public function edit($id)
+    public function editUser($id)
     {
         $dataUser = User::where('id', $id)->first();
-        // return view(,compact('dataUser'));
+        return view('admin.edit.user',compact('dataUser'));
     }
+    
     public function updateUser(Request $request, $id)
     {
         $request->validate = ([
             'name' => 'required|min:3|max:50',
-            'username' => 'required|min:3|max:50',
             'email' => 'required',
             'password' => 'required',
         ]);
         User::where('id', $id)->update([
             'name' => $request->name,
-            'username' => $request->username,
             'email' => $request->email,
             'role' => $request->role,
+            'no_telp' => $request->no_telp,
+            'address' => $request->address,
+            'division' => $request->division,
             'password' => Hash::make($request->password),
         ]);
         return redirect()->route('user.index')->with('success', 'Selamat, anda berhasil membuat akun!');
@@ -117,6 +124,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/sign-in');
     }
 }

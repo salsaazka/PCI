@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('transaction_product_id');
-            $table->bigInteger('payment_id');
+            $table->bigInteger('user_id')->nullable();
+            $table->bigInteger('transaction_product_id')->nullable();
+            $table->bigInteger('payment_id')->nullable();
             $table->string('total_price');
             $table->string('total_count');
-            $table->string('proof_payment');
+            $table->string('proof_payment')->nullable();
             $table->timestamps();
         });
     }

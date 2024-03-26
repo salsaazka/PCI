@@ -63,7 +63,7 @@ class ContactController extends Controller
     public function edit($id)
     {
         $dataContact = Contact::where('id', $id)->first();
-        // return view('', compact('dataContact'));
+        return view('admin.edit.contact', compact('dataContact'));
     }
 
     /**
@@ -88,7 +88,7 @@ class ContactController extends Controller
             'contact' => $request->contact,
             'image' => $imgName
         ]);
-        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
+        return redirect()->route('contact.index')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -97,6 +97,6 @@ class ContactController extends Controller
     public function destroy($id)
     {
         Contact::where('id', $id)->delete();
-         // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
+         return redirect()->route('contact.index')->with('delete', 'Data berhasil dihapus');
     }
 }

@@ -3,47 +3,44 @@
 @section('content-admin')
 <div class="card">
     <div class="card-body">
-    <form action="{{ route('banner.store') }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
+    <form action="{{ route('transaction.update', $dataTransaction->id) }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
         @csrf
-
-        <div class="mb-3">
-            <label for="" class="form-label"
-                >Upload Image</label
-            >
-            <input type="file" name="image" class="form-control" id="inputGroupFile02">
-        </div>
-
-       
-
+        @method('PATCH')
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">
                 <label for="" class="form-label"
-                    >Title</label
+                    >Total Price</label
                 >
                 <input
-                    type="text"
+                    type="number"
                     class="form-control"
-                    name="title"
-                    aria-describedby="publisher"
-                    placeholder="Masukan title"
+                    name="total_price"
+                    value="{{ $dataTransaction->total_count }}"
+                    aria-describedby=""
+                    placeholder="Masukan Total Price"
                 />
                 </div>
             </div>
             <div class="col-6">
                 <div class="mb-3">
                 <label for="" class="form-label"
-                    >Description</label
+                    >Total Count</label
                 >
                 <input
-                    type="textarea"
+                    type="text"
                     class="form-control"
-                    name="desc"
-                    aria-describedby="desc"
-                    placeholder="Masukan Description"
+                    name="total_count"
+                    value="{{ $dataTransaction->total_count }}"
+                    aria-describedby="total_count"
+                    placeholder="Masukan Total Count"
                 />
                 </div>
             </div>
+        </div>
+
+        <div class="row">
+            
         </div>
         
         <button

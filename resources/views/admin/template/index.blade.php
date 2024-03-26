@@ -34,7 +34,7 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Route::currentRouteName() === 'admin-dashboard' ? 'active' : '' }}" href="{{ route('admin-dashboard') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'dashboard' ? 'active' : '' }}" href="{{ route('dashboard') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
@@ -137,7 +137,7 @@
                                             <i class="ti ti-user fs-6"></i>
                                             <p class="mb-0 fs-3">My Profile</p>
                                         </a>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="/logout"
                                             class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                                     </div>
                                 </div>

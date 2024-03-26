@@ -39,6 +39,14 @@
                                 <td class="border-bottom-0">
                                     <h6 class="fw-semibold mb-1">{{ $category->desc }}</h6>
                                 </td>
+                                <td class="d-flex">
+                                    <a href="{{ route('category.edit', $category->id) }} " class="btn btn-warning" style="margin-right: 5px"><i class="ti ti-edit"></i></a>
+                                    <form action="/category/delete/{{ $category->id }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger"><i class="ti ti-trash"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

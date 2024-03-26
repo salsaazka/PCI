@@ -30,6 +30,9 @@
                             <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0">Image 1</h6>
                             </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Action</h6>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,6 +62,14 @@
                                 </td>
                                 <td class="border-bottom-0">
                                     <h6 class="fw-semibold mb-1">{{ $product->image_1 }}</h6>
+                                </td>
+                                <td class="d-flex">
+                                    <a href="{{ route('product.edit', $product->id) }} " class="btn btn-warning" style="margin-right: 5px"><i class="ti ti-edit"></i></a>
+                                    <form action="/product/delete/{{ $product->id }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger"><i class="ti ti-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
