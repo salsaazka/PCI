@@ -1,6 +1,6 @@
 <footer>
-    <div class="w-100 d-flex px-5">
-        <div class="w-75 d-flex justify-content-between pe-5">
+    <div class="footer-container">
+        <div class="footer-social-media-container">
             <div>
                 <div class="footer-title">Explore Our Page</div>
                 <ul class="footer-list-group">
@@ -52,7 +52,7 @@
                 </ul>
             </div>
         </div>
-        <div class="w-25 ps-5 d-flex flex-column align-items-end">
+        <div class="footer-brand-container">
             <img class="footer-brand-image" src="{{ asset('assets/images/logo.png') }}" alt="logo" />
             <p class="footer-brand-text">
                 Developing effective distribution channels is crucial for reaching customers in foreign markets.
