@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'no_telp' => '0881245685949',
-            'password' => bcrypt('admi123'),
+            'password' => bcrypt('admin123'),
             'address' => 'DKI Jakarta',
             'role' => 'admin',
             'division' => 'HR'
