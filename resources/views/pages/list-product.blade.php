@@ -43,7 +43,7 @@
                         <div class="tab-pane fade active show" id="catalogue-1" role="tabpanel">
                             <div class="row">
                                 <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
+                                    <div class="product-card" onclick="window.location.href = '{{Route('detail-product')}}';">
                                         <div class="card-image">
                                             <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
                                         </div>

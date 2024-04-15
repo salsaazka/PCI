@@ -32,9 +32,17 @@ Route::get('/general-trading', function () {
     return view('pages.landing');
 })->name('landing');
 
-// Route::get('/general-trading/product', function () {
-//     return view('pages.list-product');
-// })->name('list-product');
+Route::get('/general-trading/product', function () {
+    return view('pages.list-product');
+})->name('list-product');
+
+
+Route::get('/general-trading/artikel', function () {
+    return view('pages.list-artikel');
+})->name('list-artikel');
+
+Route::view('detail-product', 'pages.detail-product')->name('detail-product');
+Route::view('detail-artikel', 'pages.detail-artikel')->name('detail-artikel');
 
 // Auth
 

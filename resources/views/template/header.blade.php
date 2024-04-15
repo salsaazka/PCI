@@ -54,10 +54,10 @@
                     <a class="nav-link {{ Route::currentRouteName() === 'landing' ? ' nav-active' : '' }}" id="nav-home" aria-current="page" href="{{ route('landing') }}">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() === 'list-product' ? ' nav-active' : '' }}" id="nav-product" href="{{ route('list-product') }}">PRODUCTS</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'list-product' || Route::currentRouteName() === 'detail-product' ? ' nav-active' : '' }}" id="nav-product" href="{{ route('list-product') }}">PRODUCTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="nav-article" href="#article">NEWS</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'list-artikel' || Route::currentRouteName() === 'detail-artikel' ? ' nav-active' : '' }}" id="nav-product" href="{{ route('list-artikel') }}">ARTIKEL</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="nav-contact" href="#contact">CONTACT US</a>

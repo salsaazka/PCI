@@ -395,7 +395,7 @@
     </div>
 
 
-    <div class="container best-product-catalogue" id="article">
+    {{-- <div class="container best-product-catalogue" id="article">
         <div class="d-flex justify-content-between align-items-center">
             <div class="best-selling-product-title">Artikel</div>
             <a class="d-flex view-all-product-link align-items-center">
@@ -472,7 +472,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="social-media-container mb-5" id="contact">
         <div class="social-media-title">
