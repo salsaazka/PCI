@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PT. PRIJADI CAHAYA INDONESIA</title>
     <link rel="stylesheet" href="{{ asset('assets-admin/css/styles.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets-admin/css/app.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropify/dist/css/dropify.min.css">
 </head>
 

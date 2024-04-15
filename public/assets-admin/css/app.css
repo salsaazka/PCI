@@ -1,0 +1,22 @@
+.image-table {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: -20px;
+    border: 2px solid #fff;
+}
+
+.image-more {
+    display: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: -20px;
+    border: 2px solid #fff;
+    background-color: #5d87ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 12px;
+}

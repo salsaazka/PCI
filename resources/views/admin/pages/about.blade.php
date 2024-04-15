@@ -5,31 +5,31 @@
         <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title fw-semibold mb-4">About Page</h5>
-                <a href="{{ route('about.create') }}" class="btn add-new btn-success m-1 float-end">Add</a>
+                {{-- <a href="{{ route('about.create') }}" class="btn add-new btn-primary m-1 float-end">Add</a> --}}
             </div>
             <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
                         <tr>
-                            <th class="border-bottom-0">
+                            <th class="">
                                 No
                             </th>
-                            <th class="border-bottom-0">
+                            <th class="">
                                 Logo
                             </th>
-                            <th class="border-bottom-0">
+                            <th class="">
                                 Alamat
                             </th>
-                            <th class="border-bottom-0">
+                            <th class="">
                                 No telp
                             </th>
-                            <th class="border-bottom-0">
+                            <th class="">
                                 Email
                             </th>
-                            <th class="border-bottom-0">
+                            <th class="">
                                 Desc
                             </th>
-                            <th class="border-bottom-0">
+                            <th class="">
                                 Action
                             </th>
                         </tr>
@@ -40,32 +40,36 @@
                         @endphp
                         @foreach ($dataAbout as $about)
                             <tr>
-                                <td class="border-bottom-0">
+                                <td class="">
                                     <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
                                 </td>
-                                <td class="border-bottom-0">
+                                <td class="">
                                     <img src="{{ asset('assets/images/data/' . $about->logo) }}" alt="img"
                                         width="100" height="80">
                                 </td>
-                                <td class="border-bottom-0">
+                                <td class="">
                                     <h6 class="fw-semibold mb-1">{{ $about->address }}</h6>
                                 </td>
-                                <td class="border-bottom-0">
+                                <td class="">
                                     <h6 class="fw-semibold mb-1">{{ $about->no_telp }}</h6>
                                 </td>
-                                <td class="border-bottom-0">
+                                <td class="">
                                     <h6 class="fw-semibold mb-1">{{ $about->email }}</h6>
                                 </td>
-                                <td class="border-bottom-0">
+                                <td class="">
                                     <h6 class="fw-semibold mb-1">{{ $about->desc }}</h6>
                                 </td>
-                                <td class="d-flex">
-                                    <a href="{{ route('about.edit', $about->id) }} " class="btn btn-warning" style="margin-right: 5px"><i class="ti ti-edit"></i></a>
-                                    <form action="/about/delete/{{ $about->id }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger"><i class="ti ti-trash"></i></button>
-                                    </form>
+                                <td class="">
+                                    <div class="d-flex">
+                                        <a href="{{ route('about.edit', $about->id) }} " class="btn btn-warning"
+                                            style="margin-right: 5px"><i class="ti ti-edit"></i></a>
+                                        <form action="/about/delete/{{ $about->id }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger"><i
+                                                    class="ti ti-trash"></i></button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
