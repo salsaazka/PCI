@@ -38,7 +38,7 @@ class AuthController extends Controller
         if (Auth::attempt($user)) {
             return redirect('/general-trading/admin');
         } else {
-            return redirect('/')->with('fail', 'Gagal login, silahkan periksa dan coba lagi!');
+            return redirect()->back()->with('fail', 'Gagal login, silahkan periksa dan coba lagi!');
         }
     }
 

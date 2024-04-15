@@ -8,6 +8,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductGridController;
@@ -32,16 +33,14 @@ Route::get('/general-trading', function () {
     return view('pages.landing');
 })->name('landing');
 
-Route::get('/general-trading/product', function () {
-    return view('pages.list-product');
-})->name('list-product');
-
+Route::get('/general-trading/detail/{id}', [HomeController::class, 'productDetail']);
+Route::get('/general-trading/product', [HomeController::class, 'productIndex'])->name('list-product');
 
 Route::get('/general-trading/artikel', function () {
     return view('pages.list-artikel');
 })->name('list-artikel');
 
-Route::view('detail-product', 'pages.detail-product')->name('detail-product');
+
 Route::view('detail-artikel', 'pages.detail-artikel')->name('detail-artikel');
 
 // Auth
@@ -87,7 +86,10 @@ Route::view('detail-artikel', 'pages.detail-artikel')->name('detail-artikel');
 // Route::get('/general-trading/admin/contact', function () {
 //     return view('admin.pages.contact');
 // })->name('admin-contact');
+
+
 Route::get('/general-trading/admin', [AuthController::class, 'dashboard'])->name('dashboard');
+
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('isGuest')->group(function () {
