@@ -4,17 +4,17 @@
 
 @section('css')
     <!--Bootstrap Css-->
-    <link rel="stylesheet" href="./assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="{{asset('/assets/css/bootstrap/bootstrap.css')}}">
 
     <!--Slick CSS-->
-    <link rel="stylesheet" href="./assets/css/slick/slick.css">
-    <link rel="stylesheet" href="./assets/css/slick/slick-theme.css">
+    <link rel="stylesheet" href="{{asset('/assets/css/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/slick/slick-theme.css')}}">
 
     <!--App Css-->
-    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="{{asset('/assets/css/app.css')}}">
 
     <!--CSS Assets this page-->
-    <link rel="stylesheet" href="./assets/css/detailProduct.css">
+    <link rel="stylesheet" href="{{asset('/assets/css/detailProduct.css')}}">
 @endsection
 
 @section('header')
@@ -32,44 +32,24 @@
                             <div class="col-12 col-lg-5">
                                 <div class="wrapper-image-product">
                                     <div class="view-Images">
-                                        <div class="images-product">
-                                            <img src="./assets/img/images_plant_example.png" alt="">
-                                        </div>
-                                        <div class="images-product">
-                                            <img src="./assets/img/images_plant_example.png" alt="">
-                                        </div>
-                                        <div class="images-product">
-                                            <img src="./assets/img/images_plant_example.png" alt="">
-                                        </div>
-                                        <div class="images-product">
-                                            <img src="./assets/img/images_plant_example.png" alt="">
-                                        </div>
-                                        <div class="images-product">
-                                            <img src="./assets/img/images_plant_example.png" alt="">
-                                        </div>
+                                        @foreach($product['image_array'] as $image)
+                                            <div class="images-product">
+                                                <img src="{{asset('assets/images/data/'.$image)}}" alt="">
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <div class="nav-images">
-                                        <div class="images-nav">
-                                            <img src="./assets/img/images_plant_example.png" alt="">
-                                        </div>
-                                        <div class="images-nav">
-                                            <img src="./assets/img/images_plant_example.png" alt="">
-                                        </div>
-                                        <div class="images-nav">
-                                            <img src="./assets/img/images_plant_example.png" alt="">
-                                        </div>
-                                        <div class="images-nav">
-                                            <img src="./assets/img/images_plant_example.png" alt="">
-                                        </div>
-                                        <div class="images-nav">
-                                            <img src="./assets/img/images_plant_example.png" alt="">
-                                        </div>
+                                        @foreach($product['image_array'] as $image)
+                                            <div class="images-nav">
+                                                <img src="{{asset('assets/images/data/'.$image)}}" alt="">
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-lg-7">
                                 <div class="wrapper-detail-product">
-                                    <h1 class="name-product">Eriocaulon Cinereum High Quality Aquatic Items</h1>
+                                    <h1 class="name-product">{{$product['title']}}</h1>
                                     <div class="wrapper-rating">
                                         <div class="data-terjual">
                                             <p>Terjual</p>
@@ -77,16 +57,16 @@
                                         </div>
                                     </div>
                                     <div class="price-product">
-                                        <p>$30<span>/Item</span></p>
+                                        <p>RP. {{$product['price']}}<span>/{{$product['unit']}}</span></p>
                                     </div>
                                     <div class="wrapper-quantity-product">
                                         <p>Your Quantity Order</p>
                                         <div class="quantity-product">
                                             <button class="quantity-count quantity-count--minus" data-action="minus" type="button">-</button>
-                                            <input class="product-quantity" type="number" name="product-quantity" min="0" max="10" value="1">
+                                            <input class="product-quantity" type="number" name="product-quantity" min="0" max="{{$product['stock']}}" value="1">
                                             <button class="quantity-count quantity-count--add" data-action="add" type="button">+</button>
                                         </div>
-                                        <p class="info">Min. order : 1 </p>
+                                        {{-- <p class="info">Min. order : {{$product['min_order']}} </p> --}}
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +79,7 @@
                             </div>
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
-                                    <p>Item Name : <span class="primary-text">Aquatic Items</span></p>
+                                    <p>Item Name : <span class="primary-text">{{$product['title']}}</span></p>
                                     <p>Varietas Name : <span class="primary-text">Eriocaulon Cinereum High Quality Aquatic Items</span></p>
                                     <div class="desc-section">
                                         <p>Description :</p>
@@ -129,12 +109,12 @@
                                 </div>
                                 <div class="total-price">
                                     <p>Price</p>
-                                    <p>$ <span>0</span></p>
+                                    <p>RP <span id="cart-price">{{$product['price']}}</span></p>
                                 </div>
                             </div>
-                            <button class="button button-primary w-100">
-                                <img src="./assets/img/icon/shopping-cart-white.svg" alt="">    
-                                Add To Cart
+                            <button class="button button-primary w-100" id="order-button">
+                                <img src="{{asset('/assets/img/icon/shopping-cart-white.svg')}}" alt="">    
+                                <span id="order-text">Continue to Marketplace</span>
                             </button>
                         </div>
                     </div>
@@ -153,12 +133,12 @@
 @section('script')
     <!--Vendor-->
     <!--Jquery-->
-    <script src="./assets/js/jquery.min.js"></script>
+    <script src="{{ asset('/assets/js/jquery.min.js')}}"></script>
     <!--Bootstrap-->
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('/assets/js/bootstrap.bundle.min.js')}}"></script>
     <!--Slick Js-->
-    <script src="./assets/js/slick/slick.min.js"></script>
-    <script src="./assets/js/slick/slick.js"></script>
+    <script src="{{ asset('/assets/js/slick/slick.min.js')}}"></script>
+    <script src="{{ asset('/assets/js/slick/slick.js')}}"></script>
 
     <!--Slick Images Product-->
     <script>
@@ -205,6 +185,10 @@
 
     <!--Quantity Input-->
     <script>
+        var price = {{$product['price']}};
+        var minOrder = {{$product['min_order']}};
+        var marketplaceUrl = "{{$product['marketplace_url']}}"
+
         var QtyInput = (function () {
         var $qtyInputs = $(".quantity-product");
 
@@ -267,7 +251,26 @@
                 }
             }
 
+            if (qty > minOrder) {
+
+                $('#order-button').off().on('click', () => {
+                    console.log('wa');
+                    window.open('https://www.example.com', '_blank');
+                });
+
+                $('#order-text').html('Continue to WhatsApp')
+            } else {
+
+                $('#order-button').off().on('click', () => {
+                    console.log('market url');
+                    window.open(marketplaceUrl, '_blank');
+                });
+
+                $('#order-text').html('Continue to Marketplace')
+            }
+
             qtyClass.innerHTML = qty;
+            $('#cart-price').html(price * qty);
             $input.val(qty);
         });
     })();

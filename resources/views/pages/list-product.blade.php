@@ -42,241 +42,28 @@
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active show" id="catalogue-1" role="tabpanel">
                             <div class="row">
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card" onclick="window.location.href = '{{Route('detail-product')}}';">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
+                                {{-- to do : map by category --}}
+                                @foreach ($products as $product)
                                 <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                                     <div class="product-card">
                                         <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
+                                            <img src="{{ asset('assets/images/data/'.$product['image_1']) }}" alt="">
                                         </div>
                                         <div class="card-title">
-                                            Sacha inchi
+                                            {{$product['title']}}
                                         </div>
                                         <div class="card-price">
-                                            Rp. 150.000
+                                            Rp. {{$product['price']}}
                                         </div>
                                         <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
+                                            {{$product['desc']}}
                                         </div>
-                                        <div class="card-detail-button">
+                                        <a class="card-detail-button text-decoration-none" href="{{ URL::to('/general-trading/detail/'.$product['id'])}}">
                                             DETAILS
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="catalogue-2" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. 150.000
-                                        </div>
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
