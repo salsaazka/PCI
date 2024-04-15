@@ -69,21 +69,15 @@
                             </div>
                             <div class="col-12 col-lg-7">
                                 <div class="wrapper-detail-product">
-                                    <h1 class="name-product">Eriocaulon Cinereum High Quality Aquatic Plants</h1>
+                                    <h1 class="name-product">Eriocaulon Cinereum High Quality Aquatic Items</h1>
                                     <div class="wrapper-rating">
                                         <div class="data-terjual">
                                             <p>Terjual</p>
                                             <span>1 rb+</span>
                                         </div>
-                                        <div class="rating-product">
-                                            <div class="icon">
-                                                <img src="./assets/img/icon/star_icon.svg" alt="">
-                                            </div>
-                                            <p>4.7</p>
-                                        </div>
                                     </div>
                                     <div class="price-product">
-                                        <p>$30<span>/Plant</span></p>
+                                        <p>$30<span>/Item</span></p>
                                     </div>
                                     <div class="wrapper-quantity-product">
                                         <p>Your Quantity Order</p>
@@ -92,7 +86,7 @@
                                             <input class="product-quantity" type="number" name="product-quantity" min="0" max="10" value="1">
                                             <button class="quantity-count quantity-count--add" data-action="add" type="button">+</button>
                                         </div>
-                                        <p class="info">Min. order : 1 Plant</p>
+                                        <p class="info">Min. order : 1 </p>
                                     </div>
                                 </div>
                             </div>
@@ -105,12 +99,12 @@
                             </div>
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
-                                    <p>Plant Name : <span class="primary-text">Aquatic Plants</span></p>
-                                    <p>Varietas Name : <span class="primary-text">Eriocaulon Cinereum High Quality Aquatic Plants</span></p>
+                                    <p>Item Name : <span class="primary-text">Aquatic Items</span></p>
+                                    <p>Varietas Name : <span class="primary-text">Eriocaulon Cinereum High Quality Aquatic Items</span></p>
                                     <div class="desc-section">
                                         <p>Description :</p>
                                         <p class="text-desc">
-                                            This plant can survive in water, and does not need to be watered. This plant can survive in water, and does not need to be watered. This plant can survive in water, and does not need to be watered. This plant can survive in water, and does not need to be watered.
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab impedit voluptatem cupiditate hic quos sunt, neque aliquam, ducimus error maxime aut assumenda reprehenderit incidunt sint. Accusantium beatae reprehenderit quisquam facere.
                                         </p>
                                     </div>
                                 </div>
@@ -131,7 +125,7 @@
                             <div class="detail-summary">
                                 <div class="total-order">
                                     <p>Your Order</p>
-                                    <p><span>0</span> Plant</p>
+                                    <p><span id="qty">1</span> Item</p>
                                 </div>
                                 <div class="total-price">
                                     <p>Price</p>
@@ -250,6 +244,7 @@
             var $this = $(this);
             var $input = $this.siblings(".product-quantity");
             var qty = parseInt($input.val());
+            var qtyClass = document.getElementById('qty');
 
             if (operator == "add") {
                 qty += 1;
@@ -272,6 +267,7 @@
                 }
             }
 
+            qtyClass.innerHTML = qty;
             $input.val(qty);
         });
     })();
