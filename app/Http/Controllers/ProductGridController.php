@@ -14,7 +14,7 @@ class ProductGridController extends Controller
     public function index()
     {
         $dataProductGrid = ProductGrid::all();
-         // return view('', compact('dataProductGrid'));
+         return view('admin.pages.product-grid', compact('dataProductGrid'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ProductGridController extends Controller
      */
     public function create()
     {
-         // return view('');
+         return view('admin.create.product-grid');
     }
 
     /**
@@ -33,7 +33,7 @@ class ProductGridController extends Controller
         $request->validate([
             'title' => 'required',
             'desc' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
         ]);
 
         $image = $request->file('image');
@@ -48,7 +48,8 @@ class ProductGridController extends Controller
             'image' =>  $imgName,
             'desc' => $request->desc,
         ]);
-        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
+
+        return redirect()->route('productgrid.index')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -65,7 +66,8 @@ class ProductGridController extends Controller
     public function edit($id)
     {
         $dataProductGrid = ProductGrid::where('id', $id)->first();
-        // return view('', compact('dataProductGrid'));
+
+        return view('admin.edit.product-grid', compact('dataProductGrid'));
     }
 
     /**
@@ -76,22 +78,33 @@ class ProductGridController extends Controller
         $request->validate([
             'title' => 'required',
             'desc' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
         ]);
 
-        $image = $request->file('image');
-        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+    
+            $dPath = public_path('/assets/images/data/');
+            $image->move($dPath, $imgName);
 
-        $dPath = public_path('/assets/images/data/');
-        $image->move($dPath, $imgName);
+            
+            ProductGrid::where('id', $id)->update([
+                'category_id' => $request->category_id,
+                'title' => $request->title,
+                'image' =>  $imgName,
+                'desc' => $request->desc,
+            ]);
+
+            return redirect()->route('productgrid.index')->with('edit', 'Data berhasil diubah');
+        }
 
         ProductGrid::where('id', $id)->update([
             'category_id' => $request->category_id,
             'title' => $request->title,
-            'image' =>  $imgName,
             'desc' => $request->desc,
         ]);
-        // return redirect()->route('')->with('edit', 'Data berhasil diubah');
+
+        return redirect()->route('productgrid.index')->with('edit', 'Data berhasil diubah');
     }
 
     /**
@@ -100,6 +113,8 @@ class ProductGridController extends Controller
     public function destroy($id)
     {
         ProductGrid::where('id', $id)->delete();
-        // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
+
+        return redirect()->route('productgrid.index')->with('delete', 'Data berhasil dihapus');
+
     }
 }

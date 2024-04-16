@@ -181,7 +181,7 @@ Route::middleware('isLogin')->prefix('/productgrid')->name('productgrid.')->grou
     Route::get('/', [ProductGridController::class, 'index'])->name('index');
     Route::get('/create-productgrid', [ProductGridController::class, 'create'])->name('create');
     Route::post('/create-productgrid', [ProductGridController::class, 'store'])->name('store');
-    Route::get('/edit{id}', [ProductGridController::class, 'edit'])->name('edit');
+    Route::get('/edit/{id}', [ProductGridController::class, 'edit'])->name('edit');
     Route::patch('/update/{id}', [ProductGridController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [ProductGridController::class, 'destroy'])->name('destroy');
 });

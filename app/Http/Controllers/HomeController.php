@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductGrid;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -10,12 +11,14 @@ class HomeController extends Controller
 
     public function landingPage() {
 
-        $bestSellingProducts = Product::limit(4)->get();
-        $products = Product::all();
+        $bestSellingProducts = Product::limit(4)->get(); // should be sorted by highest transaction or smt
+        $products = Product::all(); // should change to a limited list or something
+        $productGrids = ProductGrid::limit(3)->get(); // no matter how many data, only 3 is displayed
 
         return view('pages.landing', [
             'bestSellingProducts' => $bestSellingProducts,
             'products' => $products,
+            'productGrids' => $productGrids,
         ]);
     }
 

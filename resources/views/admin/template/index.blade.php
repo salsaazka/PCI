@@ -71,6 +71,14 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'productgrid.index' ? 'active' : '' }}" href="{{ route('productgrid.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-box"></i>
+                                </span>
+                                <span class="hide-menu">Product Grid</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link {{ Route::currentRouteName() === 'banner.index' ? 'active' : '' }}" href="{{ route('banner.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-chalkboard"></i>
