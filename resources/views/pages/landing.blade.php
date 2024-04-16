@@ -107,25 +107,25 @@
         <div class="product-mini-gallery d-flex gap-1 d-flex">
             <div class="large-gallery-container">
                 <div class="image-overlay-container">
-                    <img src="{{asset('assets/images/cat-litter.png')}}" alt="Cat Litter" class="image-overlay-image-small">
+                    <img src="{{ asset('assets/images/data/'.$productGrids[0]['image']) }}" alt="Cat Litter" class="image-overlay-image-small">
                     <div class="image-overlay-text">
-                      <div class="image-overlay-product-title">Cat Litter</div>
+                      <div class="image-overlay-product-title">{{$productGrids[0]['title']}}</div>
                       <a class="shop-now-btn">Belanja Sekarang</a>
                     </div>
                 </div>
             </div>
             <div class="small-gallery-container">
                 <div class="image-overlay-container-small">
-                    <img src="{{asset('assets/images/cat-litter.png')}}" alt="Cat Litter" class="image-overlay-image-small">
+                    <img src="{{ asset('assets/images/data/'.$productGrids[1]['image']) }}" alt="Cat Litter" class="image-overlay-image-small">
                     <div class="image-overlay-text">
-                      <div class="image-overlay-product-title">Cat Litter</div>
+                      <div class="image-overlay-product-title">{{$productGrids[1]['title']}}</div>
                       <a class="shop-now-btn">Belanja Sekarang</a>
                     </div>
                 </div>
                 <div class="image-overlay-container-small">
-                    <img src="{{asset('assets/images/cat-litter.png')}}" alt="Cat Litter" class="image-overlay-image-small">
+                    <img src="{{ asset('assets/images/data/'.$productGrids[2]['image']) }}" alt="Cat Litter" class="image-overlay-image-small">
                     <div class="image-overlay-text">
-                      <div class="image-overlay-product-title">Cat Litter</div>
+                      <div class="image-overlay-product-title">{{$productGrids[2]['title']}}</div>
                       <a class="shop-now-btn">Belanja Sekarang</a>
                     </div>
                 </div>
