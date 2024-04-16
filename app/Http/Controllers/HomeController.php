@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
+    public function landingPage() {
+
+        $bestSellingProducts = Product::limit(4)->get();
+        $products = Product::all();
+
+        return view('pages.landing', [
+            'bestSellingProducts' => $bestSellingProducts,
+            'products' => $products,
+        ]);
+    }
+
     public function productIndex()
     {
         $products = Product::all();

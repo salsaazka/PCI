@@ -29,10 +29,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/general-trading', function () {
-    return view('pages.landing');
-})->name('landing');
-
+Route::get('/general-trading', [HomeController::class, 'landingPage'])->name('landing');
 Route::get('/general-trading/detail/{id}', [HomeController::class, 'productDetail']);
 Route::get('/general-trading/product', [HomeController::class, 'productIndex'])->name('list-product');
 
