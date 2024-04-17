@@ -6,15 +6,6 @@
     <form action="{{ route('contact.update', $dataContact->id) }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
         @csrf
         @method('PATCH')
-        <div class="mb-3">
-            <label for="" class="form-label"
-                >Upload Image</label
-            >
-            <input type="file" name="image" value="{{ $dataContact->image }}" class="form-control" id="inputGroupFile02">
-        </div>
-
-       
-
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">

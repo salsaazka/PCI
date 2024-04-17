@@ -12,6 +12,5 @@ class Contact extends Model
     [
         'title',
         'contact',
-        'image',
     ];
 }

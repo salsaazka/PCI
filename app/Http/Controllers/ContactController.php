@@ -32,19 +32,12 @@ class ContactController extends Controller
         $request->validate([
             'title' => 'required',
             'contact' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
+           
         ]);
-
-        $image = $request->file('image');
-        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
-
-        $dPath = public_path('/assets/images/data/');
-        $image->move($dPath, $imgName);
 
         Contact::create([
             'title' => $request->title,
             'contact' => $request->contact,
-            'image' => $imgName
         ]);
         return redirect()->route('contact.index')->with('add', 'Data berhasil ditambahkan');
     }
@@ -74,19 +67,11 @@ class ContactController extends Controller
         $request->validate([
             'title' => 'required',
             'contact' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
         ]);
-
-        $image = $request->file('image');
-        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
-
-        $dPath = public_path('/assets/images/data/');
-        $image->move($dPath, $imgName);
 
         Contact::where('id', $id)->update([
             'title' => $request->title,
             'contact' => $request->contact,
-            'image' => $imgName
         ]);
         return redirect()->route('contact.index')->with('add', 'Data berhasil ditambahkan');
     }

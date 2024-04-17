@@ -19,9 +19,6 @@
                                 <h6 class="fw-semibold mb-0">Contact</h6>
                             </th>
                             <th class="">
-                                <h6 class="fw-semibold mb-0">Image</h6>
-                            </th>
-                            <th class="">
                                 <h6 class="fw-semibold mb-0">Action</h6>
                             </th>
                         </tr>
@@ -41,9 +38,6 @@
                                 </td>
                                 <td class="">
                                     <h6 class="fw-semibold mb-1">{{ $contact->contact }}</h6>
-                                </td>
-                                <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $contact->image }}</h6>
                                 </td>
                                 <td class="d-flex">
                                     <a href="{{ route('contact.edit', $contact->id) }} " class="btn btn-warning" style="margin-right: 5px"><i class="ti ti-edit"></i></a>
