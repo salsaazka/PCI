@@ -10,10 +10,8 @@
             <label for="" class="form-label"
                 >Upload Image</label
             >
-            <input type="file" name="image" value="{{ $dataBanner->image }}" class="form-control" id="inputGroupFile02">
+            <input type="file" name="image" value="{{ $dataBanner->image }}" class="form-control dropify" id="inputGroupFile02">
         </div>
-
-       
 
         <div class="row">
             <div class="col-6">
@@ -36,26 +34,28 @@
                 <label for="" class="form-label"
                     >Description</label
                 >
-                <input
-                    type="textarea"
-                    class="form-control"
-                    name="desc"
-                    value="{{ $dataBanner->desc }}"
-                    aria-describedby="desc"
-                    placeholder="Masukan Description"
-                />
+                <textarea placeholder="Masukan description" name="desc" id="" cols="5" rows="5" class="form-control">{{ $dataBanner->desc }}</textarea>
                 </div>
             </div>
         </div>
-        
-        <button
-        type="submit"
-        class="btn text-white mb-5"
-        style="background-color: #B46060"
-        >
-        Submit
-        </button>
+
+        <div class="d-flex justify-content-end align-items-center gap-2">
+            <a href="{{ route('banner.index') }}" class="btn btn-danger text-white mb-5">
+                Kembali
+            </a>
+            <button type="submit" class="btn btn-primary text-white mb-5">
+                Simpan
+            </button>
+        </div>
     </form>
     </div>
 </div>
+@endsection
+
+@section('script-admin')
+    <script>
+        $(document).ready(function() {
+            $('.dropify').dropify();
+        });
+    </script>
 @endsection

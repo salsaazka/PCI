@@ -13,7 +13,7 @@ class BannerController extends Controller
     public function index()
     {
         $dataBanner = Banner::all();
-         return view('admin.pages.banner', compact('dataBanner'));
+        return view('admin.pages.banner', compact('dataBanner'));
     }
 
     /**
@@ -63,7 +63,7 @@ class BannerController extends Controller
     public function edit($id)
     {
         $dataBanner = Banner::where('id', $id)->first();
-         return view('admin.edit.banner', compact('dataBanner'));
+        return view('admin.edit.banner', compact('dataBanner'));
     }
 
     /**
@@ -71,24 +71,25 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'desc' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
-        ]);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        $image = $request->file('image');
-        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+            $dPath = public_path('/assets/images/data/');
+            $image->move($dPath, $imgName);
 
-        $dPath = public_path('/assets/images/data/');
-        $image->move($dPath, $imgName);
-
-        Banner::where('id', $id)->update([
-            'title' => $request->title,
-            'image' => $imgName,
-            'desc' => $request->desc,
-        ]);
-         return redirect()->route('banner.index')->with('edit', 'Data berhasil diubah');
+            Banner::where('id', $id)->update([
+                'title' => $request->title,
+                'image' => $imgName,
+                'desc' => $request->desc,
+            ]);
+        } else {
+            Banner::where('id', $id)->update([
+                'title' => $request->title,
+                'desc' => $request->desc,
+            ]);
+        }
+        return redirect()->route('banner.index')->with('edit', 'Data berhasil diubah');
     }
 
     /**
@@ -97,6 +98,6 @@ class BannerController extends Controller
     public function destroy($id)
     {
         Banner::where('id', $id)->delete();
-          return redirect()->route('banner.index')->with('delete', 'Data berhasil dihapus');
+        return redirect()->route('banner.index')->with('delete', 'Data berhasil dihapus');
     }
 }

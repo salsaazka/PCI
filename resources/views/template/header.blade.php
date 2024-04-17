@@ -35,7 +35,7 @@
     </div>
   </nav> --}}
 
-  <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white">
+<nav class="navbar sticky-top navbar-expand-md navbar-light bg-white">
     <div class="container-fluid d-flex justify-content-between">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="#">
@@ -43,7 +43,8 @@
         </a>
 
         <!-- Toggler button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -51,18 +52,21 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() === 'landing' ? ' nav-active' : '' }}" id="nav-home" aria-current="page" href="{{ route('landing') }}">HOME</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'landing' ? ' nav-active' : '' }}"
+                        id="nav-home" aria-current="page" href="{{ route('landing') }}">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() === 'list-product' || Route::currentRouteName() === 'detail-product' ? ' nav-active' : '' }}" id="nav-product" href="{{ route('list-product') }}">PRODUCTS</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'list-product' || Route::currentRouteName() === 'detail-product' ? ' nav-active' : '' }}"
+                        id="nav-product" href="{{ route('list-product') }}">PRODUCTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() === 'list-artikel' || Route::currentRouteName() === 'detail-artikel' ? ' nav-active' : '' }}" id="nav-product" href="{{ route('list-artikel') }}">ARTIKEL</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'list-artikel' || Route::currentRouteName() === 'detail-artikel' ? ' nav-active' : '' }}"
+                        id="nav-product" href="{{ route('list-artikel') }}">ARTIKEL</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="nav-contact" href="#contact">CONTACT US</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link cart" href="#">
                       <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect width="35" height="35" fill="url(#pattern0)"/>
@@ -74,7 +78,7 @@
                         </defs>
                     </svg>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
