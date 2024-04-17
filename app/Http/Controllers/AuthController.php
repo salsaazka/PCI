@@ -94,13 +94,12 @@ class AuthController extends Controller
         $dataUser = User::where('id', $id)->first();
         return view('admin.edit.user',compact('dataUser'));
     }
-    
+
     public function updateUser(Request $request, $id)
     {
         $request->validate = ([
             'name' => 'required|min:3|max:50',
             'email' => 'required',
-            'password' => 'required',
         ]);
         User::where('id', $id)->update([
             'name' => $request->name,
@@ -109,7 +108,6 @@ class AuthController extends Controller
             'no_telp' => $request->no_telp,
             'address' => $request->address,
             'division' => $request->division,
-            'password' => Hash::make($request->password),
         ]);
         return redirect()->route('user.index')->with('success', 'Selamat, anda berhasil membuat akun!');
     }

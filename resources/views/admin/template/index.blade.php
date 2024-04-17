@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets-admin/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets-admin/css/app.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropify/dist/css/dropify.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
 </head>
 
 <body>
@@ -118,7 +119,7 @@
         </aside>
         <!--  Sidebar End -->
         <!--  Main wrapper -->
-        <div class="body-wrapper">
+        <div class="body-wrapper" style="background: #f7f8fa; min-height: 100vh">
             <!--  Header Start -->
             <header class="app-header">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -169,6 +170,8 @@
     <script src="{{ asset('assets-admin/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets-admin/libs/simplebar/dist/simplebar.js') }}"></script>
     <script src="{{ asset('assets-admin/js/dashboard.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
     @yield('script-admin')
 </body>
 

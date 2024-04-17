@@ -61,18 +61,28 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'logo' => 'required',
-            'desc' => 'required',
-        ]);
+        if ($request->hasFile('logo')) {
 
-        About::where('id', $id)->update([
-            'logo' => $request->logo,
-            'address' => $request->address,
-            'no_telp' => $request->no_telp,
-            'email' => $request->email,
-            'desc' => $request->desc,
-        ]);
+            $logo = $request->file('logo');
+            $logoName = time() . '.' . $logo->getClientOriginalExtension();
+            $dPath = public_path('/assets/images/data/');
+            $logo->move($dPath, $logoName);
+
+            About::where('id', $id)->update([
+                'logo' => $logoName,
+                'address' => $request->address,
+                'no_telp' => $request->no_telp,
+                'email' => $request->email,
+                'desc' => $request->desc,
+            ]);
+        } else {
+            About::where('id', $id)->update([
+                'address' => $request->address,
+                'no_telp' => $request->no_telp,
+                'email' => $request->email,
+                'desc' => $request->desc,
+            ]);
+        }
         return redirect()->route('about.index')->with('edit', 'Data berhasil diubah');
     }
 

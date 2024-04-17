@@ -15,9 +15,9 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Address</label>
-                            <input type="text" class="form-control" name="address" value="{{ $dataAbout->address }}" aria-describedby="publisher"
-                                placeholder="Masukan Address" />
+                            <label for="" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" value="{{ $dataAbout->email }}" aria-describedby="publisher"
+                                placeholder="Masukan email" />
                         </div>
                     </div>
                     <div class="col-6">
@@ -32,16 +32,14 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" value="{{ $dataAbout->email }}" aria-describedby="publisher"
-                                placeholder="Masukan email" />
+                            <label for="" class="form-label">Address</label>
+                            <textarea name="address" id="" cols="5" rows="5" class="form-control">{{ $dataAbout->address }}</textarea>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Description</label>
-                            <input type="textarea" class="form-control" name="desc" value="{{ $dataAbout->desc }}" aria-describedby="desc"
-                                placeholder="Masukan Description" />
+                            <textarea name="desc" id="" cols="5" rows="5" class="form-control">{{ $dataAbout->desc }}</textarea>
                         </div>
                     </div>
                 </div>

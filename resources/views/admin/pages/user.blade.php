@@ -41,34 +41,37 @@
                         @foreach ($dataUser as $user)
                             <tr>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
+                                    <p>{{ $no++ }}</p>
                                 </td>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $user->name }}</h6>
-                                    <span class="fw-normal">{{ $user->division }}</span>
+                                    <p class="fw-semibold">{{ $user->name }}</p>
+                                    <i class="fw-light">{{ $user->division }}</i>
                                 </td>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $user->email }}</h6>
+                                    <p>{{ $user->email }}</p>
                                 </td>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $user->no_telp }}</h6>
+                                    <p>{{ $user->no_telp }}</p>
+                                </td>
+                                <td class="" style="max-width: 200px;">
+                                    <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                        {{ $user->address }}
+                                    </p>
                                 </td>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $user->address }}</h6>
-                                </td>
-                                <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $user->role }}</h6>
+                                    <p>{{ $user->role }}</p>
                                 </td>
                                 <td class="">
                                     <div class="d-flex">
-                                    <a href="{{ route('user.edit', $user->id) }} " class="btn btn-warning"
-                                        style="margin-right: 5px"><i class="ti ti-edit"></i></a>
-                                    <form action="/user/delete/{{ $user->id }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger"><i class="ti ti-trash"></i></button>
-                                    </form>
-                                </div>
+                                        <a href="{{ route('user.edit', $user->id) }} " class="btn btn-warning"
+                                            style="margin-right: 5px"><i class="ti ti-edit"></i></a>
+                                        <form action="/user/delete/{{ $user->id }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger"><i
+                                                    class="ti ti-trash"></i></button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
