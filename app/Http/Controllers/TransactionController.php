@@ -16,7 +16,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $dataTransaction = Transaction::all();
+        $dataTransaction = Transaction::with('transactionProduct.product')->get();
+
         return view('admin.pages.transaction', compact('dataTransaction'));
     }
 
@@ -25,7 +26,10 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        return view('admin.create.transaction');
+        $users = User::where('role', 'user')->get();
+        $payments = Payment::all();
+
+        return view('admin.create.transaction', compact( 'users', 'payments'));
     }
 
     /**
@@ -63,8 +67,12 @@ class TransactionController extends Controller
      */
     public function edit($id)
     {
-        $dataTransaction = Transaction::where('id', $id)->first();
-        return view('admin.edit.transaction', compact('dataTransaction'));
+        $dataTransaction = Transaction::with('transactionProduct.product')
+            ->where('id', $id)->first();
+        $users = User::where('role', 'user')->get();
+        $payments = Payment::all();
+
+        return view('admin.edit.transaction', compact('dataTransaction', 'users', 'payments'));
     }
 
     /**
@@ -73,7 +81,8 @@ class TransactionController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id' => 'required',
+            // 'user_id' => 'required',
+            'total_count' => 'required',
             'total_price' => 'required',
         ]);
 
