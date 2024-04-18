@@ -63,7 +63,7 @@
                                         <p>Your Quantity Order</p>
                                         <div class="quantity-product">
                                             <button class="quantity-count quantity-count--minus" data-action="minus" type="button">-</button>
-                                            <input class="product-quantity" type="number" name="product-quantity" min="0" max="{{$product['stock']}}" value="1">
+                                            <input class="product-quantity" type="number" name="product-quantity" min="0" max="{{$product['stock']}}" value="0">
                                             <button class="quantity-count quantity-count--add" data-action="add" type="button">+</button>
                                         </div>
                                         {{-- <p class="info">Min. order : {{$product['min_order']}} </p> --}}
@@ -185,6 +185,15 @@
 
     <!--Quantity Input-->
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var productId = "{{$product['id']}}";
+        var productTitle = "{{$product['title']}}";
+        var contactNum = "{{$contact}}";
         var price = {{$product['price']}};
         var minOrder = {{$product['min_order']}};
         var marketplaceUrl = "{{$product['marketplace_url']}}"
@@ -252,21 +261,22 @@
             }
 
             if (qty > minOrder) {
+                let waLink = `https://wa.me/${contactNum}?text=Halo! Saya tertarik dengan produk Anda, Produk: ${productTitle} Quantity: ${qty}`;
 
                 $('#order-button').off().on('click', () => {
-                    console.log('wa');
-                    window.open('https://www.example.com', '_blank');
+                    window.open(waLink, '_blank');
+                    recordTransaction(productId, qty);
                 });
 
-                $('#order-text').html('Continue to WhatsApp')
+                $('#order-text').html('Continue to WhatsApp');
             } else {
 
                 $('#order-button').off().on('click', () => {
-                    console.log('market url');
                     window.open(marketplaceUrl, '_blank');
+                    recordTransaction(productId, qty);
                 });
 
-                $('#order-text').html('Continue to Marketplace')
+                $('#order-text').html('Continue to Marketplace');
             }
 
             qtyClass.innerHTML = qty;
@@ -274,6 +284,22 @@
             $input.val(qty);
         });
     })();
+
+    function recordTransaction (productId, quantity) {
+        $.ajax({
+            type: "POST",
+            url: "/record-transaction",
+            data: {
+                productId, quantity
+            },
+            success: function(data) {
+                console.log("Response:", data);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    }
 
     </script>
 @endsection

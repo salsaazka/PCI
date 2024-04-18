@@ -6,6 +6,7 @@ use App\Models\Transaction;
 use App\Models\TransactionProduct;
 use App\Models\User;
 use App\Models\Payment;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -95,5 +96,35 @@ class TransactionController extends Controller
     {
         Transaction::where('id', $id)->delete();
         return redirect()->route('transaction.index')->with('delete', 'Data berhasil dihapus');
+    }
+    
+    public function recordTransaction(Request $request) {
+        $productId = $request->productId;
+        $quantity = $request->quantity;
+
+        $product = Product::findOrFail($productId);
+
+        $productTransaction = new TransactionProduct();
+
+        $productTransaction->product_id = $product->id;
+        $productTransaction->count = $quantity;
+
+        $productTransaction->save();
+
+        $transaction = new Transaction();
+
+        $transaction->user_id = null;
+        $transaction->payment_id = null;
+        $transaction->total_price = $product->price * $quantity;
+        $transaction->total_count = $quantity;
+        $transaction->transaction_product_id = $productTransaction->id;
+        $transaction->proof_payment = null;
+
+        $transaction->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Transaction recorded successfully',
+        ]);
     }
 }

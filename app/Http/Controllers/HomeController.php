@@ -44,6 +44,7 @@ class HomeController extends Controller
     public function productDetail($id)
     {
         $product = Product::find($id);
+        $contact = Contact::where('title', 'Whatsapp')->first()['contact'];
 
         $product['image_array'] = [
             $product['image_1'],
@@ -52,7 +53,10 @@ class HomeController extends Controller
             $product['image_4'],
         ];
 
-        return view('pages.detail-product', ['product' => $product]);
+        return view('pages.detail-product', [
+            'product' => $product,
+            'contact' => $contact,
+        ]);
     }
 
     /**
