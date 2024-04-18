@@ -23,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.create.product');
+        $dataCategory = Category::all();
+        return view('admin.create.product', compact('dataCategory'));
     }
 
     /**
@@ -35,7 +36,7 @@ class ProductController extends Controller
             'title' => 'required',
             'desc' => 'required',
         ]);
-        
+
         $imgName_1 = null;
         if ($request->hasFile('image_1')) {
             $image_1 = $request->file('image_1');
@@ -44,7 +45,7 @@ class ProductController extends Controller
             $dPath = public_path('/assets/images/data/');
             $image_1->move($dPath, $imgName_1);
         }
-        
+
         $imgName_2 = null;
         if ($request->hasFile('image_2')) {
             $image_2 = $request->file('image_2');
@@ -53,7 +54,7 @@ class ProductController extends Controller
             $dPath = public_path('/assets/images/data/');
             $image_2->move($dPath, $imgName_2);
         }
-        
+
         $imgName_3 = null;
         if ($request->hasFile('image_3')) {
             $image_3 = $request->file('image_3');
@@ -62,7 +63,7 @@ class ProductController extends Controller
             $dPath = public_path('/assets/images/data/');
             $image_3->move($dPath, $imgName_3);
         }
-        
+
         $imgName_4 = null;
         if ($request->hasFile('image_4')) {
             $image_4 = $request->file('image_4');
@@ -71,7 +72,7 @@ class ProductController extends Controller
             $dPath = public_path('/assets/images/data/');
             $image_4->move($dPath, $imgName_4);
         }
-        
+
         Product::create([
             'category_id' => $request->category_id,
             'title' => $request->title,
@@ -83,12 +84,14 @@ class ProductController extends Controller
             'image_2' => $imgName_2,
             'image_3' => $imgName_3,
             'image_4' => $imgName_4,
+            'min_order' => $request->min_order,
+            'marketplace_url' => $request->marketplace_url,
         ]);
-        
+
         return redirect()->route('product.index')->with('edit', 'Data berhasil diubah');
     }
 
-    public fuNction edit($id)
+    public function edit($id)
     {
         $dataProduct = Product::where('id', $id)->first();
         $dataCategory = Category::all();
@@ -101,9 +104,9 @@ class ProductController extends Controller
             'title' => 'required',
             'desc' => 'required',
         ]);
-        
+
         $product = Product::findOrFail($id); // Ambil produk yang ingin diupdate
-        
+
         // Update data produk
         $product->category_id = $request->category_id;
         $product->title = $request->title;
@@ -111,7 +114,9 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->unit = $request->unit;
         $product->stock = $request->stock;
-        
+        $product->min_order = $request->min_order;
+        $product->marketplace_url = $request->marketplace_url;
+
         // Update gambar jika diunggah
         if ($request->hasFile('image_1')) {
             $image_1 = $request->file('image_1');
@@ -121,7 +126,7 @@ class ProductController extends Controller
             $image_1->move($dPath, $imgName_1);
             $product->image_1 = $imgName_1;
         }
-        
+
         if ($request->hasFile('image_2')) {
             $image_2 = $request->file('image_2');
             $imgExtension = $image_2->getClientOriginalExtension();
@@ -130,7 +135,7 @@ class ProductController extends Controller
             $image_2->move($dPath, $imgName_2);
             $product->image_2 = $imgName_2;
         }
-        
+
         if ($request->hasFile('image_3')) {
             $image_3 = $request->file('image_3');
             $imgExtension = $image_3->getClientOriginalExtension();
@@ -139,7 +144,7 @@ class ProductController extends Controller
             $image_3->move($dPath, $imgName_3);
             $product->image_3 = $imgName_3;
         }
-        
+
         if ($request->hasFile('image_4')) {
             $image_4 = $request->file('image_4');
             $imgExtension = $image_4->getClientOriginalExtension();
@@ -148,7 +153,7 @@ class ProductController extends Controller
             $image_4->move($dPath, $imgName_4);
             $product->image_4 = $imgName_4;
         }
-        
+
         // Simpan perubahan
         $product->save();
         return redirect()->route('product.index')->with('edit', 'Data berhasil diubah');

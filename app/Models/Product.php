@@ -21,6 +21,8 @@ class Product extends Model
         'image_2',
         'image_3',
         'image_4',
+        'min_order',
+        'marketplace_url',
     ];
 
     public function category()
