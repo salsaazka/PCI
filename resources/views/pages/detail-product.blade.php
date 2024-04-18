@@ -50,12 +50,12 @@
                             <div class="col-12 col-lg-7">
                                 <div class="wrapper-detail-product">
                                     <h1 class="name-product">{{$product['title']}}</h1>
-                                    <div class="wrapper-rating">
+                                    {{-- <div class="wrapper-rating">
                                         <div class="data-terjual">
                                             <p>Terjual</p>
                                             <span>1 rb+</span>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="price-product">
                                         <p>RP. {{$product['price']}}<span>/{{$product['unit']}}</span></p>
                                     </div>
@@ -74,26 +74,25 @@
                         <div class="descripsi-product">
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button class="nav-link active" id="nav-detail-tab" data-bs-toggle="tab" data-bs-target="#nav-detail" type="button" role="tab" aria-controls="nav-detail" aria-selected="true">Detail</button>
-                                <button class="nav-link" id="nav-shipping-tab" data-bs-toggle="tab" data-bs-target="#nav-shipping" type="button" role="tab" aria-controls="nav-shipping" aria-selected="false">Shipping</button>
-                                <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Review</button>
+                                {{-- <button class="nav-link" id="nav-shipping-tab" data-bs-toggle="tab" data-bs-target="#nav-shipping" type="button" role="tab" aria-controls="nav-shipping" aria-selected="false">Shipping</button>
+                                <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Review</button> --}}
                             </div>
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
-                                    <p>Item Name : <span class="primary-text">{{$product['title']}}</span></p>
-                                    <p>Varietas Name : <span class="primary-text">Eriocaulon Cinereum High Quality Aquatic Items</span></p>
+                                    <b>Item Name : <span class="primary-text">{{$product['title']}}</span></b>
                                     <div class="desc-section">
-                                        <p>Description :</p>
+                                        <b>Description :</b>
                                         <p class="text-desc">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab impedit voluptatem cupiditate hic quos sunt, neque aliquam, ducimus error maxime aut assumenda reprehenderit incidunt sint. Accusantium beatae reprehenderit quisquam facere.
+                                            {{$product['desc']}}
                                         </p>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="nav-shipping" role="tabpanel" aria-labelledby="nav-shipping-tab">
-                                    
+                                {{-- <div class="tab-pane fade" id="nav-shipping" role="tabpanel" aria-labelledby="nav-shipping-tab">
+
                                 </div>
                                 <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
-                                    
-                                </div>
+
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -113,7 +112,7 @@
                                 </div>
                             </div>
                             <button class="button button-primary w-100" id="order-button">
-                                <img src="{{asset('/assets/img/icon/shopping-cart-white.svg')}}" alt="">    
+                                <img src="{{asset('/assets/img/icon/shopping-cart-white.svg')}}" alt="">
                                 <span id="order-text">Continue to Marketplace</span>
                             </button>
                         </div>
@@ -128,7 +127,7 @@
 @section('footer')
     @include('template.footer')
 @endsection
-    
+
 
 @section('script')
     <!--Vendor-->
@@ -212,7 +211,7 @@
                 $minusBtn.attr("disabled", true);
             } else {
                 $minusBtn.attr("disabled", false);
-                
+
                 if(qty >= qtyMax){
                     $this.val(qtyMax);
                     $addBtn.attr('disabled', true);
@@ -241,7 +240,7 @@
                 }
             } else {
                 qty = qty <= qtyMin ? qtyMin : (qty -= 1);
-                
+
                 if (qty == qtyMin) {
                     $this.attr("disabled", true);
                 }
