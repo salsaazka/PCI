@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Banner;
+use App\Models\Category;
 use App\Models\ProductGrid;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,14 +14,20 @@ class HomeController extends Controller
 
     public function landingPage() {
 
-        $bestSellingProducts = Product::limit(4)->get(); // should be sorted by highest transaction or smt
-        $products = Product::all(); // should change to a limited list or something
-        $productGrids = ProductGrid::limit(3)->get(); // no matter how many data, only 3 is displayed
+        $banner = Banner::all();
+        $category = Category::all();
+        $bestSellingProducts = Product::limit(4)->get();
+        $products = Product::all();
+        $productGrids = ProductGrid::limit(3)->get();
+        $contact = Contact::all();
 
         return view('pages.landing', [
+            'banner' => $banner,
+            'category' => $category,
             'bestSellingProducts' => $bestSellingProducts,
             'products' => $products,
             'productGrids' => $productGrids,
+            'contact' => $contact
         ]);
     }
 
