@@ -34,8 +34,11 @@ class HomeController extends Controller
     public function productIndex()
     {
         $products = Product::all();
-
-        return view('pages.list-product', ['products' => $products]);
+        $category = Category::all();
+        return view('pages.list-product', [
+            'products' => $products,
+            'category' => $category
+        ]);
     }
 
     public function productDetail($id)

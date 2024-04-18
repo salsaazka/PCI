@@ -25,7 +25,7 @@
                 $massage = 'Halo! Saya tertarik dengan produk Anda.';
                 $waLink = 'https://wa.me/' . $waNumber . '?text=' . urlencode($massage);
 
-                $emailTo = $mail->contact;
+                $emailTo = $email->contact;
                 $emailSubject = 'Pertanyaan Tentang Produk';
                 $emailBody = 'Halo! Saya ingin mengetahui lebih banyak tentang produk Anda.';
                 $emailLink = 'mailto:' . $emailTo . '?subject=' . rawurlencode($emailSubject) . '&body=' . rawurlencode($emailBody);
