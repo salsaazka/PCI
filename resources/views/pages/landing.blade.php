@@ -110,7 +110,7 @@
                     <img src="{{ asset('assets/images/data/'.$productGrids[0]['image']) }}" alt="Cat Litter" class="image-overlay-image-small">
                     <div class="image-overlay-text">
                       <div class="image-overlay-product-title">{{$productGrids[0]['title']}}</div>
-                      <a class="shop-now-btn">Belanja Sekarang</a>
+                      <a class="shop-now-btn text-white">Belanja Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -119,14 +119,14 @@
                     <img src="{{ asset('assets/images/data/'.$productGrids[1]['image']) }}" alt="Cat Litter" class="image-overlay-image-small">
                     <div class="image-overlay-text">
                       <div class="image-overlay-product-title">{{$productGrids[1]['title']}}</div>
-                      <a class="shop-now-btn">Belanja Sekarang</a>
+                      <a class="shop-now-btn text-white">Belanja Sekarang</a>
                     </div>
                 </div>
                 <div class="image-overlay-container-small">
                     <img src="{{ asset('assets/images/data/'.$productGrids[2]['image']) }}" alt="Cat Litter" class="image-overlay-image-small">
                     <div class="image-overlay-text">
                       <div class="image-overlay-product-title">{{$productGrids[2]['title']}}</div>
-                      <a class="shop-now-btn">Belanja Sekarang</a>
+                      <a class="shop-now-btn text-white">Belanja Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@
                             </div>
                             @endforeach
                         </div>
-                
+
                     </div>
                     <div class="tab-pane fade" id="catalogue-2" role="tabpanel">
                         <div class="row best-selling-card-group mb-2 mb-sm-5">
@@ -200,7 +200,7 @@
                             </div>
                             @endforeach
                         </div>
-                
+
                     </div>
                   </div>
             </div>

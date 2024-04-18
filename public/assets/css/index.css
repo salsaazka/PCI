@@ -322,7 +322,7 @@ body {
     position: absolute;
     bottom: 20%;
     left: 10%;
-    color: black;
+    color: white;
 }
 
 .image-overlay-product-title {
@@ -660,7 +660,7 @@ body {
     .brand-image {
         margin: 0;
     }
-    
+
     .nav-item{
         text-align: right;
     }
@@ -840,7 +840,7 @@ body {
         display: flex;
         align-items: center;
     }
-    
+
     .small-gallery-container {
         width: 100%;
         display: flex;
@@ -859,5 +859,5 @@ body {
         font-size: 14px;
         padding: 0;
     }
-    
+
 }
