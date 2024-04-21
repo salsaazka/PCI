@@ -5,7 +5,7 @@
         <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-title fw-semibold mb-4">Halaman Kategori</h5>
-            <a href="{{ route('category.create') }}" class="btn add-new btn-primary m-1 float-end">Tambah Kategori</a>
+            {{-- <a href="{{ route('category.create') }}" class="btn add-new btn-primary m-1 float-end">Tambah Kategori</a> --}}
             </div>
             <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">

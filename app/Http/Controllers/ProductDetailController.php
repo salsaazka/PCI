@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\ProductDetail;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use File;
 
-class ProductController extends Controller
+class ProductDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $dataProduct = Product::with('productDetail')->get();
-        return view('admin.pages.product', compact('dataProduct'));
+        $productDetail = ProductDetail::all();
+        return view('admin.pages.product_detail', compact('productDetail'));
     }
 
     /**

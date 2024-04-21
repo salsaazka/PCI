@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Banner;
 use App\Models\Category;
 use App\Models\ProductGrid;
+use App\Models\ProductDetail;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -60,6 +61,7 @@ class HomeController extends Controller
     public function productDetail($id)
     {
         $product = Product::find($id);
+        $productDetail = ProductDetail::where('product_id', $id)->get();
         $contact = Contact::where('title', 'Whatsapp')->first()['contact'];
 
         $product['image_array'] = [
@@ -72,6 +74,7 @@ class HomeController extends Controller
         return view('pages.detail-product', [
             'product' => $product,
             'contact' => $contact,
+            'productDetail' => $productDetail
         ]);
     }
 

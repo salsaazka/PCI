@@ -104,14 +104,14 @@
                                 <span class="hide-menu">Category</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        {{-- <li class="sidebar-item">
                             <a class="sidebar-link {{ Route::currentRouteName() === 'transaction.index' ? 'active' : '' }}" href="{{ route('transaction.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-brand-cashapp"></i>
                                 </span>
                                 <span class="hide-menu">Transaction</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="sidebar-item">
                             <a class="sidebar-link {{ Route::currentRouteName() === 'contact.index' ? 'active' : '' }}" href="{{ route('contact.index') }}" aria-expanded="false">
                                 <span>

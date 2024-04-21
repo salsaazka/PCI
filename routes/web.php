@@ -160,3 +160,13 @@ Route::middleware('isLogin')->prefix('/article')->name('article.')->group(functi
     Route::patch('/update/{id}', [ArticleController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [ArticleController::class, 'destroy'])->name('destroy');
 });
+
+// product detail
+Route::middleware('isLogin')->prefix('/product-detail')->name('product-detail.')->group(function () {
+    Route::get('/', [ArticleController::class, 'index'])->name('index');
+    Route::get('/create-product-detail', [ArticleController::class, 'create'])->name('create');
+    Route::post('/create-product-detail', [ArticleController::class, 'store'])->name('store');
+    Route::get('/edit{id}', [ArticleController::class, 'edit'])->name('edit');
+    Route::patch('/update/{id}', [ArticleController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [ArticleController::class, 'destroy'])->name('destroy');
+});

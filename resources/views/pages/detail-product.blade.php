@@ -4,17 +4,17 @@
 
 @section('css')
     <!--Bootstrap Css-->
-    <link rel="stylesheet" href="{{asset('/assets/css/bootstrap/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/bootstrap/bootstrap.css') }}">
 
     <!--Slick CSS-->
-    <link rel="stylesheet" href="{{asset('/assets/css/slick/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/slick/slick-theme.css')}}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/slick/slick-theme.css') }}">
 
     <!--App Css-->
-    <link rel="stylesheet" href="{{asset('/assets/css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/app.css') }}">
 
     <!--CSS Assets this page-->
-    <link rel="stylesheet" href="{{asset('/assets/css/detailProduct.css')}}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/detailProduct.css') }}">
 @endsection
 
 @section('header')
@@ -29,15 +29,71 @@
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="card box-shadow">
                         <div class="descripsi-product">
-                            <div class="tab-pane fade show active" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
-                                <b>Item Name : <span class="primary-text">{{$product['title']}}</span></b>
+                            <div class="tab-pane fade show active" id="nav-detail" role="tabpanel"
+                                aria-labelledby="nav-detail-tab">
+                                <b>Item Name : <span class="primary-text">{{ $product['title'] }}</span></b>
                                 <div class="desc-section">
                                     <b>Description :</b>
                                     <p class="text-desc">
-                                        {{$product['desc']}}
+                                        {{ $product['desc'] }}
                                     </p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="card box-shadow mt-3 container">
+                        <div class="table-responsive">
+                            <table class="table text-nowrap mb-0 align-middle">
+                                <thead class="text-dark fs-4">
+                                    <tr>
+                                        <th style="font-size: 14px">
+                                            No
+                                        </th>
+                                        <th style="font-size: 14px">
+                                            Product
+                                        </th>
+                                        <th style="font-size: 14px">
+                                            Title
+                                        </th>
+                                        <th style="font-size: 14px">
+                                           Packing
+                                        </th>
+                                        <th style="font-size: 14px">
+                                            Size
+                                        </th>
+                                        <th style="font-size: 14px">
+                                            Measurement
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $no = 1;
+                                    @endphp
+                                    @foreach ($productDetail as $items)
+                                        <tr>
+                                            <td class="">
+                                                <p>{{ $no++ }}</p>
+                                            </td>
+                                             <td class="">
+                                                <p>{{ $items->title }}</p>
+                                            </td>
+                                            <td class="">
+                                                <p>{{ $items->title }}</p>
+                                            </td>
+                                             <td class="">
+                                                <p>{{ $items->packing }}</p>
+                                            </td>
+                                            <td class="">
+                                                <p>{{ $items->size_min }} - {{ $items->size_max }}</p>
+                                            </td>
+                                            <td class="">
+                                                <p>{{ $items->measurement }}</p>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -46,20 +102,24 @@
                         <div class="card">
                             <div class="wrapper-image-product">
                                 <div class="view-Images">
-                                    @foreach($product['image_array'] as $image)
+                                    @foreach ($product['image_array'] as $image)
                                         <div class="images-product">
-                                            <img src="{{asset('assets/images/data/'.$image)}}" alt="">
+                                            <img src="{{ asset('assets/images/data/' . $image) }}" alt="">
                                         </div>
                                     @endforeach
                                 </div>
                                 <div class="nav-images">
-                                    @foreach($product['image_array'] as $image)
+                                    @foreach ($product['image_array'] as $image)
                                         <div class="images-nav">
-                                            <img src="{{asset('assets/images/data/'.$image)}}" alt="">
+                                            <img src="{{ asset('assets/images/data/' . $image) }}" alt="">
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
+                            <button class="button button-primary w-100 mt-3" id="order-button">
+                                <img src="{{ asset('/assets/img/icon/shopping-cart-white.svg') }}" alt="">
+                                <span id="order-text">Continue to WhatsApp</span>
+                            </button>
                         </div>
                         {{-- <div class="card">
                             <h4>Summary</h4>
@@ -94,16 +154,16 @@
 @section('script')
     <!--Vendor-->
     <!--Jquery-->
-    <script src="{{ asset('/assets/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
     <!--Bootstrap-->
-    <script src="{{ asset('/assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--Slick Js-->
-    <script src="{{ asset('/assets/js/slick/slick.min.js')}}"></script>
-    <script src="{{ asset('/assets/js/slick/slick.js')}}"></script>
+    <script src="{{ asset('/assets/js/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/slick/slick.js') }}"></script>
 
     <!--Slick Images Product-->
     <script>
-         $('.view-Images').slick({
+        $('.view-Images').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
             arrows: false,
@@ -152,77 +212,77 @@
             }
         });
 
-        var productId = "{{$product['id']}}";
-        var productTitle = "{{$product['title']}}";
-        var contactNum = "{{$contact}}";
-        var price = {{$product['price']}};
-        var minOrder = {{$product['min_order']}};
-        var marketplaceUrl = "{{$product['marketplace_url']}}"
+        var productId = "{{ $product['id'] }}";
+        var productTitle = "{{ $product['title'] }}";
+        var contactNum = "{{ $contact }}";
+        var price = {{ $product['price'] }};
+        var minOrder = {{ $product['min_order'] }};
+        var marketplaceUrl = "{{ $product['marketplace_url'] }}"
 
-        var QtyInput = (function () {
-        var $qtyInputs = $(".quantity-product");
+        var QtyInput = (function() {
+            var $qtyInputs = $(".quantity-product");
 
-        if (!$qtyInputs.length) {
-            return;
-        }
+            if (!$qtyInputs.length) {
+                return;
+            }
 
-        var $inputs = $qtyInputs.find(".product-quantity");
-        var $countBtn = $qtyInputs.find(".quantity-count");
-        var qtyMin = parseInt($inputs.attr("min"));
-        var qtyMax = parseInt($inputs.attr("max"));
+            var $inputs = $qtyInputs.find(".product-quantity");
+            var $countBtn = $qtyInputs.find(".quantity-count");
+            var qtyMin = parseInt($inputs.attr("min"));
+            var qtyMax = parseInt($inputs.attr("max"));
 
-        $inputs.change(function () {
-            var $this = $(this);
-            var $minusBtn = $this.siblings(".quantity-count--minus");
-            var $addBtn = $this.siblings(".quantity-count--add");
-            var qty = parseInt($this.val());
+            $inputs.change(function() {
+                var $this = $(this);
+                var $minusBtn = $this.siblings(".quantity-count--minus");
+                var $addBtn = $this.siblings(".quantity-count--add");
+                var qty = parseInt($this.val());
 
-            if (isNaN(qty) || qty <= qtyMin) {
-                $this.val(qtyMin);
-                $minusBtn.attr("disabled", true);
-            } else {
-                $minusBtn.attr("disabled", false);
-
-                if(qty >= qtyMax){
-                    $this.val(qtyMax);
-                    $addBtn.attr('disabled', true);
+                if (isNaN(qty) || qty <= qtyMin) {
+                    $this.val(qtyMin);
+                    $minusBtn.attr("disabled", true);
                 } else {
-                    $this.val(qty);
-                    $addBtn.attr('disabled', false);
+                    $minusBtn.attr("disabled", false);
+
+                    if (qty >= qtyMax) {
+                        $this.val(qtyMax);
+                        $addBtn.attr('disabled', true);
+                    } else {
+                        $this.val(qty);
+                        $addBtn.attr('disabled', false);
+                    }
                 }
-            }
-        });
+            });
 
-        $countBtn.click(function () {
-            var operator = this.dataset.action;
-            var $this = $(this);
-            var $input = $this.siblings(".product-quantity");
-            var qty = parseInt($input.val());
-            var qtyClass = document.getElementById('qty');
+            $countBtn.click(function() {
+                var operator = this.dataset.action;
+                var $this = $(this);
+                var $input = $this.siblings(".product-quantity");
+                var qty = parseInt($input.val());
+                var qtyClass = document.getElementById('qty');
 
-            if (operator == "add") {
-                qty += 1;
-                if (qty >= qtyMin + 1) {
-                    $this.siblings(".quantity-count--minus").attr("disabled", false);
+                if (operator == "add") {
+                    qty += 1;
+                    if (qty >= qtyMin + 1) {
+                        $this.siblings(".quantity-count--minus").attr("disabled", false);
+                    }
+
+                    if (qty >= qtyMax) {
+                        $this.attr("disabled", true);
+                    }
+                } else {
+                    qty = qty <= qtyMin ? qtyMin : (qty -= 1);
+
+                    if (qty == qtyMin) {
+                        $this.attr("disabled", true);
+                    }
+
+                    if (qty < qtyMax) {
+                        $this.siblings(".quantity-count--add").attr("disabled", false);
+                    }
                 }
 
-                if (qty >= qtyMax) {
-                    $this.attr("disabled", true);
-                }
-            } else {
-                qty = qty <= qtyMin ? qtyMin : (qty -= 1);
-
-                if (qty == qtyMin) {
-                    $this.attr("disabled", true);
-                }
-
-                if (qty < qtyMax) {
-                    $this.siblings(".quantity-count--add").attr("disabled", false);
-                }
-            }
-
-            if (qty > minOrder) {
-                let waLink = `https://wa.me/${contactNum}?text=Halo! Saya tertarik dengan produk Anda, Produk: ${productTitle} Quantity: ${qty}`;
+                let waLink =
+                    `https://wa.me/${contactNum}?text=Halo! Saya tertarik dengan produk Anda, Produk: ${productTitle} Quantity: ${qty}`;
 
                 $('#order-button').off().on('click', () => {
                     window.open(waLink, '_blank');
@@ -230,37 +290,28 @@
                 });
 
                 $('#order-text').html('Continue to WhatsApp');
-            } else {
 
-                $('#order-button').off().on('click', () => {
-                    window.open(marketplaceUrl, '_blank');
-                    recordTransaction(productId, qty);
-                });
+                qtyClass.innerHTML = qty;
+                $('#cart-price').html(price * qty);
+                $input.val(qty);
+            });
+        })();
 
-                $('#order-text').html('Continue to Marketplace');
-            }
-
-            qtyClass.innerHTML = qty;
-            $('#cart-price').html(price * qty);
-            $input.val(qty);
-        });
-    })();
-
-    function recordTransaction (productId, quantity) {
-        $.ajax({
-            type: "POST",
-            url: "/record-transaction",
-            data: {
-                productId, quantity
-            },
-            success: function(data) {
-                console.log("Response:", data);
-            },
-            error: function(xhr, status, error) {
-                console.error("Error:", error);
-            }
-        });
-    }
-
+        function recordTransaction(productId, quantity) {
+            $.ajax({
+                type: "POST",
+                url: "/record-transaction",
+                data: {
+                    productId,
+                    quantity
+                },
+                success: function(data) {
+                    console.log("Response:", data);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error:", error);
+                }
+            });
+        }
     </script>
 @endsection
