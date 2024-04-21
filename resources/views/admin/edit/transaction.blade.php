@@ -64,9 +64,9 @@
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">
-                <label for="" class="form-label">Product Transaction</label
+                <label for="" class="form-label">Product Name</label
                 >
-                <select class="form-select" aria-label="Payment" name="transaction_product_id">
+                <select disabled class="form-select" aria-label="Payment" name="transaction_product_id">
                     <option selected value="{{$dataTransaction['transactionProduct']['id']}}">{{$dataTransaction['transactionProduct']['product']['title']}}</option>
                 </select>
                 </div>
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-        
+
         <button
         type="submit"
         class="btn text-white mb-5"

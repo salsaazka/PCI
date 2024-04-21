@@ -32,12 +32,10 @@ Route::view('detail-artikel', 'pages.detail-artikel')->name('detail-artikel');
 
 Route::prefix('/general-trading')->group(function () {
     Route::get('/', [HomeController::class, 'landingPage'])->name('landing');
-    Route::get('/detail/{id}', [HomeController::class, 'productDetail']);
+    Route::get('/product/detail/{id}', [HomeController::class, 'productDetail']);
     Route::get('/product', [HomeController::class, 'productIndex'])->name('list-product');
-    
-    Route::get('/artikel', function () {
-        return view('pages.list-artikel');
-    })->name('list-artikel');
+    Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact-page');
+    Route::get('/artikel', [HomeController::class, 'articlePage'])->name('article-page');
 });
 
 Route::middleware('isGuest')->group(function () {
@@ -151,4 +149,13 @@ Route::middleware('isLogin')->prefix('/transaction')->name('transaction.')->grou
     Route::get('/edit{id}', [TransactionController::class, 'edit'])->name('edit');
     Route::patch('/update/{id}', [TransactionController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [TransactionController::class, 'destroy'])->name('destroy');
+});
+
+Route::middleware('isLogin')->prefix('/article')->name('article.')->group(function () {
+    Route::get('/', [ArticleController::class, 'index'])->name('index');
+    Route::get('/create-article', [ArticleController::class, 'create'])->name('create');
+    Route::post('/create-article', [ArticleController::class, 'store'])->name('store');
+    Route::get('/edit{id}', [ArticleController::class, 'edit'])->name('edit');
+    Route::patch('/update/{id}', [ArticleController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [ArticleController::class, 'destroy'])->name('destroy');
 });

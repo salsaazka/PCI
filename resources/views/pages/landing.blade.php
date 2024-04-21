@@ -25,9 +25,9 @@
                 </div>
             </div>
             <div class="hero-description mt-3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting <br>
-                industry. Lorem Ipsum has been the industry's standard dummy <br>
-                text ever since the 1500s.
+                We supply best quality zeolites-based products for various applications.
+                We export Indonesian Robusta Green Bean Coffee and Yellow Corn.
+                We grow for other export commodities.
             </div>
             <button class="hero-button mt-4" onclick="window.location.href = '{{ route('list-product') }}'">
                 Browse Product
@@ -81,8 +81,8 @@
 
     <div class="container best-product-catalogue">
         <div class="d-flex justify-content-between align-items-center">
-            <div class="best-selling-product-title">Best Selling Products</div>
-            <a href="{{ URL::to('/general-trading/product') }}"
+            <div class="best-selling-product-title">ZEOLITES-BASED</div>
+            {{-- <a href="{{ URL::to('/general-trading/product') }}"
                 class="d-flex view-all-product-link justify-content-end align-items-center">
                 <span class="me-2 d-none d-sm-block">View All Products</span>
                 <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +90,7 @@
                         d="M0.5 6.99997C0.5 6.80106 0.579018 6.61029 0.71967 6.46964C0.860322 6.32899 1.05109 6.24997 1.25 6.24997H18.9395L14.219 1.53097C14.0782 1.39014 13.9991 1.19913 13.9991 0.999971C13.9991 0.800807 14.0782 0.609801 14.219 0.468971C14.3598 0.328141 14.5508 0.249023 14.75 0.249023C14.9492 0.249023 15.1402 0.328141 15.281 0.468971L21.281 6.46897C21.3508 6.53864 21.4063 6.6214 21.4441 6.71252C21.4819 6.80364 21.5013 6.90132 21.5013 6.99997C21.5013 7.09862 21.4819 7.1963 21.4441 7.28742C21.4063 7.37854 21.3508 7.4613 21.281 7.53097L15.281 13.531C15.1402 13.6718 14.9492 13.7509 14.75 13.7509C14.5508 13.7509 14.3598 13.6718 14.219 13.531C14.0782 13.3901 13.9991 13.1991 13.9991 13C13.9991 12.8008 14.0782 12.6098 14.219 12.469L18.9395 7.74997H1.25C1.05109 7.74997 0.860322 7.67095 0.71967 7.5303C0.579018 7.38965 0.5 7.19888 0.5 6.99997Z"
                         fill="black" />
                 </svg>
-            </a>
+            </a> --}}
         </div>
 
         {{-- change later as best selling products should get the data by transaction count --}}
@@ -133,7 +133,7 @@
                     <img src="{{ asset('assets/images/data/' . $productGrids[0]['image']) }}" alt="Cat Litter"
                         class="image-overlay-image-small">
                     <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); border-radius: 12px">
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
                     </div>
                     <div class="image-overlay-text">
                         <div class="image-overlay-product-title">{{ $productGrids[0]['title'] }}</div>
@@ -146,7 +146,7 @@
                     <img src="{{ asset('assets/images/data/' . $productGrids[1]['image']) }}" alt="Cat Litter"
                         class="image-overlay-image-small">
                     <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); border-radius: 12px">
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
                     </div>
                     <div class="image-overlay-text">
                         <div class="image-overlay-product-title">{{ $productGrids[1]['title'] }}</div>
@@ -157,7 +157,7 @@
                     <img src="{{ asset('assets/images/data/' . $productGrids[2]['image']) }}" alt="Cat Litter"
                         class="image-overlay-image-small">
                     <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); border-radius: 12px">
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
                     </div>
                     <div class="image-overlay-text">
                         <div class="image-overlay-product-title">{{ $productGrids[2]['title'] }}</div>
@@ -167,108 +167,38 @@
             </div>
         </div>
         <div class="product-catalogue mt-5" id="product">
-            <div class="best-selling-product-title">Best Selling Products</div>
+            <div class="best-selling-product-title">EXPORT COMMODITIES</div>
             <div class="product-catalogue-navbar">
-                <ul class="nav nav-tabs product-nav gap-3 mb-5" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#catalogue-1" aria-selected="true"
-                            role="tab">Semua</a>
-                    </li>
-                    @foreach ($category as $index => $item)
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" data-bs-toggle="tab" href="#catalogue-{{ $index + 2 }}"
-                                aria-selected="false" role="tab" tabindex="-1">{{ $item->title }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade active show" id="catalogue-1" role="tabpanel">
-                        <div class="row best-selling-card-group mb-2 mb-sm-5">
-                            @for ($i = 0; $i < 8 && $i < count($products); $i++)
-                                <?php $product = $products[$i]; ?>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/data/' . $product['image_1']) }}"
-                                                alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            {{ $product['title'] }}
-                                        </div>
-                                        <div class="card-price">
-                                            Rp. {{ $product['price'] }}
-                                        </div>
-                                        <div class="card-subtitle">
-                                            <?php
-                                            $desc = $product['desc'];
-                                            if (strlen($desc) > 100) {
-                                                $desc = substr($desc, 0, 97) . '...';
-                                            }
-                                            echo $desc;
-                                            ?>
-                                        </div>
-                                        <a class="card-detail-button text-decoration-none"
-                                            href="{{ URL::to('/general-trading/detail/' . $product['id']) }}">
-                                            DETAILS
-                                        </a>
-                                    </div>
+                <div class="row best-selling-card-group mb-2 mb-sm-5">
+                    @foreach ($products as $product)
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="product-card">
+                                <div class="card-image">
+                                    <img src="{{ asset('assets/images/data/' . $product['image_1']) }}" alt="">
                                 </div>
-                            @endfor
-                        </div>
-
-                    </div>
-
-                    @foreach ($category as $index => $item)
-                        <div class="tab-pane fade" id="catalogue-{{ $index + 2 }}" role="tabpanel">
-                            <div class="row best-selling-card-group mb-2 mb-sm-5">
-                                @foreach ($products as $product)
-                                    @if ($product['category_id'] == $item->id)
-                                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                            <div class="product-card">
-                                                <div class="card-image">
-                                                    <img src="{{ asset('assets/images/data/' . $product['image_1']) }}"
-                                                        alt="">
-                                                </div>
-                                                <div class="card-title">
-                                                    {{ $product['title'] }}
-                                                </div>
-                                                <div class="card-price">
-                                                    Rp. {{ $product['price'] }}
-                                                </div>
-                                                <div class="card-subtitle">
-                                                    <?php
-                                                    $desc = $product['desc'];
-                                                    if (strlen($desc) > 100) {
-                                                        $desc = substr($desc, 0, 97) . '...';
-                                                    }
-                                                    echo $desc;
-                                                    ?>
-                                                </div>
-                                                <a class="card-detail-button text-decoration-none"
-                                                    href="{{ URL::to('/general-trading/detail/' . $product['id']) }}">
-                                                    DETAILS
-                                                </a>
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
+                                <div class="card-title">
+                                    {{ $product['title'] }}
+                                </div>
+                                <div class="card-price">
+                                    Rp. {{ $product['price'] }}
+                                </div>
+                                <div class="card-subtitle">
+                                    <?php
+                                    $desc = $product['desc'];
+                                    if (strlen($desc) > 100) {
+                                        $desc = substr($desc, 0, 97) . '...';
+                                    }
+                                    echo $desc;
+                                    ?>
+                                </div>
+                                <a class="card-detail-button text-decoration-none"
+                                    href="{{ URL::to('/general-trading/detail/' . $product['id']) }}">
+                                    DETAILS
+                                </a>
                             </div>
                         </div>
                     @endforeach
-
                 </div>
-            </div>
-            <div class="d-flex justify-content-center mt-1 mb-4 mt-sm-4 mb-sm-5">
-                <button class="browse-all-btn"
-                    onclick="window.location.href='{{ URL::to('/general-trading/product') }}'">
-                    BROWSE ALL
-                    <svg width="8" height="9" viewBox="0 0 8 9" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M3.1775 0.989186L3.52673 0.559353C3.67461 0.377351 3.91373 0.377351 4.06003 0.559353L7.11822 4.32136C7.26609 4.50336 7.26609 4.79766 7.11822 4.97773L4.06003 8.74168C3.91215 8.92368 3.67304 8.92368 3.52673 8.74168L3.1775 8.31184C3.02805 8.1279 3.0312 7.8278 3.18379 7.64773L5.07942 5.42499H0.558218C0.34899 5.42499 0.180664 5.21782 0.180664 4.9603V4.34072C0.180664 4.08321 0.34899 3.87604 0.558218 3.87604H5.07942L3.18379 1.6533C3.02962 1.47323 3.02648 1.17312 3.1775 0.989186Z"
-                            fill="white" />
-                    </svg>
-                </button>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@ class ArticleController extends Controller
     public function index()
     {
         $dataArticle = Article::all();
-        //  return view(, compact('dataArticle'));
+        return view('admin.pages.article', compact('dataArticle'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-         // return view('');
+        return view('admin.create.article');
     }
 
     /**
@@ -46,7 +46,7 @@ class ArticleController extends Controller
             'image' => $imgName,
             'desc' => $request->desc,
         ]);
-        // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
+        return redirect()->route('article.index')->with('add', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -63,7 +63,7 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $dataArticle = Article::where('id', $id)->first();
-         // return view('', compact('dataArticle'));
+        return view('admin.edit.article', compact('dataArticle'));
     }
 
     /**
@@ -71,24 +71,30 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'desc' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
-        ]);
 
-        $image = $request->file('image');
-        $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+        if ($request->hasFile('image')) {
 
-        $dPath = public_path('/assets/images/data/');
-        $image->move($dPath, $imgName);
+            $image = $request->file('image');
+            $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        Article::where('id', $id)->update([
-            'title' => $request->title,
-            'image' => $imgName,
-            'desc' => $request->desc,
-        ]);
-        // return redirect()->route('')->with('edit', 'Data berhasil diubah');
+            $dPath = public_path('/assets/images/data/');
+            $image->move($dPath, $imgName);
+
+            Article::where('id', $id)->update([
+                'title' => $request->title,
+                'image' => $imgName,
+                'desc' => $request->desc,
+            ]);
+        } else {
+
+            Article::where('id', $id)->update([
+                'title' => $request->title,
+                'desc' => $request->desc,
+            ]);
+
+        }
+
+        return redirect()->route('article.index')->with('edit', 'Data berhasil diubah');
     }
 
     /**
@@ -97,6 +103,6 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         Article::where('id', $id)->delete();
-          // return redirect()->route('')->with('delete', 'Data berhasil dihapus');
+        return redirect()->route('article.index')->with('delete', 'Data berhasil dihapus');
     }
 }

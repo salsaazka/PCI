@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Product;
 use App\Models\Banner;
 use App\Models\Category;
@@ -16,8 +17,8 @@ class HomeController extends Controller
 
         $banner = Banner::all();
         $category = Category::all();
-        $bestSellingProducts = Product::limit(4)->get();
-        $products = Product::all();
+        $bestSellingProducts = Product::where('category_id', 1)->limit(4)->get();
+        $products = Product::where('category_id', 3)->limit(4)->get();
         $productGrids = ProductGrid::limit(3)->get();
         $contact = Contact::all();
 
@@ -31,13 +32,28 @@ class HomeController extends Controller
         ]);
     }
 
+    public function contactPage() {
+
+        $contact = Contact::all();
+        return view('pages.contact', [
+            'contact' => $contact
+        ]);
+    }
+
     public function productIndex()
     {
-        $products = Product::all();
-        $category = Category::all();
+        $products3 = Product::where('category_id', 3)->limit(4)->get();
+        $products1 = Product::where('category_id', 3)->limit(4)->get();
         return view('pages.list-product', [
-            'products' => $products,
-            'category' => $category
+            'products3' => $products3,
+            'products1' => $products1
+        ]);
+    }
+
+    public function articlePage() {
+        $data = Article::all();
+        return view('pages.list-artikel', [
+            'data' => $data
         ]);
     }
 
@@ -56,6 +72,14 @@ class HomeController extends Controller
         return view('pages.detail-product', [
             'product' => $product,
             'contact' => $contact,
+        ]);
+    }
+
+    public function articleDetail($id) {
+
+        $data = Article::find($id);
+        return view('pages.detail-artikel', [
+            'data' => $data
         ]);
     }
 
@@ -78,7 +102,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TransactionProduct $transactionProduct)
+    public function show()
     {
         //
     }

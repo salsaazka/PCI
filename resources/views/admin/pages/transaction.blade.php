@@ -4,7 +4,7 @@
     <div class="card w-100">
         <div class="card-body p-4">
             <h5 class="card-title fw-semibold mb-4">Transaction Page</h5>
-            <a href="{{ route('transaction.create') }}" class="btn add-new btn-primary m-1 float-end">Add</a>
+            {{-- <a href="{{ route('transaction.create') }}" class="btn add-new btn-primary m-1 float-end">Add</a> --}}
             <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">

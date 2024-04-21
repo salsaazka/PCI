@@ -28,71 +28,15 @@
             <div class="row first-line">
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="card box-shadow">
-                        <div class="wrapperDetailProduct row">
-                            <div class="col-12 col-lg-5">
-                                <div class="wrapper-image-product">
-                                    <div class="view-Images">
-                                        @foreach($product['image_array'] as $image)
-                                            <div class="images-product">
-                                                <img src="{{asset('assets/images/data/'.$image)}}" alt="">
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <div class="nav-images">
-                                        @foreach($product['image_array'] as $image)
-                                            <div class="images-nav">
-                                                <img src="{{asset('assets/images/data/'.$image)}}" alt="">
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="wrapper-detail-product">
-                                    <h1 class="name-product">{{$product['title']}}</h1>
-                                    {{-- <div class="wrapper-rating">
-                                        <div class="data-terjual">
-                                            <p>Terjual</p>
-                                            <span>1 rb+</span>
-                                        </div>
-                                    </div> --}}
-                                    <div class="price-product">
-                                        <p>RP. {{$product['price']}}<span>/{{$product['unit']}}</span></p>
-                                    </div>
-                                    <div class="wrapper-quantity-product">
-                                        <p>Your Quantity Order</p>
-                                        <div class="quantity-product">
-                                            <button class="quantity-count quantity-count--minus" data-action="minus" type="button">-</button>
-                                            <input class="product-quantity" type="number" name="product-quantity" min="0" max="{{$product['stock']}}" value="0">
-                                            <button class="quantity-count quantity-count--add" data-action="add" type="button">+</button>
-                                        </div>
-                                        {{-- <p class="info">Min. order : {{$product['min_order']}} </p> --}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="descripsi-product">
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="nav-detail-tab" data-bs-toggle="tab" data-bs-target="#nav-detail" type="button" role="tab" aria-controls="nav-detail" aria-selected="true">Detail</button>
-                                {{-- <button class="nav-link" id="nav-shipping-tab" data-bs-toggle="tab" data-bs-target="#nav-shipping" type="button" role="tab" aria-controls="nav-shipping" aria-selected="false">Shipping</button>
-                                <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Review</button> --}}
-                            </div>
-                            <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
-                                    <b>Item Name : <span class="primary-text">{{$product['title']}}</span></b>
-                                    <div class="desc-section">
-                                        <b>Description :</b>
-                                        <p class="text-desc">
-                                            {{$product['desc']}}
-                                        </p>
-                                    </div>
+                            <div class="tab-pane fade show active" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
+                                <b>Item Name : <span class="primary-text">{{$product['title']}}</span></b>
+                                <div class="desc-section">
+                                    <b>Description :</b>
+                                    <p class="text-desc">
+                                        {{$product['desc']}}
+                                    </p>
                                 </div>
-                                {{-- <div class="tab-pane fade" id="nav-shipping" role="tabpanel" aria-labelledby="nav-shipping-tab">
-
-                                </div>
-                                <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
-
-                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -100,6 +44,24 @@
                 <div class="col-12 col-lg-4 col-xl-3">
                     <div class="wrapper-summary">
                         <div class="card">
+                            <div class="wrapper-image-product">
+                                <div class="view-Images">
+                                    @foreach($product['image_array'] as $image)
+                                        <div class="images-product">
+                                            <img src="{{asset('assets/images/data/'.$image)}}" alt="">
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="nav-images">
+                                    @foreach($product['image_array'] as $image)
+                                        <div class="images-nav">
+                                            <img src="{{asset('assets/images/data/'.$image)}}" alt="">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="card">
                             <h4>Summary</h4>
                             <div class="detail-summary">
                                 <div class="total-order">
@@ -115,7 +77,7 @@
                                 <img src="{{asset('/assets/img/icon/shopping-cart-white.svg')}}" alt="">
                                 <span id="order-text">Continue to Marketplace</span>
                             </button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
