@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PT. PRIJADI CAHAYA INDONESIA</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('assets-admin/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets-admin/css/app.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropify/dist/css/dropify.min.css">
@@ -88,6 +89,14 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'article.index' ? 'active' : '' }}" href="{{ route('article.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-chalkboard"></i>
+                                </span>
+                                <span class="hide-menu">Article</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link {{ Route::currentRouteName() === 'category.index' ? 'active' : '' }}" href="{{ route('category.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-pin"></i>
@@ -95,14 +104,14 @@
                                 <span class="hide-menu">Category</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        {{-- <li class="sidebar-item">
                             <a class="sidebar-link {{ Route::currentRouteName() === 'transaction.index' ? 'active' : '' }}" href="{{ route('transaction.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-brand-cashapp"></i>
                                 </span>
                                 <span class="hide-menu">Transaction</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="sidebar-item">
                             <a class="sidebar-link {{ Route::currentRouteName() === 'contact.index' ? 'active' : '' }}" href="{{ route('contact.index') }}" aria-expanded="false">
                                 <span>

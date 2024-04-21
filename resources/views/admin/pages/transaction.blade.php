@@ -4,7 +4,7 @@
     <div class="card w-100">
         <div class="card-body p-4">
             <h5 class="card-title fw-semibold mb-4">Transaction Page</h5>
-            <a href="{{ route('transaction.create') }}" class="btn add-new btn-primary m-1 float-end">Add</a>
+            {{-- <a href="{{ route('transaction.create') }}" class="btn add-new btn-primary m-1 float-end">Add</a> --}}
             <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
@@ -45,23 +45,22 @@
                                 <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
                             </td>
                             <td class="">
-                                <h6 class="fw-semibold mb-1">{{ $transaction->user_id }}</h6>
-                                {{-- <span class="fw-normal">Web Designer</span> --}}
+                                <h6 class="fw-semibold mb-1">{{ $transaction->user_id ?? 'Anonimous' }}</h6>
                             </td>
                             <td class="">
-                                <h6 class="fw-semibold mb-1">{{ $transaction->payment_id }}</h6>
+                                <h6 class="fw-semibold mb-1">{{ $transaction->payment_id ?? '-' }}</h6>
                             </td>
                             <td class="">
-                                <h6 class="fw-semibold mb-1">{{ $transaction->transaction_product_id }}</h6>
+                                <h6 class="fw-semibold mb-1">{{ $transaction->transactionProduct->product->title ?? '-'}}</h6>
                             </td>
                             <td class="">
-                                <h6 class="fw-semibold mb-1">{{ $transaction->total_price }}</h6>
+                                <h6 class="fw-semibold mb-1">Rp. {{ $transaction->total_price }}</h6>
                             </td>
                             <td class="">
                                 <h6 class="fw-semibold mb-1">{{ $transaction->total_count }}</h6>
                             </td>
                             <td class="">
-                                <h6 class="fw-semibold mb-1">{{ $transaction->proof_payment }}</h6>
+                                <h6 class="fw-semibold mb-1">{{ $transaction->proof_payment ?? '-' }}</h6>
                             </td>
                             <td class="d-flex">
                                 <a href="{{ route('transaction.edit', $transaction->id) }} " class="btn btn-warning" style="margin-right: 5px"><i class="ti ti-edit"></i></a>

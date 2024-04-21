@@ -38,14 +38,15 @@
                 </div>
             </div>
         </div>
-        
-        <button
-        type="submit"
-        class="btn text-white mb-5"
-        style="background-color: #B46060"
-        >
-        Submit
-        </button>
+
+        <div class="d-flex justify-content-end align-items-center gap-2">
+            <a href="{{ route('contact.index') }}" class="btn btn-danger text-white mb-5">
+                Kembali
+            </a>
+            <button type="submit" class="btn btn-primary text-white mb-5">
+                Simpan
+            </button>
+        </div>
     </form>
     </div>
 </div>

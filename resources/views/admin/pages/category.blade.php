@@ -3,14 +3,16 @@
 @section('content-admin')
     <div class="card w-100">
         <div class="card-body p-4">
-            <h5 class="card-title fw-semibold mb-4">Category Page</h5>
-            <a href="{{ route('category.create') }}" class="btn add-new btn-primary m-1 float-end">Add</a>
+            <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title fw-semibold mb-4">Halaman Kategori</h5>
+            {{-- <a href="{{ route('category.create') }}" class="btn add-new btn-primary m-1 float-end">Tambah Kategori</a> --}}
+            </div>
             <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
                         <tr>
                             <th class="">
-                                <h6 class="fw-semibold mb-0">Id</h6>
+                                <h6 class="fw-semibold mb-0">No</h6>
                             </th>
                             <th class="">
                                 <h6 class="fw-semibold mb-0">Title</h6>
@@ -30,14 +32,14 @@
                         @foreach ($dataCategory as $category)
                             <tr>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
+                                    <p>{{ $no++ }}</p>
                                 </td>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $category->title }}</h6>
+                                    <p>{{ $category->title }}</p>
                                     {{-- <span class="fw-normal">Web Designer</span> --}}
                                 </td>
-                                <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $category->desc }}</h6>
+                                <td class="" style="max-width: 350px;">
+                                    <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $category->desc }}</p>
                                 </td>
                                 <td class="d-flex">
                                     <a href="{{ route('category.edit', $category->id) }} " class="btn btn-warning" style="margin-right: 5px"><i class="ti ti-edit"></i></a>

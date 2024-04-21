@@ -14,7 +14,7 @@ class ProductGridController extends Controller
     public function index()
     {
         $dataProductGrid = ProductGrid::all();
-         return view('admin.pages.product-grid', compact('dataProductGrid'));
+        return view('admin.pages.product-grid', compact('dataProductGrid'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ProductGridController extends Controller
      */
     public function create()
     {
-         return view('admin.create.product-grid');
+        return view('admin.create.product-grid');
     }
 
     /**
@@ -83,26 +83,24 @@ class ProductGridController extends Controller
         if ($request->file('image')) {
             $image = $request->file('image');
             $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
-    
+
             $dPath = public_path('/assets/images/data/');
             $image->move($dPath, $imgName);
 
-            
+
             ProductGrid::where('id', $id)->update([
                 'category_id' => $request->category_id,
                 'title' => $request->title,
                 'image' =>  $imgName,
                 'desc' => $request->desc,
             ]);
-
-            return redirect()->route('productgrid.index')->with('edit', 'Data berhasil diubah');
+        } else {
+            ProductGrid::where('id', $id)->update([
+                'category_id' => $request->category_id,
+                'title' => $request->title,
+                'desc' => $request->desc,
+            ]);
         }
-
-        ProductGrid::where('id', $id)->update([
-            'category_id' => $request->category_id,
-            'title' => $request->title,
-            'desc' => $request->desc,
-        ]);
 
         return redirect()->route('productgrid.index')->with('edit', 'Data berhasil diubah');
     }
@@ -115,6 +113,5 @@ class ProductGridController extends Controller
         ProductGrid::where('id', $id)->delete();
 
         return redirect()->route('productgrid.index')->with('delete', 'Data berhasil dihapus');
-
     }
 }

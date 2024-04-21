@@ -18,210 +18,31 @@
         <div class="container mb-5">
             <div class="product-catalogue mt-5" id="product">
                 <div class="product-catalogue-navbar">
-                    <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane fade active show" id="catalogue-1" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card" onclick="window.location.href = '{{Route('detail-artikel')}}';">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
+                    <div class="row">
+                        @foreach ($data as $item)
+                            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                <div class="product-card" onclick="window.location.href = '{{ URL::to('/artikel/detail/' . $item['id']) }}';">
+                                    <div class="card-image">
+                                        <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
                                     </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
+                                    <div class="card-title">
+                                        {{ $item['title'] }}
                                     </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
+                                    <div class="card-subtitle p-2">
+                                        <?php
+                                        $desc = $item['desc'];
+                                        if (strlen($desc) > 100) {
+                                            $desc = substr($desc, 0, 97) . '...';
+                                        }
+                                        echo $desc;
+                                        ?>
                                     </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
+                                    <div class="card-detail-button">
+                                        DETAILS
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="catalogue-2" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="product-card">
-                                        <div class="card-image">
-                                            <img src="{{ asset('assets/images/card-example-image.png') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="card-title">
-                                            Sacha inchi
-                                        </div>  
-                                        <div class="card-subtitle">
-                                            In a world dominated by modern medicine, the age-old wisdom
-                                        </div>
-                                        <div class="card-detail-button">
-                                            DETAILS
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

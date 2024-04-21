@@ -6,6 +6,18 @@
     <form action="{{ route('productgrid.update', $dataProductGrid->id) }}" method="POST"  enctype="multipart/form-data" class="mb-3 mt-4">
         @csrf
         @method('PATCH')
+
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="" class="form-label"
+                        >Upload Image</label
+                    >
+                    <input type="file" name="image" value="{{ $dataProductGrid->image }}" class="form-control dropify" id="inputGroupFile01">
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">
@@ -27,37 +39,28 @@
                 <label for="" class="form-label"
                     >Description</label
                 >
-                <input
-                    type="textarea"
-                    class="form-control"
-                    name="desc"
-                    value="{{ $dataProductGrid->desc }}"
-                    aria-describedby="desc"
-                    placeholder="Masukan Description"
-                />
+                <textarea name="desc" id="" cols="5" rows="5" class="form-control">{{ $dataProductGrid->desc }}</textarea>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="" class="form-label"
-                        >Upload Image</label
-                    >
-                    <input type="file" name="image" value="{{ $dataProductGrid->image }}" class="form-control" id="inputGroupFile01">
-                </div>
-            </div>
+        <div class="d-flex justify-content-end align-items-center gap-2">
+            <a href="{{ route('productgrid.index') }}" class="btn btn-danger text-white mb-5">
+                Kembali
+            </a>
+            <button type="submit" class="btn btn-primary text-white mb-5">
+                Simpan
+            </button>
         </div>
-
-        <button
-        type="submit"
-        class="btn text-white mb-5"
-        style="background-color: #B46060"
-        >
-        Submit
-        </button>
     </form>
     </div>
 </div>
+@endsection
+
+@section('script-admin')
+    <script>
+        $(document).ready(function() {
+            $('.dropify').dropify();
+        });
+    </script>
 @endsection

@@ -12,7 +12,7 @@
                     <thead class="text-dark fs-4">
                         <tr>
                             <th class="">
-                                <h6 class="fw-semibold mb-0">Id</h6>
+                                <h6 class="fw-semibold mb-0">No</h6>
                             </th>
                             <th class="">
                                 <h6 class="fw-semibold mb-0">Title</h6>
@@ -44,23 +44,23 @@
                         @foreach ($dataProduct as $product)
                             <tr>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
+                                    <p>{{ $no++ }}</p>
                                 </td>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $product->title }}</h6>
+                                    <p>{{ $product->title }}</p>
                                     {{-- <span class="fw-normal">Web Designer</span> --}}
                                 </td>
-                                <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $product->desc }}</h6>
+                                <td class="" style="max-width: 200px;">
+                                    <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $product->desc }}</p>
                                 </td>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $product->price }}</h6>
+                                    <p>{{ $product->price }}</p>
                                 </td>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $product->unit }}</h6>
+                                    <p>{{ $product->unit }}</p>
                                 </td>
                                 <td class="">
-                                    <h6 class="fw-semibold mb-1">{{ $product->stock }}</h6>
+                                    <p>{{ $product->stock }}</p>
                                 </td>
                                 <td class="">
                                     <button type="button" class="border-0 bg-white">

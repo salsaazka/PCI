@@ -5,13 +5,33 @@
     <div class="card-body">
     <form action="{{ route('transaction.store') }}" method="post"  enctype="multipart/form-data" class="mb-3 mt-4">
         @csrf
-
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="" class="form-label">User</label>
+                    <select class="form-select" aria-label="User" name="user_id" disabled>
+                        <option selected value="-" disabled>-</option>
+                        @foreach ($users as $user)
+                            <option value="{{$user['id']}}">{{$user['name']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col-6">
+                <label class="form-label text-muted">Payment Method</label>
+                <select class="form-select" aria-label="Payment" name="payment_id" disabled>
+                    <option selected value="-" disabled>-</option>
+                    @foreach ($payments as $payment)
+                        <option value="{{$payment['id']}}">{{$payment['bank_name']}} - {{$payment['no_bank']}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">
-                <label for="" class="form-label"
-                    >Total Price</label
+                <label for="" class="form-label">Total Price (Rp)</label
                 >
                 <input
                     type="number"
@@ -39,8 +59,32 @@
         </div>
 
         <div class="row">
-            
+            <div class="col-6">
+                <div class="mb-3">
+                <label for="" class="form-label">Product Transaction</label
+                >
+                <select class="form-select" aria-label="Payment" name="transaction_product_id" disabled>
+                    <option selected value="-" disabled>-</option>
+                </select>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                <label for="" class="form-label">Proof of Payment</label
+                >
+                <input
+                    type="number"
+                    class="form-control"
+                    name="proof_payment"
+                    value="-"
+                    aria-describedby=""
+                    placeholder=""
+                    disabled
+                />
+                </div>
+            </div>
         </div>
+        
         
         <button
         type="submit"

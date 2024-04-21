@@ -13,7 +13,7 @@ class ArticleController extends Controller
     public function index()
     {
         $dataArticle = Article::all();
-         return view('pages.list-artikel', compact('dataArticle'));
+        return view('admin.pages.article', compact('dataArticle'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-         // return view('');
+        return view('admin.create.article');
     }
 
     /**
@@ -63,7 +63,7 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $dataArticle = Article::where('id', $id)->first();
-        //  return view('', compact('dataArticle'));
+        return view('admin.edit.article', compact('dataArticle'));
     }
 
     /**
@@ -71,30 +71,29 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'desc' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
-        ]);
 
         if ($request->hasFile('image')) {
+
             $image = $request->file('image');
             $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
             $dPath = public_path('/assets/images/data/');
             $image->move($dPath, $imgName);
 
-        Article::where('id', $id)->update([
-            'title' => $request->title,
-            'image' => $imgName,
-            'desc' => $request->desc,
-        ]);
+            Article::where('id', $id)->update([
+                'title' => $request->title,
+                'image' => $imgName,
+                'desc' => $request->desc,
+            ]);
         } else {
+
             Article::where('id', $id)->update([
                 'title' => $request->title,
                 'desc' => $request->desc,
             ]);
+
         }
+
         return redirect()->route('article.index')->with('edit', 'Data berhasil diubah');
     }
 
@@ -104,6 +103,6 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         Article::where('id', $id)->delete();
-          return redirect()->route('article.index')->with('delete', 'Data berhasil dihapus');
+        return redirect()->route('article.index')->with('delete', 'Data berhasil dihapus');
     }
 }

@@ -28,72 +28,29 @@ use App\Http\Controllers\TransactionProductController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/general-trading', [HomeController::class, 'landingPage'])->name('landing');
-Route::get('/general-trading/detail/{id}', [HomeController::class, 'productDetail']);
-Route::get('/general-trading/product', [HomeController::class, 'productIndex'])->name('list-product');
-
-Route::get('/general-trading/artikel', function () {
-    return view('pages.list-artikel');
-})->name('list-artikel');
-
-
 Route::view('detail-artikel', 'pages.detail-artikel')->name('detail-artikel');
 
-// Auth
-
-// Route::get('/login', function () {
-//     return view('auth.login');
-// })->name('login');
-
-// Route::get('/register', function () {
-//     return view('auth.register');
-// })->name('register');
-
-// End Auth
-
-// Route::get('/general-trading/admin', function () {
-//     return view('admin.pages.dashboard');
-// })->name('admin-dashboard');
-
-// Route::get('/general-trading/admin/product', function () {
-//     return view('admin.pages.product');
-// })->name('admin-product');
-
-// Route::get('/general-trading/admin/transaction', function () {
-//     return view('admin.pages.transaction');
-// })->name('admin-transaction');
-
-// Route::get('/general-trading/admin/about', function () {
-//     return view('admin.pages.about');
-// })->name('admin-about');
-
-// Route::get('/general-trading/admin/user', function () {
-//     return view('admin.pages.user');
-// })->name('admin-user');
-
-// Route::get('/general-trading/admin/banner', function () {
-//     return view('admin.pages.banner');
-// })->name('admin-banner');
-
-// Route::get('/general-trading/admin/category', function () {
-//     return view('admin.pages.category');
-// })->name('admin-category');
-
-// Route::get('/general-trading/admin/contact', function () {
-//     return view('admin.pages.contact');
-// })->name('admin-contact');
-
-
-Route::get('/general-trading/admin', [AuthController::class, 'dashboard'])->name('dashboard');
-
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::prefix('/general-trading')->group(function () {
+    Route::get('/', [HomeController::class, 'landingPage'])->name('landing');
+    Route::get('/product/detail/{id}', [HomeController::class, 'productDetail']);
+    Route::get('/product', [HomeController::class, 'productIndex'])->name('list-product');
+    Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact-page');
+    Route::get('/artikel', [HomeController::class, 'articlePage'])->name('article-page');
+    Route::get('/artikel/detail/{id}', [HomeController::class, 'productDetail']);
+});
 
 Route::middleware('isGuest')->group(function () {
     Route::get('/sign-in', [AuthController::class, 'signIn'])->name('signIn');
     Route::post('/sign-in', [AuthController::class, 'auth'])->name('auth.login');
     Route::get('/sign-up', [AuthController::class, 'signUp'])->name('signUp');
     Route::post('/sign-up', [AuthController::class, 'register'])->name('auth.register');
+
+    Route::post('/record-transaction', [TransactionController::class, 'recordTransaction']);
+});
+
+Route::middleware('isLogin')->group(function () {
+    Route::get('/general-trading/admin', [AuthController::class, 'dashboard'])->name('dashboard');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::middleware('isLogin')->prefix('/user')->name('user.')->group(function () {
@@ -193,4 +150,23 @@ Route::middleware('isLogin')->prefix('/transaction')->name('transaction.')->grou
     Route::get('/edit{id}', [TransactionController::class, 'edit'])->name('edit');
     Route::patch('/update/{id}', [TransactionController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [TransactionController::class, 'destroy'])->name('destroy');
+});
+
+Route::middleware('isLogin')->prefix('/article')->name('article.')->group(function () {
+    Route::get('/', [ArticleController::class, 'index'])->name('index');
+    Route::get('/create-article', [ArticleController::class, 'create'])->name('create');
+    Route::post('/create-article', [ArticleController::class, 'store'])->name('store');
+    Route::get('/edit{id}', [ArticleController::class, 'edit'])->name('edit');
+    Route::patch('/update/{id}', [ArticleController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [ArticleController::class, 'destroy'])->name('destroy');
+});
+
+// product detail
+Route::middleware('isLogin')->prefix('/product-detail')->name('product-detail.')->group(function () {
+    Route::get('/', [ArticleController::class, 'index'])->name('index');
+    Route::get('/create-product-detail', [ArticleController::class, 'create'])->name('create');
+    Route::post('/create-product-detail', [ArticleController::class, 'store'])->name('store');
+    Route::get('/edit{id}', [ArticleController::class, 'edit'])->name('edit');
+    Route::patch('/update/{id}', [ArticleController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [ArticleController::class, 'destroy'])->name('destroy');
 });

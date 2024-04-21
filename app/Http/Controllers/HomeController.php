@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Product;
+use App\Models\Banner;
+use App\Models\Category;
 use App\Models\ProductGrid;
+use App\Models\ProductDetail;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,27 +16,53 @@ class HomeController extends Controller
 
     public function landingPage() {
 
-        $bestSellingProducts = Product::limit(4)->get(); // should be sorted by highest transaction or smt
-        $products = Product::all(); // should change to a limited list or something
-        $productGrids = ProductGrid::limit(3)->get(); // no matter how many data, only 3 is displayed
+        $banner = Banner::all();
+        $category = Category::all();
+        $bestSellingProducts = Product::where('category_id', 1)->limit(4)->get();
+        $products = Product::where('category_id', 3)->limit(4)->get();
+        $productGrids = ProductGrid::limit(3)->get();
+        $contact = Contact::all();
 
         return view('pages.landing', [
+            'banner' => $banner,
+            'category' => $category,
             'bestSellingProducts' => $bestSellingProducts,
             'products' => $products,
             'productGrids' => $productGrids,
+            'contact' => $contact
+        ]);
+    }
+
+    public function contactPage() {
+
+        $contact = Contact::all();
+        return view('pages.contact', [
+            'contact' => $contact
         ]);
     }
 
     public function productIndex()
     {
-        $products = Product::all();
+        $products3 = Product::where('category_id', 3)->limit(4)->get();
+        $products1 = Product::where('category_id', 3)->limit(4)->get();
+        return view('pages.list-product', [
+            'products3' => $products3,
+            'products1' => $products1
+        ]);
+    }
 
-        return view('pages.list-product', ['products' => $products]);
+    public function articlePage() {
+        $data = Article::all();
+        return view('pages.list-artikel', [
+            'data' => $data
+        ]);
     }
 
     public function productDetail($id)
     {
         $product = Product::find($id);
+        $productDetail = ProductDetail::where('product_id', $id)->get();
+        $contact = Contact::where('title', 'Whatsapp')->first()['contact'];
 
         $product['image_array'] = [
             $product['image_1'],
@@ -40,7 +71,19 @@ class HomeController extends Controller
             $product['image_4'],
         ];
 
-        return view('pages.detail-product', ['product' => $product]);
+        return view('pages.detail-product', [
+            'product' => $product,
+            'contact' => $contact,
+            'productDetail' => $productDetail
+        ]);
+    }
+
+    public function articleDetail($id) {
+
+        $data = Article::find($id);
+        return view('pages.detail-artikel', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -62,7 +105,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TransactionProduct $transactionProduct)
+    public function show()
     {
         //
     }
