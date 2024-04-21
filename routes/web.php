@@ -36,6 +36,7 @@ Route::prefix('/general-trading')->group(function () {
     Route::get('/product', [HomeController::class, 'productIndex'])->name('list-product');
     Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact-page');
     Route::get('/artikel', [HomeController::class, 'articlePage'])->name('article-page');
+    Route::get('/artikel/detail/{id}', [HomeController::class, 'productDetail']);
 });
 
 Route::middleware('isGuest')->group(function () {
