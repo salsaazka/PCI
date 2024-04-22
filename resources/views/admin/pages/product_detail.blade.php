@@ -4,8 +4,8 @@
     <div class="card w-100">
         <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center">
-                <h5 class="card-title fw-semibold mb-4">Halaman Article</h5>
-                <a href="{{ route('article.create') }}" class="btn add-new btn-primary m-1 float-end">Tambah Article</a>
+                <h5 class="card-title fw-semibold mb-4">Halaman Product Detail</h5>
+                <a href="{{ route('product-detail.create') }}" class="btn add-new btn-primary m-1 float-end">Tambah Article</a>
             </div>
             <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
@@ -60,9 +60,9 @@
                                 </td>
                                 <td class="">
                                     <div class="d-flex">
-                                        <a href="{{ route('items.edit', $items->id) }} " class="btn btn-warning"
+                                        <a href="{{ route('product-detail.edit', $items->id) }} " class="btn btn-warning"
                                             style="margin-right: 5px"><i class="ti ti-edit"></i></a>
-                                        <form action="/items/delete/{{ $items->id }}" method="POST">
+                                        <form action="/product-detail/delete/{{ $items->id }}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-danger"><i

@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductGridController;
+use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransactionProductController;
 /*
@@ -36,7 +37,7 @@ Route::prefix('/general-trading')->group(function () {
     Route::get('/product', [HomeController::class, 'productIndex'])->name('list-product');
     Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact-page');
     Route::get('/artikel', [HomeController::class, 'articlePage'])->name('article-page');
-    Route::get('/artikel/detail/{id}', [HomeController::class, 'productDetail']);
+    Route::get('/artikel/detail/{id}', [HomeController::class, 'articleDetail']);
 });
 
 Route::middleware('isGuest')->group(function () {
@@ -132,6 +133,15 @@ Route::middleware('isLogin')->prefix('/product')->name('product.')->group(functi
     Route::get('/edit{id}', [ProductController::class, 'edit'])->name('edit');
     Route::patch('/update/{id}', [ProductController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('destroy');
+});
+
+Route::middleware('isLogin')->prefix('/product-detail')->name('productDetail.')->group(function () {
+    Route::get('/', [ProductDetailController::class, 'index'])->name('index');
+    Route::get('/create', [ProductDetailController::class, 'create'])->name('create');
+    Route::post('/create', [ProductDetailController::class, 'store'])->name('store');
+    Route::get('/edit{id}', [ProductDetailController::class, 'edit'])->name('edit');
+    Route::patch('/update/{id}', [ProductDetailController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [ProductDetailController::class, 'destroy'])->name('destroy');
 });
 
 Route::middleware('isLogin')->prefix('/productgrid')->name('productgrid.')->group(function () {

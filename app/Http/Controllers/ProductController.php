@@ -167,4 +167,10 @@ class ProductController extends Controller
         Product::where('id', $id)->delete();
         return redirect()->route('product.index')->with('delete', 'Data berhasil dihapus');
     }
+
+
+    public function createDetail(Request $request)
+    {
+        
+    }
 }

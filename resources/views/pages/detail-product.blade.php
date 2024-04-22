@@ -90,6 +90,18 @@
                                             <td class="">
                                                 <p>{{ $items->measurement }}</p>
                                             </td>
+                                            <td class="d-flex">
+                                                <div class="d-flex">
+                                                    <a href="{{ route('product-detail.edit', $items->id) }} " class="btn btn-warning"
+                                                        style="margin-right: 5px"><i class="ti ti-edit"></i></a>
+                                                    <form action="/product-detail/delete/{{ $items->id }}" method="POST">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger"><i
+                                                                class="ti ti-trash"></i></button>
+                                                    </form>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
