@@ -29,15 +29,15 @@ use App\Http\Controllers\TransactionProductController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::view('detail-artikel', 'pages.detail-artikel')->name('detail-artikel');
+Route::view('detail-product-knowledge', 'pages.detail-product-knowledge')->name('detail-product-knowledge');
 
 Route::prefix('/general-trading')->group(function () {
     Route::get('/', [HomeController::class, 'landingPage'])->name('landing');
     Route::get('/product/detail/{id}', [HomeController::class, 'productDetail']);
     Route::get('/product', [HomeController::class, 'productIndex'])->name('list-product');
     Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact-page');
-    Route::get('/artikel', [HomeController::class, 'articlePage'])->name('article-page');
-    Route::get('/artikel/detail/{id}', [HomeController::class, 'articleDetail']);
+    Route::get('/product-knowledge', [HomeController::class, 'productKnowledgePage'])->name('product-knowledge-page');
+    Route::get('/product-knowledge/detail/{id}', [HomeController::class, 'productKnowledgeDetail']);
 });
 
 Route::middleware('isGuest')->group(function () {

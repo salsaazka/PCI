@@ -51,9 +51,9 @@ class HomeController extends Controller
         ]);
     }
 
-    public function articlePage() {
+    public function productKnowledgePage() {
         $data = Article::all();
-        return view('pages.list-artikel', [
+        return view('pages.list-product-knowledge', [
             'data' => $data
         ]);
     }
@@ -78,10 +78,10 @@ class HomeController extends Controller
         ]);
     }
 
-    public function articleDetail($id) {
+    public function productKnowledgeDetail($id) {
 
         $data = Article::find($id);
-        return view('pages.detail-artikel', [
+        return view('pages.detail-product-knowledge', [
             'data' => $data
         ]);
     }

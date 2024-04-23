@@ -60,11 +60,11 @@
                         id="nav-product" href="{{ route('list-product') }}">PRODUCTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() === 'article-page' || Route::currentRouteName() === 'detail-artikel' ? ' nav-active' : '' }}"
-                        id="nav-product" href="{{ route('article-page') }}">ARTIKEL</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'product-knowledge-page' || Route::currentRouteName() === 'detail-product-knowledge' ? ' nav-active' : '' }}"
+                        id="nav-product" href="{{ route('product-knowledge-page') }}">product-knowledge</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() === 'contact-page' || Route::currentRouteName() === 'detail-artikel' ? ' nav-active' : '' }}"
+                    <a class="nav-link {{ Route::currentRouteName() === 'contact-page' || Route::currentRouteName() === 'detail-product-knowledge' ? ' nav-active' : '' }}"
                         id="nav-product" href="{{ route('contact-page') }}">CONTACT US</a>
                 </li>
                 {{-- <li class="nav-item">
