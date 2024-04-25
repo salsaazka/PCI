@@ -16,7 +16,10 @@ class ProductDetail extends Model
         'size_min',
         'size_max',
         'packing',
-        'measurement'
+        'measurement',
+        'container',
+        'size',
+        'bag'
     ];
 
     public function product()

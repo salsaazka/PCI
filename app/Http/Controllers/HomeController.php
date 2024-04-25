@@ -22,6 +22,7 @@ class HomeController extends Controller
         $products = Product::where('category_id', 3)->limit(4)->get();
         $productGrids = ProductGrid::limit(3)->get();
         $contact = Contact::all();
+        $article = Article::all();
 
         return view('pages.landing', [
             'banner' => $banner,
@@ -29,7 +30,8 @@ class HomeController extends Controller
             'bestSellingProducts' => $bestSellingProducts,
             'products' => $products,
             'productGrids' => $productGrids,
-            'contact' => $contact
+            'contact' => $contact,
+            'article' => $article
         ]);
     }
 
@@ -43,11 +45,17 @@ class HomeController extends Controller
 
     public function productIndex()
     {
-        $products3 = Product::where('category_id', 3)->limit(4)->get();
-        $products1 = Product::where('category_id', 3)->limit(4)->get();
+        $products = Product::where('category_id', 1)->limit(4)->get();
         return view('pages.list-product', [
-            'products3' => $products3,
-            'products1' => $products1
+            'products' => $products,
+        ]);
+    }
+
+    public function productIndex2()
+    {
+        $products = Product::where('category_id', 3)->limit(4)->get();
+        return view('pages.list-product2', [
+            'products' => $products,
         ]);
     }
 

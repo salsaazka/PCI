@@ -24,7 +24,7 @@
 @section('content')
     <div class="container w-75 mx-auto d-block" style="margin-bottom: 90px">
         {{-- @foreach ($data as $item) --}}
-        
+
         <div class="first-line">
 
             <div class="articel-header mb-5">
@@ -32,44 +32,20 @@
                 <h1 class="mb-3">{{ $data->title }}</h1>
                 <div class="row row-cols-auto">
                     <div class="col">
-                        <i class="bi bi-calendar"><span class="mx-2">12th Jan 2024</span></i>
+                        <i class="bi bi-calendar"><span class="mx-2">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('Y-m-d') }}</span></i>
                     </div>
-                    <div class="col">
+                    {{-- <div class="col">
                         <i class="bi bi-folder"><span class="mx-2">Digital Marketing</span></i>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             {{-- @foreach ($data['image_array'] as $image) --}}
-                <img class="w-100" src="{{ asset('assets/images/data/' .$data->image) }}" alt="" style="width:100%">
+                <img class="w-100" src="{{ asset('assets/images/data/' .$data->image) }}" alt="" style="max-height: 500px">
             </div>
             {{-- @endforeach --}}
             <div class="article-content">
-                <p class="fw-bold fs-5 mb-4">
+                <p class="fw-light my-4">
                     {{ $data->desc }}
-                </p>
-                <p class="mb-4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ut nam deleniti eveniet voluptate dolorum 
-                    consectetur quibusdam soluta cupiditate, inventore, earum quam aliquid pariatur labore nihil repellendus 
-                    maiores, ipsa dolorem similique temporibus facere! Cumque tempora explicabo vitae dignissimos recusandae 
-                    sequi culpa enim, mollitia quasi laborum ea, tenetur deleniti reprehenderit dolorum illum maiores. Distinctio 
-                    totam impedit saepe magnam consequuntur id, enim voluptatibus modi veritatis, quos perferendis voluptas? 
-                    Asperiores nesciunt eaque consectetur.
-                </p>
-                <p class="mb-4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ut nam deleniti eveniet voluptate dolorum 
-                    consectetur quibusdam soluta cupiditate, inventore, earum quam aliquid pariatur labore nihil repellendus 
-                    maiores, ipsa dolorem similique temporibus facere! Cumque tempora explicabo vitae dignissimos recusandae 
-                    sequi culpa enim, mollitia quasi laborum ea, tenetur deleniti reprehenderit dolorum illum maiores. Distinctio 
-                    totam impedit saepe magnam consequuntur id, enim voluptatibus modi veritatis, quos perferendis voluptas? 
-                    Asperiores nesciunt eaque consectetur.
-                </p>
-                <p class="mb-4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ut nam deleniti eveniet voluptate dolorum 
-                    consectetur quibusdam soluta cupiditate, inventore, earum quam aliquid pariatur labore nihil repellendus 
-                    maiores, ipsa dolorem similique temporibus facere! Cumque tempora explicabo vitae dignissimos recusandae 
-                    sequi culpa enim, mollitia quasi laborum ea, tenetur deleniti reprehenderit dolorum illum maiores. Distinctio 
-                    totam impedit saepe magnam consequuntur id, enim voluptatibus modi veritatis, quos perferendis voluptas? 
-                    Asperiores nesciunt eaque consectetur.
                 </p>
             </div>
         </div>
@@ -80,4 +56,3 @@
 @section('footer')
     @include('template.footer')
 @endsection
-    

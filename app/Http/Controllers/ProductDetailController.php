@@ -12,11 +12,16 @@ class ProductDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
-    */
+     */
     public function index()
     {
-        $productDetail = ProductDetail::all();
-        return view('pages.detail-product', compact('productDetail'));
+        // ambil ProductDetail::all filter yang titlenya ada
+        $product1 = ProductDetail::whereNotNull('title')->get();
+        $product2 = ProductDetail::whereNotNull('container')->get();
+        return view('admin.pages.product_detail', compact([
+            'product1',
+            'product2',
+        ]));
     }
 
     /**
@@ -24,8 +29,14 @@ class ProductDetailController extends Controller
      */
     public function create()
     {
-        $data = Product::all();
+        $data = Product::where('category_id', 1)->get();
         return view('admin.create.product-detail', compact('data'));
+    }
+
+    public function create2()
+    {
+        $data = Product::where('category_id', 3)->get();
+        return view('admin.create.product-variant', compact('data'));
     }
 
     /**
@@ -46,14 +57,30 @@ class ProductDetailController extends Controller
             'measurement' => $request->measurement,
         ]);
 
-        return redirect()->route('product-detail.index')->with('edit', 'Data berhasil diubah');
+        return redirect()->route('productVariant.index')->with('edit', 'Data berhasil ditambah');
+    }
+
+    public function store2(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required',
+        ]);
+
+        ProductDetail::create([
+            'product_id' => $request->product_id,
+            'container' => $request->container,
+            'size' => $request->size,
+            'bag' => $request->bag,
+        ]);
+
+        return redirect()->route('productVariant.index')->with('edit', 'Data berhasil ditambah');
     }
 
     public function edit($id)
     {
         $dataProduct = ProductDetail::where('id', $id)->first();
         $data = Product::all();
-        return view('admin.edit.product-detail', compact('dataProduct', 'data'));
+        return view('admin.edit.product-variant', compact('dataProduct', 'data'));
     }
 
     public function update(Request $request, $id)

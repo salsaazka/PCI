@@ -34,7 +34,8 @@ Route::view('detail-product-knowledge', 'pages.detail-product-knowledge')->name(
 Route::prefix('/general-trading')->group(function () {
     Route::get('/', [HomeController::class, 'landingPage'])->name('landing');
     Route::get('/product/detail/{id}', [HomeController::class, 'productDetail']);
-    Route::get('/product', [HomeController::class, 'productIndex'])->name('list-product');
+    Route::get('/product-zeolites', [HomeController::class, 'productIndex'])->name('list-product');
+    Route::get('/product-export', [HomeController::class, 'productIndex2'])->name('list-product2');
     Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact-page');
     Route::get('/product-knowledge', [HomeController::class, 'productKnowledgePage'])->name('product-knowledge-page');
     Route::get('/product-knowledge/detail/{id}', [HomeController::class, 'productKnowledgeDetail']);
@@ -135,10 +136,12 @@ Route::middleware('isLogin')->prefix('/product')->name('product.')->group(functi
     Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('destroy');
 });
 
-Route::middleware('isLogin')->prefix('/product-detail')->name('productDetail.')->group(function () {
+Route::middleware('isLogin')->prefix('/product-variant')->name('productVariant.')->group(function () {
     Route::get('/', [ProductDetailController::class, 'index'])->name('index');
-    Route::get('/create', [ProductDetailController::class, 'create'])->name('create');
+    Route::get('/create-zeolites', [ProductDetailController::class, 'create'])->name('create');
+    Route::get('/create-export', [ProductDetailController::class, 'create2'])->name('create2');
     Route::post('/create', [ProductDetailController::class, 'store'])->name('store');
+    Route::post('/create2', [ProductDetailController::class, 'store2'])->name('store2');
     Route::get('/edit{id}', [ProductDetailController::class, 'edit'])->name('edit');
     Route::patch('/update/{id}', [ProductDetailController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [ProductDetailController::class, 'destroy'])->name('destroy');

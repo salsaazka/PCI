@@ -3,14 +3,14 @@
 @section('content-admin')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('productVariant.store') }}" method="POST" enctype="multipart/form-data" class="mb-3 mt-4">
+            <form action="{{ route('productVariant.store2') }}" method="POST" enctype="multipart/form-data" class="mb-3 mt-4">
                 @csrf
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Title</label>
-                            <input type="text" class="form-control" name="title" aria-describedby="title"
-                                placeholder="Masukan title" />
+                            <label for="" class="form-label">Container (Feet)</label>
+                            <input type="number" class="form-control" name="container" aria-describedby=""
+                                placeholder="Masukan Container" />
                         </div>
                     </div>
                     <div class="col-6">
@@ -29,33 +29,16 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Gram Min</label>
-                            <input type="number" class="form-control" name="size_min" aria-describedby=""
-                                placeholder="Masukan size min" />
+                            <label for="" class="form-label">Size (Ton)</label>
+                            <input type="number" class="form-control" name="size" aria-describedby=""
+                                placeholder="Masukan Size" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Gram Max</label>
-                            <input type="number" class="form-control" name="size_max" aria-describedby=""
-                                placeholder="Masukan Size Max" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Packing</label>
-                            <input type="text" class="form-control" name="packing" aria-describedby=""
-                                placeholder="Masukan Packing" />
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Measurement</label>
-                            <input type="text" class="form-control" name="measurement" aria-describedby=""
-                                placeholder="Masukan Measurement" />
+                            <label for="" class="form-label">Bag (Kg)</label>
+                            <input type="number" class="form-control" name="bag" aria-describedby=""
+                                placeholder="Masukan Bag" />
                         </div>
                     </div>
                 </div>
