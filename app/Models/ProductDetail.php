@@ -10,8 +10,16 @@ class ProductDetail extends Model
 {
     use HasFactory;
 
-    protected $guarded = [
-        'id',
+    protected $fillable = [
+        'product_id',
+        'title',
+        'size_min',
+        'size_max',
+        'packing',
+        'measurement',
+        'container',
+        'size',
+        'bag'
     ];
 
     public function product()

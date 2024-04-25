@@ -15,8 +15,12 @@ class ProductDetailController extends Controller
      */
     public function index()
     {
-        $productDetail = ProductDetail::all();
-        return view('admin.pages.product_detail', compact('productDetail'));
+        $product1 = ProductDetail::whereNotNull('title')->get();
+        $product2 = ProductDetail::whereNotNull('container')->get();
+        return view('admin.pages.product_detail', compact([
+            'product1',
+            'product2',
+        ]));
     }
 
     /**
@@ -24,8 +28,14 @@ class ProductDetailController extends Controller
      */
     public function create()
     {
-        $dataCategory = Category::all();
-        return view('admin.create.product', compact('dataCategory'));
+        $data = Product::where('category_id', 1)->get();
+        return view('admin.create.product-detail', compact('data'));
+    }
+
+    public function create2()
+    {
+        $data = Product::where('category_id', 3)->get();
+        return view('admin.create.product-variant', compact('data'));
     }
 
     /**
@@ -35,136 +45,78 @@ class ProductDetailController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'desc' => 'required',
         ]);
 
-        $imgName_1 = null;
-        if ($request->hasFile('image_1')) {
-            $image_1 = $request->file('image_1');
-            $imgExtension = $image_1->getClientOriginalExtension();
-            $imgName_1 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
-            $image_1->move($dPath, $imgName_1);
-        }
-
-        $imgName_2 = null;
-        if ($request->hasFile('image_2')) {
-            $image_2 = $request->file('image_2');
-            $imgExtension = $image_2->getClientOriginalExtension();
-            $imgName_2 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
-            $image_2->move($dPath, $imgName_2);
-        }
-
-        $imgName_3 = null;
-        if ($request->hasFile('image_3')) {
-            $image_3 = $request->file('image_3');
-            $imgExtension = $image_3->getClientOriginalExtension();
-            $imgName_3 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
-            $image_3->move($dPath, $imgName_3);
-        }
-
-        $imgName_4 = null;
-        if ($request->hasFile('image_4')) {
-            $image_4 = $request->file('image_4');
-            $imgExtension = $image_4->getClientOriginalExtension();
-            $imgName_4 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
-            $image_4->move($dPath, $imgName_4);
-        }
-
-        Product::create([
-            'category_id' => $request->category_id,
+        ProductDetail::create([
+            'product_id' => $request->product_id,
             'title' => $request->title,
-            'desc' => $request->desc,
-            'price' => $request->price,
-            'unit' => $request->unit,
-            'stock' => $request->stock,
-            'image_1' => $imgName_1,
-            'image_2' => $imgName_2,
-            'image_3' => $imgName_3,
-            'image_4' => $imgName_4,
-            'min_order' => $request->min_order,
-            'marketplace_url' => $request->marketplace_url,
+            'packing' => $request->packing,
+            'size_min' => $request->size_min,
+            'size_max' => $request->size_max,
+            'measurement' => $request->measurement,
         ]);
 
-        return redirect()->route('product.index')->with('edit', 'Data berhasil diubah');
+        return redirect()->route('productVariant.index')->with('edit', 'Data berhasil ditambah');
+    }
+
+    public function store2(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required',
+        ]);
+
+        ProductDetail::create([
+            'product_id' => $request->product_id,
+            'container' => $request->container,
+            'size' => $request->size,
+            'bag' => $request->bag,
+        ]);
+
+        return redirect()->route('productVariant.index')->with('edit', 'Data berhasil ditambah');
     }
 
     public function edit($id)
     {
-        $dataProduct = Product::where('id', $id)->first();
-        $dataCategory = Category::all();
-        return view('admin.edit.product', compact('dataProduct', 'dataCategory'));
+        $dataProduct = ProductDetail::where('id', $id)->first();
+        $data = Product::all();
+        return view('admin.edit.product-detail', compact('dataProduct', 'data'));
+    }
+
+    public function edit2($id)
+    {
+        $dataProduct = ProductDetail::where('id', $id)->first();
+        $data = Product::all();
+        return view('admin.edit.product-variant', compact('dataProduct', 'data'));
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'desc' => 'required',
+        ProductDetail::where('id', $id)->update([
+            'product_id' => $request->product_id,
+            'title' => $request->title,
+            'packing' => $request->packing,
+            'size_min' => $request->size_min,
+            'size_max' => $request->size_max,
+            'measurement' => $request->measurement,
         ]);
 
-        $product = Product::findOrFail($id); // Ambil produk yang ingin diupdate
-
-        // Update data produk
-        $product->category_id = $request->category_id;
-        $product->title = $request->title;
-        $product->desc = $request->desc;
-        $product->price = $request->price;
-        $product->unit = $request->unit;
-        $product->stock = $request->stock;
-        $product->min_order = $request->min_order;
-        $product->marketplace_url = $request->marketplace_url;
-
-        // Update gambar jika diunggah
-        if ($request->hasFile('image_1')) {
-            $image_1 = $request->file('image_1');
-            $imgExtension = $image_1->getClientOriginalExtension();
-            $imgName_1 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
-            $image_1->move($dPath, $imgName_1);
-            $product->image_1 = $imgName_1;
-        }
-
-        if ($request->hasFile('image_2')) {
-            $image_2 = $request->file('image_2');
-            $imgExtension = $image_2->getClientOriginalExtension();
-            $imgName_2 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
-            $image_2->move($dPath, $imgName_2);
-            $product->image_2 = $imgName_2;
-        }
-
-        if ($request->hasFile('image_3')) {
-            $image_3 = $request->file('image_3');
-            $imgExtension = $image_3->getClientOriginalExtension();
-            $imgName_3 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
-            $image_3->move($dPath, $imgName_3);
-            $product->image_3 = $imgName_3;
-        }
-
-        if ($request->hasFile('image_4')) {
-            $image_4 = $request->file('image_4');
-            $imgExtension = $image_4->getClientOriginalExtension();
-            $imgName_4 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
-            $image_4->move($dPath, $imgName_4);
-            $product->image_4 = $imgName_4;
-        }
-
-        // Simpan perubahan
-        $product->save();
-        return redirect()->route('product.index')->with('edit', 'Data berhasil diubah');
+        return redirect()->route('productVariant.index')->with('edit', 'Data berhasil diubah');
     }
-    /**
-     * Remove the specified resource from storage.
-     */
+
+    public function update2(Request $request, $id)
+    {
+        ProductDetail::where('id', $id)->update([
+            'product_id' => $request->product_id,
+            'container' => $request->container,
+            'size' => $request->size,
+            'bag' => $request->bag,
+        ]);
+        return redirect()->route('productVariant.index')->with('edit', 'Data berhasil diubah');
+    }
+
     public function destroy($id)
     {
-        Product::where('id', $id)->delete();
-        return redirect()->route('product.index')->with('delete', 'Data berhasil dihapus');
+        ProductDetail::where('id', $id)->delete();
+        return redirect()->route('productVariant.index')->with('delete', 'Data berhasil dihapus');
     }
 }

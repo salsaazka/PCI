@@ -9,10 +9,10 @@
 @section('content')
     <div style="min-height: calc(100vh - 340.5px);">
         <div class="landing-hero-v2 flex-column d-flex justify-content-center align-items-center gap-3">
-            <div class="hero-title">List Artikel</div>
+            <div class="hero-title">List product-knowledge</div>
             <div class="hero-bradcrumb">
                 <a href="{{ route('landing') }}">Home /</a>
-                <p class="fw-light mb-0">List Artikel</p>
+                <p class="fw-light mb-0">List product-knowledge</p>
             </div>
         </div>
         <div class="container mb-5">
@@ -21,9 +21,9 @@
                     <div class="row">
                         @foreach ($data as $item)
                             <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                <div class="product-card" onclick="window.location.href = '{{ URL::to('/artikel/detail/' . $item['id']) }}';">
+                                <div class="product-card" onclick="window.location.href = '{{ URL::to('/general-trading/product-knowledge/detail/' . $item['id']) }}';">
                                     <div class="card-image">
-                                        <img src="{{ asset('assets/images/card-example-image.png') }}" alt="">
+                                        <img src="{{ asset('assets/images/data/' . $item['image']) }}" alt="">
                                     </div>
                                     <div class="card-title">
                                         {{ $item['title'] }}
@@ -38,7 +38,7 @@
                                         ?>
                                     </div>
                                     <div class="card-detail-button">
-                                        DETAILS
+                                        <a href="/general-trading/product-knowledge/detail/{{ $item->id }}" class="btn btn-light">Details</a>
                                     </div>
                                 </div>
                             </div>

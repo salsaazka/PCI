@@ -81,11 +81,27 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'productVariant.index' ? 'active' : '' }}" href="{{ route('productVariant.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-box"></i>
+                                </span>
+                                <span class="hide-menu">Product Variant</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link {{ Route::currentRouteName() === 'banner.index' ? 'active' : '' }}" href="{{ route('banner.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-chalkboard"></i>
                                 </span>
                                 <span class="hide-menu">Banner</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'banner-hero.index' ? 'active' : '' }}" href="{{ route('banner-hero.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-chalkboard"></i>
+                                </span>
+                                <span class="hide-menu">Banner Hero</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

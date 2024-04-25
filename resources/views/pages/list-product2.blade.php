@@ -17,12 +17,12 @@
         </div>
         <div class="container mb-5">
             <div class="product-catalogue mt-5" id="product">
-                <div class="best-selling-product-title">ZEOLITES BASED PRODUCT MATERIAL</div>
+                <div class="best-selling-product-title">EXPORT COMMODITIES</div>
                 <div class="product-catalogue-navbar">
                     <div class="row best-selling-card-group mb-2 mb-sm-5">
                         @foreach ($products as $product)
                             <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                <div class="product-card" onclick="window.location.href = '{{ URL::to('/general-trading/product/detail/' . $product['id']) }}';">
+                                <div class="product-card">
                                     <div class="card-image">
                                         <img src="{{ asset('assets/images/data/' . $product['image_1']) }}" alt="">
                                     </div>
@@ -41,9 +41,10 @@
                                         echo $desc;
                                         ?>
                                     </div>
-                                    <div class="card-detail-button text-decoration-none">
+                                    <a class="card-detail-button text-decoration-none"
+                                        href="{{ URL::to('/general-trading/product/detail/' . $product['id']) }}">
                                         DETAILS
-                                </div>
+                                    </a>
                                 </div>
                             </div>
                         @endforeach
