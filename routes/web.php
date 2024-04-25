@@ -26,7 +26,7 @@ use App\Http\Controllers\TransactionProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('landing');
 });
 Route::view('detail-artikel', 'pages.detail-artikel')->name('detail-artikel');
 
