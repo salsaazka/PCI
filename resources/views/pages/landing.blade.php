@@ -9,7 +9,7 @@
 @section('content')
     <div class="landing-hero d-flex justify-content-center align-items-center gap-5">
         <div class="d-flex flex-column">
-            <div class="hero-title">General Trading</div>
+            <div class="hero-title">{{ DB::table('banner-hero')->first()->title }}</div>
             <div class="hero-badges d-flex align-items-center mt-5">
                 <div class="d-flex align-items-center me-2 me-sm-5">
                     <img src="{{ asset('assets/images/exclusive.svg') }}" alt="">
@@ -25,15 +25,13 @@
                 </div>
             </div>
             <div class="hero-description mt-3">
-                We supply best quality zeolites-based products for various applications.
-                We export Indonesian Robusta Green Bean Coffee and Yellow Corn.
-                We grow for other export commodities.
+                {{ DB::table('banner-hero')->first()->description }}
             </div>
             <button class="hero-button mt-4" onclick="window.location.href = '{{ route('list-product') }}'">
                 Browse Product
             </button>
         </div>
-        <img src="{{ asset('assets/images/hero-image.webp') }}" alt="container ship" class="hero-image">
+        <img src="{{ asset('assets/images/data/' . DB::table('banner-hero')->first()->image) }}" alt="container ship" class="hero-image">
 
     </div>
     <?php

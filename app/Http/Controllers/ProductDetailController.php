@@ -15,7 +15,6 @@ class ProductDetailController extends Controller
      */
     public function index()
     {
-        // ambil ProductDetail::all filter yang titlenya ada
         $product1 = ProductDetail::whereNotNull('title')->get();
         $product2 = ProductDetail::whereNotNull('container')->get();
         return view('admin.pages.product_detail', compact([
@@ -80,35 +79,44 @@ class ProductDetailController extends Controller
     {
         $dataProduct = ProductDetail::where('id', $id)->first();
         $data = Product::all();
+        return view('admin.edit.product-detail', compact('dataProduct', 'data'));
+    }
+
+    public function edit2($id)
+    {
+        $dataProduct = ProductDetail::where('id', $id)->first();
+        $data = Product::all();
         return view('admin.edit.product-variant', compact('dataProduct', 'data'));
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
+        ProductDetail::where('id', $id)->update([
+            'product_id' => $request->product_id,
+            'title' => $request->title,
+            'packing' => $request->packing,
+            'size_min' => $request->size_min,
+            'size_max' => $request->size_max,
+            'measurement' => $request->measurement,
         ]);
 
-        $product = ProductDetail::findOrFail($id); // Ambil produk yang ingin diupdate
-
-        // Update data produk
-        $product->product_id = $request->product_id;
-        $product->title = $request->title;
-        $product->packing = $request->packing;
-        $product->size_min = $request->size_min;
-        $product->size_max = $request->size_max;
-        $product->measurement = $request->measurement;
-
-        // Simpan perubahan
-        $product->save();
-        return redirect()->route('product-detail.index')->with('edit', 'Data berhasil diubah');
+        return redirect()->route('productVariant.index')->with('edit', 'Data berhasil diubah');
     }
-    /**
-     * Remove the specified resource from storage.
-     */
+
+    public function update2(Request $request, $id)
+    {
+        ProductDetail::where('id', $id)->update([
+            'product_id' => $request->product_id,
+            'container' => $request->container,
+            'size' => $request->size,
+            'bag' => $request->bag,
+        ]);
+        return redirect()->route('productVariant.index')->with('edit', 'Data berhasil diubah');
+    }
+
     public function destroy($id)
     {
         ProductDetail::where('id', $id)->delete();
-        return redirect()->route('product-detail.index')->with('delete', 'Data berhasil dihapus');
+        return redirect()->route('productVariant.index')->with('delete', 'Data berhasil dihapus');
     }
 }

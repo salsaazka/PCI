@@ -48,6 +48,7 @@
                         <tbody>
                             @php
                                 $no = 1;
+
                             @endphp
                             @foreach ($product1 as $items)
                                 <tr>
@@ -55,7 +56,16 @@
                                         <p>{{ $no++ }}</p>
                                     </td>
                                     <td class="">
-                                        <p>{{ $items->title }}</p>
+                                        {{-- filter berdasarkan product_id --}}
+                                        <p>
+                                        @php
+                                            $product = DB::table('products')->where('id', $items->product_id)->first();
+
+                                            $titleProduct = $product->title;
+
+                                            echo $titleProduct
+                                        @endphp
+                                        </p>
                                     </td>
                                     <td class="">
                                         <p>{{ $items->title }}</p>
@@ -128,7 +138,15 @@
                                         <p>{{ $no++ }}</p>
                                     </td>
                                     <td class="">
-                                        <p>{{ $items->product_id }}</p>
+                                        <p>
+                                            @php
+                                                $product = DB::table('products')->where('id', $items->product_id)->first();
+
+                                                $titleProduct = $product->title;
+
+                                                echo $titleProduct
+                                            @endphp
+                                            </p>
                                     </td>
                                     <td class="">
                                         <p>{{ $items->container }}</p>
@@ -141,7 +159,7 @@
                                     </td>
                                     <td class="">
                                         <div class="d-flex">
-                                            <a href="{{ route('productVariant.edit', $items->id) }} "
+                                            <a href="{{ route('productVariant.edit2', $items->id) }} "
                                                 class="btn btn-warning" style="margin-right: 5px"><i
                                                     class="ti ti-edit"></i></a>
                                             <form action="/product-variant/delete/{{ $items->id }}" method="POST">

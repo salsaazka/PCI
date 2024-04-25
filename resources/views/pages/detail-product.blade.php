@@ -27,7 +27,7 @@
         <div class="container mb-5">
             <div class="row first-line">
                 <div class="col-12 col-lg-8 col-xl-9">
-                    <div class="card box-shadow">
+                    <div class="card">
                         <div class="descripsi-product">
                             <div class="tab-pane fade show active" id="nav-detail" role="tabpanel"
                                 aria-labelledby="nav-detail-tab">
@@ -41,73 +41,115 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card box-shadow mt-3 container">
-                        <div class="table-responsive">
-                            <table class="table text-nowrap mb-0 align-middle">
-                                <thead class="text-dark fs-4">
-                                    <tr>
-                                        <th style="font-size: 14px">
-                                            No
-                                        </th>
-                                        <th style="font-size: 14px">
-                                            Product
-                                        </th>
-                                        <th style="font-size: 14px">
-                                            Title
-                                        </th>
-                                        <th style="font-size: 14px">
-                                           Packing
-                                        </th>
-                                        <th style="font-size: 14px">
-                                            Size
-                                        </th>
-                                        <th style="font-size: 14px">
-                                            Measurement
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                        $no = 1;
-                                    @endphp
-                                    @foreach ($productDetail as $items)
-                                        <tr>
-                                            <td class="">
-                                                <p>{{ $no++ }}</p>
-                                            </td>
-                                             <td class="">
-                                                <p>{{ $items->title }}</p>
-                                            </td>
-                                            <td class="">
-                                                <p>{{ $items->title }}</p>
-                                            </td>
-                                             <td class="">
-                                                <p>{{ $items->packing }}</p>
-                                            </td>
-                                            <td class="">
-                                                <p>{{ $items->size_min }} - {{ $items->size_max }}</p>
-                                            </td>
-                                            <td class="">
-                                                <p>{{ $items->measurement }}</p>
-                                            </td>
-                                            <td class="d-flex">
-                                                <div class="d-flex">
-                                                    <a href="{{ route('product-detail.edit', $items->id) }} " class="btn btn-warning"
-                                                        style="margin-right: 5px"><i class="ti ti-edit"></i></a>
-                                                    <form action="/product-detail/delete/{{ $items->id }}" method="POST">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-danger"><i
-                                                                class="ti ti-trash"></i></button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    @if ($productDetail->count() > 0)
+                        @if ($product['category_id'] == 1)
+                            <div class="card mt-3 container">
+                                <div class="table-responsive">
+                                    <table class="table text-nowrap mb-0 align-middle">
+                                        <thead class="text-dark fs-4">
+                                            <tr>
+                                                <th style="font-size: 14px">
+                                                    No
+                                                </th>
+                                                <th style="font-size: 14px">
+                                                    Product
+                                                </th>
+                                                <th style="font-size: 14px">
+                                                    Title
+                                                </th>
+                                                <th style="font-size: 14px">
+                                                    Packing
+                                                </th>
+                                                <th style="font-size: 14px">
+                                                    Size
+                                                </th>
+                                                <th style="font-size: 14px">
+                                                    Measurement
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $no = 1;
+                                            @endphp
+                                            @foreach ($productDetail as $items)
+                                                <tr>
+                                                    <td class="">
+                                                        <p>{{ $no++ }}</p>
+                                                    </td>
+                                                    <td class="">
+                                                        <p>{{ $product['title'] }}</p>
+                                                    </td>
+                                                    <td class="">
+                                                        <p>{{ $items->title }}</p>
+                                                    </td>
+                                                    <td class="">
+                                                        <p>{{ $items->packing }}</p>
+                                                    </td>
+                                                    <td class="">
+                                                        <p>{{ $items->size_min }} - {{ $items->size_max }}</p>
+                                                    </td>
+                                                    <td class="">
+                                                        <p>{{ $items->measurement }}</p>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @else
+                            <div class="card mt-3 container">
+                                <div class="table-responsive">
+                                    <table class="table text-nowrap mb-0 align-middle">
+                                        <thead class="text-dark fs-4">
+                                            <tr>
+                                                <th style="font-size: 14px">
+                                                    No
+                                                </th>
+                                                <th style="font-size: 14px">
+                                                    Product
+                                                </th>
+                                                <th style="font-size: 14px">
+                                                    Container (Feet)
+                                                </th>
+                                                <th style="font-size: 14px">
+                                                    Size (Ton)
+                                                </th>
+                                                <th style="font-size: 14px">
+                                                    Bag (Kg)
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $no = 1;
+                                            @endphp
+                                            @foreach ($productDetail as $items)
+                                                <tr>
+                                                    <td class="">
+                                                        <p>{{ $no++ }}</p>
+                                                    </td>
+                                                    <td class="">
+                                                        <p>{{$product['title'] }}</p>
+                                                    </td>
+                                                    <td class="">
+                                                        <p>{{ $items->container }}</p>
+                                                    </td>
+                                                    <td class="">
+                                                        <p>{{ $items->size }}</p>
+                                                    </td>
+                                                    <td class="">
+                                                        <p>{{ $items->bag }}</p>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
                 </div>
                 <div class="col-12 col-lg-4 col-xl-3">
                     <div class="wrapper-summary">

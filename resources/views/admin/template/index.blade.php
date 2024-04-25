@@ -97,6 +97,14 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link {{ Route::currentRouteName() === 'banner-hero.index' ? 'active' : '' }}" href="{{ route('banner-hero.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-chalkboard"></i>
+                                </span>
+                                <span class="hide-menu">Banner Hero</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link {{ Route::currentRouteName() === 'article.index' ? 'active' : '' }}" href="{{ route('article.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-chalkboard"></i>

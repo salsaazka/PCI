@@ -5,6 +5,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BannerHeroController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
@@ -86,9 +87,18 @@ Route::middleware('isLogin')->prefix('/banner')->name('banner.')->group(function
     Route::get('/', [BannerController::class, 'index'])->name('index');
     Route::get('/create-banner', [BannerController::class, 'create'])->name('create');
     Route::post('/create-banner', [BannerController::class, 'store'])->name('store');
-    Route::get('/edit{id}', [BannerController::class, 'edit'])->name('edit');
+    Route::get('/edit/{id}', [BannerController::class, 'edit'])->name('edit');
     Route::patch('/update/{id}', [BannerController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [BannerController::class, 'destroy'])->name('destroy');
+});
+
+Route::middleware('isLogin')->prefix('/banner-hero')->name('banner-hero.')->group(function () {
+    Route::get('/', [BannerHeroController::class, 'index'])->name('index');
+    Route::get('/create-banner-hero', [BannerHeroController::class, 'create'])->name('create');
+    Route::post('/create-banner-hero', [BannerHeroController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [BannerHeroController::class, 'edit'])->name('edit');
+    Route::patch('/update/{id}', [BannerHeroController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [BannerHeroController::class, 'destroy'])->name('destroy');
 });
 
 Route::middleware('isLogin')->prefix('/cart')->name('cart.')->group(function () {
@@ -142,8 +152,10 @@ Route::middleware('isLogin')->prefix('/product-variant')->name('productVariant.'
     Route::get('/create-export', [ProductDetailController::class, 'create2'])->name('create2');
     Route::post('/create', [ProductDetailController::class, 'store'])->name('store');
     Route::post('/create2', [ProductDetailController::class, 'store2'])->name('store2');
-    Route::get('/edit{id}', [ProductDetailController::class, 'edit'])->name('edit');
+    Route::get('/edit/{id}', [ProductDetailController::class, 'edit'])->name('edit');
+    Route::get('/edit2/{id}', [ProductDetailController::class, 'edit2'])->name('edit2');
     Route::patch('/update/{id}', [ProductDetailController::class, 'update'])->name('update');
+    Route::patch('/update2/{id}', [ProductDetailController::class, 'update2'])->name('update2');
     Route::delete('/delete/{id}', [ProductDetailController::class, 'destroy'])->name('destroy');
 });
 
