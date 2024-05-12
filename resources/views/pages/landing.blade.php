@@ -30,6 +30,8 @@
             <button class="hero-button mt-4" onclick="window.location.href = '{{ route('list-product') }}'">
                 Browse Product
             </button>
+            {{-- <p>@lang('messages.welcome')</p>
+            {{ session('locale') }} --}}
         </div>
         <img src="{{ asset('assets/images/data/' . DB::table('banner-hero')->first()->image) }}" alt="container ship" class="hero-image">
 

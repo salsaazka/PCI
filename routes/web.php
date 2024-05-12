@@ -10,6 +10,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductGridController;
@@ -30,9 +31,12 @@ use App\Http\Controllers\TransactionProductController;
 Route::get('/', function () {
     return redirect()->route('landing');
 });
+
+Route::get('locale/{lang}', [LocaleController::class, 'setLocale']);
+
 Route::view('detail-product-knowledge', 'pages.detail-product-knowledge')->name('detail-product-knowledge');
 
-Route::prefix('/general-trading')->group(function () {
+Route::prefix('/general-trading')->middleware('localize')->group(function () {
     Route::get('/', [HomeController::class, 'landingPage'])->name('landing');
     Route::get('/product/detail/{id}', [HomeController::class, 'productDetail']);
     Route::get('/product-zeolites', [HomeController::class, 'productIndex'])->name('list-product');
