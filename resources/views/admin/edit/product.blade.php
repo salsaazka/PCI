@@ -10,9 +10,16 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Title</label>
-                            <input type="text" class="form-control" name="title" value="{{ $dataProduct->title }}"
-                                aria-describedby="" placeholder="Masukan title" />
+                            <label for="" class="form-label">Satuan</label>
+                            <select class="form-select" aria-label="Default select example" name="unit">
+                                @if ($dataProduct->unit == 'pcs')
+                                    <option value="pcs" selected>Pcs</option>
+                                    <option value="container">Container</option>
+                                @else
+                                    <option value="pcs">Pcs</option>
+                                    <option value="container" selected>Container</option>
+                                @endif
+                            </select>
                         </div>
                     </div>
                     <div class="col-6">
@@ -66,22 +73,31 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Satuan</label>
-                            <select class="form-select" aria-label="Default select example" name="unit">
-                                @if ($dataProduct->unit == 'pcs')
-                                    <option value="pcs" selected>Pcs</option>
-                                    <option value="container">Container</option>
-                                @else
-                                    <option value="pcs">Pcs</option>
-                                    <option value="container" selected>Container</option>
-                                @endif
-                            </select>
+                            <label for="" class="form-label">Title ID</label>
+                            <input type="text" class="form-control" name="title" value="{{ $dataProduct->title }}"
+                                aria-describedby="" placeholder="Masukan title" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Description</label>
+                            <label for="" class="form-label">Description ID</label>
                             <textarea name="desc" id="" cols="5" rows="5" class="form-control" placeholder="Masukan Description">{{ $dataProduct->desc }}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Title EN</label>
+                            <input type="text" class="form-control" name="title_en" value="{{ $dataProduct->title_en }}"
+                                aria-describedby="" placeholder="Masukan title" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description EN</label>
+                            <textarea name="desc_en" id="" cols="5" rows="5" class="form-control" placeholder="Masukan Description">{{ $dataProduct->desc_en }}</textarea>
                         </div>
                     </div>
                 </div>

@@ -32,6 +32,8 @@ class BannerController extends Controller
         $request->validate([
             'title' => 'required',
             'desc' => 'required',
+            'title_en' => 'required',
+            'desc_en' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
         ]);
 
@@ -43,8 +45,10 @@ class BannerController extends Controller
 
         Banner::create([
             'title' => $request->title,
+            'title_en' => $request->title_en,
             'image' => $imgName,
             'desc' => $request->desc,
+            'desc_en' => $request->desc_en,
         ]);
         return redirect()->route('banner.index')->with('add', 'Data berhasil ditambahkan');
     }
@@ -80,13 +84,17 @@ class BannerController extends Controller
 
             Banner::where('id', $id)->update([
                 'title' => $request->title,
+                'title_en' => $request->title_en,
                 'image' => $imgName,
                 'desc' => $request->desc,
+                'desc_en' => $request->desc_en,
             ]);
         } else {
             Banner::where('id', $id)->update([
                 'title' => $request->title,
+                'title_en' => $request->title_en,
                 'desc' => $request->desc,
+                'desc_en' => $request->desc_en,
             ]);
         }
         return redirect()->route('banner.index')->with('edit', 'Data berhasil diubah');

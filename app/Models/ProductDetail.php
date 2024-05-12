@@ -13,10 +13,12 @@ class ProductDetail extends Model
     protected $fillable = [
         'product_id',
         'title',
+        'title_en',
         'size_min',
         'size_max',
         'packing',
         'measurement',
+        'measurement_en',
         'container',
         'size',
         'bag'

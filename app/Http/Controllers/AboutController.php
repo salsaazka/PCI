@@ -39,6 +39,7 @@ class AboutController extends Controller
             'no_telp' => $request->no_telp,
             'email' => $request->email,
             'desc' => $request->desc,
+            'desc_en' => $request->desc_en
         ]);
         return redirect()->route('about.index')->with('add', 'Data berhasil ditambahkan');
     }
@@ -74,6 +75,7 @@ class AboutController extends Controller
                 'no_telp' => $request->no_telp,
                 'email' => $request->email,
                 'desc' => $request->desc,
+                'desc_en' => $request->desc_en
             ]);
         } else {
             About::where('id', $id)->update([
@@ -81,6 +83,7 @@ class AboutController extends Controller
                 'no_telp' => $request->no_telp,
                 'email' => $request->email,
                 'desc' => $request->desc,
+                'desc_en' => $request->desc_en
             ]);
         }
         return redirect()->route('about.index')->with('edit', 'Data berhasil diubah');

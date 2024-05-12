@@ -36,6 +36,8 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required',
             'desc' => 'required',
+            'title_en' => 'required',
+            'desc_en' => 'required',
         ]);
 
         $imgName_1 = null;
@@ -77,7 +79,9 @@ class ProductController extends Controller
         Product::create([
             'category_id' => $request->category_id,
             'title' => $request->title,
+            'title_en' => $request->title_en,
             'desc' => $request->desc,
+            'desc_en' => $request->desc_en,
             'price' => $request->price,
             'unit' => $request->unit,
             'stock' => $request->stock,
@@ -104,6 +108,8 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required',
             'desc' => 'required',
+            'title_en' => 'required',
+            'desc_en' => 'required',
         ]);
 
         $product = Product::findOrFail($id); // Ambil produk yang ingin diupdate
@@ -111,7 +117,9 @@ class ProductController extends Controller
         // Update data produk
         $product->category_id = $request->category_id;
         $product->title = $request->title;
+        $product->title_en = $request->title_en;
         $product->desc = $request->desc;
+        $product->desc_en = $request->desc_en;
         $product->price = $request->price;
         $product->unit = $request->unit;
         $product->stock = $request->stock;

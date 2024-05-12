@@ -45,15 +45,18 @@ class ProductDetailController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'title_en' => 'required',
         ]);
 
         ProductDetail::create([
             'product_id' => $request->product_id,
             'title' => $request->title,
+            'title_en' => $request->title_en,
             'packing' => $request->packing,
             'size_min' => $request->size_min,
             'size_max' => $request->size_max,
             'measurement' => $request->measurement,
+            'weight' => $request->weight,
         ]);
 
         return redirect()->route('productVariant.index')->with('edit', 'Data berhasil ditambah');
@@ -94,10 +97,12 @@ class ProductDetailController extends Controller
         ProductDetail::where('id', $id)->update([
             'product_id' => $request->product_id,
             'title' => $request->title,
+            'title_en' => $request->title_en,
             'packing' => $request->packing,
             'size_min' => $request->size_min,
             'size_max' => $request->size_max,
             'measurement' => $request->measurement,
+            'measurement_en' => $request->measurement_en,
         ]);
 
         return redirect()->route('productVariant.index')->with('edit', 'Data berhasil diubah');

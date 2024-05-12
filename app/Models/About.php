@@ -14,6 +14,7 @@ class About extends Model
         'address',
         'no_telp',
         'email',
-        'desc'
+        'desc',
+        'desc_en'
     ];
 }

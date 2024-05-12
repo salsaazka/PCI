@@ -38,8 +38,17 @@
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Description</label>
+                            <label for="" class="form-label">Description ID</label>
                             <textarea name="desc" id="" cols="5" rows="5" class="form-control">{{ $dataAbout->desc }}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description EN</label>
+                            <textarea name="desc_en" id="" cols="5" rows="5" class="form-control">{{ $dataAbout->desc_en }}</textarea>
                         </div>
                     </div>
                 </div>

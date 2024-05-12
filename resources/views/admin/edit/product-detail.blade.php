@@ -10,24 +10,16 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Title</label>
+                            <label for="" class="form-label">Title ID</label>
                             <input type="text" class="form-control" name="title" value="{{ $dataProduct->title }}"
                                 aria-describedby="title" placeholder="Masukan title" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Product</label>
-                            <select class="form-select" aria-label="Default select example" name="product_id">
-                                <option value="">Pilih Product</option>
-                                @foreach ($data as $item)
-                                    @if ($item->id == $dataProduct->product_id)
-                                        <option value="{{ $item->id }}" selected>{{ $item->title }}</option>
-                                    @else
-                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            <label for="" class="form-label">Title EN</label>
+                            <input type="text" class="form-control" name="title_en" value="{{ $dataProduct->title_en }}"
+                                aria-describedby="title" placeholder="Masukan title" />
                         </div>
                     </div>
                 </div>
@@ -59,9 +51,34 @@
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Measurement</label>
+                            <label for="" class="form-label">Product</label>
+                            <select class="form-select" aria-label="Default select example" name="product_id">
+                                <option value="">Pilih Product</option>
+                                @foreach ($data as $item)
+                                    @if ($item->id == $dataProduct->product_id)
+                                        <option value="{{ $item->id }}" selected>{{ $item->title }}</option>
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Measurement ID</label>
                             <input type="text" class="form-control" name="measurement"
                                 value="{{ $dataProduct->measurement }}" placeholder="Masukan Measurement" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Measurement EN</label>
+                            <input type="text" class="form-control" name="measurement_en"
+                                value="{{ $dataProduct->measurement_en }}" placeholder="Masukan Measurement" />
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,9 @@ class ProductGrid extends Model
     [
         'category_id',
         'title',
+        'title_en',
         'desc',
+        'desc_en',
         'image'
     ];
 }

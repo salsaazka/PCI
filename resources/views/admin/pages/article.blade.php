@@ -15,14 +15,20 @@
                                 No
                             </th>
                             <th class="">
-                                Title
-                            </th>
-                            <th class="">
                                 Image
                             </th>
                             <th class="">
-                               Desc
+                                Title ID
                             </th>
+                            <th class="">
+                                Title EN
+                            </th>
+                            <th class="">
+                                Description ID
+                            </th>
+                            <th class="">
+                                Description EN
+                             </th>
                             <th class="">
                                 Action
                             </th>
@@ -38,14 +44,20 @@
                                     <p>{{ $no++ }}</p>
                                 </td>
                                 <td class="">
-                                    <p>{{ $article->title }}</p>
-                                </td>
-                                <td class="">
                                     <img src="{{ asset('assets/images/data/' . $article->image) }}" alt="img"
                                         width="50" height="50">
                                 </td>
+                                <td class="">
+                                    <p>{{ $article->title }}</p>
+                                </td>
+                                <td class="">
+                                    <p>{{ $article->title_en }}</p>
+                                </td>
                                 <td class="" style="max-width: 200px;">
                                     <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $article->desc }}</p>
+                                </td>
+                                <td class="" style="max-width: 200px;">
+                                    <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $article->desc_en }}</p>
                                 </td>
                                 <td class="">
                                     <div class="d-flex">

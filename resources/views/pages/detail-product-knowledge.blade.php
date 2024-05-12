@@ -27,29 +27,35 @@
 
         <div class="first-line">
 
-            <div class="articel-header mb-5">
-                <p class="mb-3"></p>
-                <h1 class="mb-3">{{ $data->title }}</h1>
+            <div class="articel-header mb-5 pt-5">
+                <a class="d-flex align-items-center gap-1 text-decoration-none" href="{{ route('product-knowledge-page') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#dc3545" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                      </svg>
+                    <i class="text-danger">Kembali</i>
+                    </a>
+                <h1 class="mb-3 mt-1">{{ $data->title }}</h1>
                 <div class="row row-cols-auto">
                     <div class="col">
-                        <i class="bi bi-calendar"><span class="mx-2">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('Y-m-d') }}</span></i>
+                        <i class="bi bi-calendar"><span
+                                class="mx-2">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('Y-m-d') }}</span></i>
                     </div>
                     {{-- <div class="col">
                         <i class="bi bi-folder"><span class="mx-2">Digital Marketing</span></i>
                     </div> --}}
                 </div>
             </div>
-            {{-- @foreach ($data['image_array'] as $image) --}}
-                <img class="w-100" src="{{ asset('assets/images/data/' .$data->image) }}" alt="" style="max-height: 500px">
-            </div>
-            {{-- @endforeach --}}
-            <div class="article-content">
-                <p class="fw-light my-4">
-                    {{ $data->desc }}
-                </p>
+            <div class="image-container">
+                <img src="{{ asset('assets/images/data/' . $data->image) }}" alt="">
             </div>
         </div>
-        {{-- @endforeach --}}
+        <div class="article-content">
+            <p class="fw-light my-4">
+                {{ $data->desc }}
+            </p>
+        </div>
+    </div>
+    {{-- @endforeach --}}
     </div>
 @endsection
 

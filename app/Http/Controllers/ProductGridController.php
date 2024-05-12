@@ -33,6 +33,8 @@ class ProductGridController extends Controller
         $request->validate([
             'title' => 'required',
             'desc' => 'required',
+            'title_en' => 'required',
+            'desc_en' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
         ]);
 
@@ -45,8 +47,10 @@ class ProductGridController extends Controller
         ProductGrid::create([
             'category_id' => $request->category_id,
             'title' => $request->title,
+            'title_en' => $request->title_en,
             'image' =>  $imgName,
             'desc' => $request->desc,
+            'desc_en' => $request->desc_en
         ]);
 
         return redirect()->route('productgrid.index')->with('add', 'Data berhasil ditambahkan');
@@ -91,14 +95,18 @@ class ProductGridController extends Controller
             ProductGrid::where('id', $id)->update([
                 'category_id' => $request->category_id,
                 'title' => $request->title,
+                'title_en' => $request->title_en,
                 'image' =>  $imgName,
                 'desc' => $request->desc,
+                'desc_en' => $request->desc_en
             ]);
         } else {
             ProductGrid::where('id', $id)->update([
                 'category_id' => $request->category_id,
                 'title' => $request->title,
+                'title_en' => $request->title_en,
                 'desc' => $request->desc,
+                'desc_en' => $request->desc_en
             ]);
         }
 

@@ -71,13 +71,17 @@ class BannerHeroController extends Controller
             DB::table('banner-hero')->where('id', $id)->update([
                 'image' => $imageName,
                 'description' => $request->description,
-                'title' => $request->title
+                'desc_en' => $request->desc_en,
+                'title' => $request->title,
+                'title_en' => $request->title_en
             ]);
         } else {
 
             DB::table('banner-hero')->where('id', $id)->update([
                 'description' => $request->description,
-                'title' => $request->title
+                'desc_en' => $request->desc_en,
+                'title' => $request->title,
+                'title_en' => $request->title_en
             ]);
         }
         return redirect()->route('banner-hero.index')->with('edit', 'Data berhasil diubah');

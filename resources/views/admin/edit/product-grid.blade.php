@@ -22,7 +22,7 @@
             <div class="col-6">
                 <div class="mb-3">
                 <label for="" class="form-label"
-                    >Title</label
+                    >Title ID</label
                 >
                 <input
                     type="text"
@@ -37,9 +37,35 @@
             <div class="col-6">
                 <div class="mb-3">
                 <label for="" class="form-label"
-                    >Description</label
+                    >Description ID</label
                 >
                 <textarea name="desc" id="" cols="5" rows="5" class="form-control">{{ $dataProductGrid->desc }}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                <label for="" class="form-label"
+                    >Title EN</label
+                >
+                <input
+                    type="text"
+                    class="form-control"
+                    name="title_en"
+                    value="{{ $dataProductGrid->title_en }}"
+                    aria-describedby=""
+                    placeholder="Masukan title"
+                />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                <label for="" class="form-label"
+                    >Description EN</label
+                >
+                <textarea name="desc_en" id="" cols="5" rows="5" class="form-control">{{ $dataProductGrid->desc_en }}</textarea>
                 </div>
             </div>
         </div>

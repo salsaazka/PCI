@@ -31,7 +31,9 @@ class ArticleController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'title_en' => 'required',
             'desc' => 'required',
+            'desc_en' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
         ]);
 
@@ -43,8 +45,10 @@ class ArticleController extends Controller
 
         Article::create([
             'title' => $request->title,
+            'title_en' => $request->title_en,
             'image' => $imgName,
             'desc' => $request->desc,
+            'desc_en' => $request->desc_en,
         ]);
         return redirect()->route('article.index')->with('add', 'Data berhasil ditambahkan');
     }
@@ -82,14 +86,18 @@ class ArticleController extends Controller
 
             Article::where('id', $id)->update([
                 'title' => $request->title,
+                'title_en' => $request->title_en,
                 'image' => $imgName,
                 'desc' => $request->desc,
+                'desc_en' => $request->desc_en,
             ]);
         } else {
 
             Article::where('id', $id)->update([
                 'title' => $request->title,
+                'title_en' => $request->title_en,
                 'desc' => $request->desc,
+                'desc_en' => $request->desc_en,
             ]);
 
         }

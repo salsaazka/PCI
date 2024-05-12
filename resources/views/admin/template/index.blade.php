@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PT. PRIJADI CAHAYA INDONESIA</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets-admin/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets-admin/css/app.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropify/dist/css/dropify.min.css">
