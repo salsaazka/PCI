@@ -61,9 +61,9 @@
         <div class="article-content">
             <p class="fw-light my-4">
                 @if (session('locale') == 'id')
-                    {{ $data->desc }}
+                    {!! $data->desc !!}
                 @else
-                    {{ $data->desc_en }}
+                    {!! $data->desc_en !!}
                 @endif
             </p>
         </div>

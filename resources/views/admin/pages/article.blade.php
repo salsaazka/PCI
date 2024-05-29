@@ -54,10 +54,10 @@
                                     <p>{{ $article->title_en }}</p>
                                 </td>
                                 <td class="" style="max-width: 200px;">
-                                    <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $article->desc }}</p>
+                                    <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{!! strip_tags($article->desc) !!}</p>
                                 </td>
                                 <td class="" style="max-width: 200px;">
-                                    <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $article->desc_en }}</p>
+                                    <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{!! strip_tags($article->desc_en) !!}</p>
                                 </td>
                                 <td class="">
                                     <div class="d-flex">

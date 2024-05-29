@@ -107,14 +107,14 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Image 1</label>
-                            <input type="file" name="image_1 " value="{{ $dataProduct->image_1 }}"
+                            <input type="file" name="image_1" value="{{ $dataProduct->image_1 }}"
                                 class="form-control dropify1" id="inputGroupFile01">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Image 2</label>
-                            <input type="file" name="image_2 " value="{{ $dataProduct->image_2 }}"
+                            <input type="file" name="image_2" value="{{ $dataProduct->image_2 }}"
                                 class="form-control dropify2" id="inputGroupFile02">
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Image 3</label>
-                            <input type="file" name="image_3 " value="{{ $dataProduct->image_3 }}"
+                            <input type="file" name="image_3" value="{{ $dataProduct->image_3 }}"
                                 class="form-control dropify3" id="inputGroupFile03">
                         </div>
                     </div>
