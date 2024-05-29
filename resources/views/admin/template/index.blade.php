@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropify/dist/css/dropify.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    @yield('css-admin')
 </head>
 
 <body>

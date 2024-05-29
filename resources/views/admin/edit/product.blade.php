@@ -8,7 +8,7 @@
                 @csrf
                 @method('PATCH')
                 <div class="row">
-                    <div class="col-6">
+                    {{-- <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Satuan</label>
                             <select class="form-select" aria-label="Default select example" name="unit">
@@ -21,22 +21,22 @@
                                 @endif
                             </select>
                         </div>
-                    </div>
-                    <div class="col-6">
+                    </div> --}}
+                    <div class="col-12">
                         <label for="" class="form-label">Kategory</label>
-                            <select class="form-select" aria-label="Default select example" name="category_id">
-                                @foreach ($dataCategory as $item)
-                                    @if( $item->id == $dataProduct->category_id )
-                                        <option value="{{ $item->id }}" selected>{{ $item->title }}</option>
-                                    @else
-                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                        <select class="form-select" aria-label="Default select example" name="category_id">
+                            @foreach ($dataCategory as $item)
+                                @if ($item->id == $dataProduct->category_id)
+                                    <option value="{{ $item->id }}" selected>{{ $item->title }}</option>
+                                @else
+                                    <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                @endif
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Price</label>
@@ -68,7 +68,7 @@
                                 placeholder="Masukan Marketplace Url" />
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="row">
                     <div class="col-6">
@@ -80,8 +80,9 @@
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Description ID</label>
-                            <textarea name="desc" id="" cols="5" rows="5" class="form-control" placeholder="Masukan Description">{{ $dataProduct->desc }}</textarea>
+                            <label for="" class="form-label">Title EN</label>
+                            <input type="text" class="form-control" name="title_en" value="{{ $dataProduct->title_en }}"
+                                aria-describedby="" placeholder="Masukan title" />
                         </div>
                     </div>
                 </div>
@@ -89,15 +90,14 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Title EN</label>
-                            <input type="text" class="form-control" name="title_en" value="{{ $dataProduct->title_en }}"
-                                aria-describedby="" placeholder="Masukan title" />
+                            <label for="" class="form-label">Description ID</label>
+                            <textarea name="desc" id="editor1" cols="5" rows="5">{{ $dataProduct->desc }}</textarea>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Description EN</label>
-                            <textarea name="desc_en" id="" cols="5" rows="5" class="form-control" placeholder="Masukan Description">{{ $dataProduct->desc_en }}</textarea>
+                            <textarea name="desc_en" id="editor2" cols="5" rows="5">{{ $dataProduct->desc_en }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -108,15 +108,15 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Image 1</label>
-                            <input type="file" name="image_1 " value="{{ $dataProduct->image_1 }}" class="form-control dropify1"
-                                id="inputGroupFile01">
+                            <input type="file" name="image_1 " value="{{ $dataProduct->image_1 }}"
+                                class="form-control dropify1" id="inputGroupFile01">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Image 2</label>
-                            <input type="file" name="image_2 " value="{{ $dataProduct->image_2 }}" class="form-control dropify2"
-                                id="inputGroupFile02">
+                            <input type="file" name="image_2 " value="{{ $dataProduct->image_2 }}"
+                                class="form-control dropify2" id="inputGroupFile02">
                         </div>
                     </div>
                 </div>
@@ -125,15 +125,15 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Image 3</label>
-                            <input type="file" name="image_3 " value="{{ $dataProduct->image_3 }}" class="form-control dropify3"
-                                id="inputGroupFile03">
+                            <input type="file" name="image_3 " value="{{ $dataProduct->image_3 }}"
+                                class="form-control dropify3" id="inputGroupFile03">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Image 4</label>
-                            <input type="file" name="image_4" value="{{ $dataProduct->image_4 }}" class="form-control dropify4"
-                                id="inputGroupFile04">
+                            <input type="file" name="image_4" value="{{ $dataProduct->image_4 }}"
+                                class="form-control dropify4" id="inputGroupFile04">
                         </div>
                     </div>
                 </div>
@@ -169,5 +169,9 @@
         $(document).ready(function() {
             $('.dropify4').dropify();
         });
+    </script>
+    <script>
+        CKEDITOR.replace('editor1');
+        CKEDITOR.replace('editor2');
     </script>
 @endsection

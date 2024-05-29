@@ -4,8 +4,8 @@
     <div class="card w-100">
         <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center">
-            <h5 class="card-title fw-semibold mb-4">Halaman Produk</h5>
-            <a href="{{ route('product.create') }}" class="btn add-new btn-primary m-1 float-end">Tambah Produk</a>
+                <h5 class="card-title fw-semibold mb-4">Halaman Produk</h5>
+                <a href="{{ route('product.create') }}" class="btn add-new btn-primary m-1 float-end">Tambah Produk</a>
             </div>
             <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
@@ -51,7 +51,9 @@
                                     {{-- <span class="fw-normal">Web Designer</span> --}}
                                 </td>
                                 <td class="" style="max-width: 200px;">
-                                    <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $product->desc }}</p>
+                                    <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                        {!! strip_tags($product->desc) !!}
+                                    </p>
                                 </td>
                                 {{-- <td class="">
                                     <p>{{ $product->price }}</p>
@@ -72,7 +74,8 @@
                                     </button>
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('product.edit', $product->id) }} " class="btn btn-warning" style="margin-right: 5px"><i class="ti ti-edit"></i></a>
+                                    <a href="{{ route('product.edit', $product->id) }} " class="btn btn-warning"
+                                        style="margin-right: 5px"><i class="ti ti-edit"></i></a>
                                     <form action="/product/delete/{{ $product->id }}" method="POST">
                                         @method('DELETE')
                                         @csrf
