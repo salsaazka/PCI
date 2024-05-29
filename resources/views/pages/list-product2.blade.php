@@ -22,28 +22,39 @@
                     <div class="row best-selling-card-group mb-2 mb-sm-5">
                         @foreach ($products as $product)
                             <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                <div class="product-card">
+                                <div class="product-card" onclick="window.location.href = '{{ URL::to('/general-trading/product/detail/' . $product['id']) }}';">
                                     <div class="card-image">
                                         <img src="{{ asset('assets/images/data/' . $product['image_1']) }}" alt="">
                                     </div>
-                                    <div class="card-title">
-                                        {{ $product['title'] }}
+                                    <div class="card-title px-2">
+                                        @if (session('locale') == 'id')
+                                            {{ $product['title'] }}
+                                        @else
+                                            {{ $product['title_en'] }}
+                                        @endif
                                     </div>
-                                    <div class="card-price">
-                                        Rp. {{ $product['price'] }}
-                                    </div>
-                                    <div class="card-subtitle">
-                                        <?php
-                                        $desc = $product['desc'];
-                                        if (strlen($desc) > 100) {
-                                            $desc = substr($desc, 0, 97) . '...';
-                                        }
-                                        echo $desc;
-                                        ?>
+                                    <div class="card-subtitle px-2">
+                                        @if (session('locale') == 'id')
+                                            <?php
+                                            $desc = $product['desc'];
+                                            if (strlen($desc) > 100) {
+                                                $desc = substr($desc, 0, 97) . '...';
+                                            }
+                                            echo $desc;
+                                            ?>
+                                        @else
+                                            <?php
+                                            $desc = $product['desc_en'];
+                                            if (strlen($desc) > 100) {
+                                                $desc = substr($desc, 0, 97) . '...';
+                                            }
+                                            echo $desc;
+                                            ?>
+                                        @endif
                                     </div>
                                     <a class="card-detail-button text-decoration-none"
                                         href="{{ URL::to('/general-trading/product/detail/' . $product['id']) }}">
-                                        DETAILS
+                                        @lang('messages.DETAILS')
                                     </a>
                                 </div>
                             </div>

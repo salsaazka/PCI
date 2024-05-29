@@ -126,13 +126,14 @@ class ProductController extends Controller
         $product->min_order = $request->min_order;
         $product->marketplace_url = $request->marketplace_url;
 
-        // Update gambar jika diunggah
+        // Cek apakah ada gambar yang diupload
         if ($request->hasFile('image_1')) {
             $image_1 = $request->file('image_1');
             $imgExtension = $image_1->getClientOriginalExtension();
             $imgName_1 = time() . rand() . '.' . $imgExtension;
             $dPath = public_path('/assets/images/data/');
             $image_1->move($dPath, $imgName_1);
+
             $product->image_1 = $imgName_1;
         }
 
@@ -141,7 +142,8 @@ class ProductController extends Controller
             $imgExtension = $image_2->getClientOriginalExtension();
             $imgName_2 = time() . rand() . '.' . $imgExtension;
             $dPath = public_path('/assets/images/data/');
-            $image_2->move($dPath, $imgName_2);
+            $image_2->move($dPath, $imgName_2); 
+
             $product->image_2 = $imgName_2;
         }
 
@@ -151,15 +153,17 @@ class ProductController extends Controller
             $imgName_3 = time() . rand() . '.' . $imgExtension;
             $dPath = public_path('/assets/images/data/');
             $image_3->move($dPath, $imgName_3);
+
             $product->image_3 = $imgName_3;
-        }
+        }   
 
         if ($request->hasFile('image_4')) {
             $image_4 = $request->file('image_4');
             $imgExtension = $image_4->getClientOriginalExtension();
             $imgName_4 = time() . rand() . '.' . $imgExtension;
             $dPath = public_path('/assets/images/data/');
-            $image_4->move($dPath, $imgName_4);
+            $image_4->move($dPath, $imgName_4); 
+
             $product->image_4 = $imgName_4;
         }
 

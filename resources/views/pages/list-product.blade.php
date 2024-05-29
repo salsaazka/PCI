@@ -26,13 +26,15 @@
                                     <div class="card-image">
                                         <img src="{{ asset('assets/images/data/' . $product['image_1']) }}" alt="">
                                     </div>
-                                    <div class="card-title">
+                                    <div class="card-title px-2">
+                                        @if (session('locale') == 'id')
                                         {{ $product['title'] }}
+                                        @else
+                                        {{ $product['title_en'] }}
+                                        @endif
                                     </div>
-                                    <div class="card-price">
-                                        Rp. {{ $product['price'] }}
-                                    </div>
-                                    <div class="card-subtitle">
+                                    <div class="card-subtitle px-2">
+                                        @if (session('locale') == 'id')
                                         <?php
                                         $desc = $product['desc'];
                                         if (strlen($desc) > 100) {
@@ -40,9 +42,18 @@
                                         }
                                         echo $desc;
                                         ?>
+                                        @else
+                                        <?php
+                                        $desc = $product['desc_en'];
+                                        if (strlen($desc) > 100) {
+                                            $desc = substr($desc, 0, 97) . '...';
+                                        }
+                                        echo $desc;
+                                        ?>
+                                        @endif
                                     </div>
                                     <div class="card-detail-button text-decoration-none">
-                                        DETAILS
+                                        @lang('messages.DETAILS')
                                 </div>
                                 </div>
                             </div>

@@ -16,11 +16,11 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() === 'landing' ? ' nav-active' : '' }}"
-                        id="nav-home" aria-current="page" href="{{ route('landing') }}">HOME</a>
+                        id="nav-home" aria-current="page" href="{{ route('landing') }}">@lang('messages.HOME')</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ Route::currentRouteName() === 'list-product' || Route::currentRouteName() === 'detail-product' ? ' nav-active' : '' }}"
-                        href="#" data-bs-toggle="dropdown" aria-expanded="false">PRODUCTS</a>
+                    <a class="nav-link dropdown-toggle {{ Route::currentRouteName() === 'list-product' || Route::currentRouteName() === 'productDetail' ? ' nav-active' : '' }}"
+                        href="#" data-bs-toggle="dropdown" aria-expanded="false">@lang('messages.PRODUCTS')</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('list-product') }}">ZEOLITES-BASED</a></li>
                         <li><a class="dropdown-item" href="{{ route('list-product2') }}">EXPORT COMMODITIES</a></li>
@@ -28,22 +28,22 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() === 'product-knowledge-page' || Route::currentRouteName() === 'detail-product-knowledge' ? ' nav-active' : '' }}"
-                        id="nav-product" href="{{ route('product-knowledge-page') }}">PRODUCT KNOWLEDGE</a>
+                        id="nav-product" href="{{ route('product-knowledge-page') }}">@lang('messages.PRODUCTKNOWLEDGE')</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() === 'contact-page' || Route::currentRouteName() === 'detail-product-knowledge' ? ' nav-active' : '' }}"
-                        id="nav-product" href="{{ route('contact-page') }}">CONTACT US</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() === 'contact-page' || Route::currentRouteName() === 'detail-product-knowledge' ? ' nav-active' : '' }}"
-                        id="nav-product" href="{{ route('signIn') }}">SIGN IN</a>
+                    <a class="nav-link {{ Route::currentRouteName() === 'contact-page' ? ' nav-active' : '' }}"
+                        id="nav-product" href="{{ route('contact-page') }}">@lang('messages.CONTACTUS')</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">LANG</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="locale/en">En</a></li>
-                        <li><a class="dropdown-item" href="locale/id">Id</a></li>
+                        <li><a class="dropdown-item {{ session('locale') == 'en' ? 'active' : '' }}" href={{ url('locale/en') }}>English</a></li>
+                        <li><a class="dropdown-item {{ session('locale') == 'id' ? 'active' : '' }}" href={{ url('locale/id') }}>Indonesia</a></li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::currentRouteName() === 'signIn' || Route::currentRouteName() === 'detail-product-knowledge' ? ' nav-active' : '' }}"
+                        id="nav-product" href="{{ route('signIn') }}">@lang('messages.SIGNIN')</a>
                 </li>
             </ul>
         </div>

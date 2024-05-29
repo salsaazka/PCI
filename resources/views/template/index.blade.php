@@ -9,6 +9,25 @@
         <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo.png') }}" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+    
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="Platform untuk trading umum, ZEOLIT, dan komoditas ekspor terbaik.">
+        <meta name="keywords" content="trading, general trading, ZEOLIT, komoditas ekspor, perdagangan internasional, pasar global">
+        <meta name="author" content="PT. PRIJADI CAHAYA INDONESIA">
+    
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Trading Umum, ZEOLIT, dan Komoditas Ekspor Terbaik">
+        <meta property="og:description" content="Platform untuk trading umum, ZEOLIT, dan komoditas ekspor terbaik.">
+        <meta property="og:image" content="{{ asset('assets/images/og-image.png') }}">
+        <meta property="og:url" content="https://www.example.com">
+        <meta property="og:type" content="website">
+    
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Trading Umum, ZEOLIT, dan Komoditas Ekspor Terbaik">
+        <meta name="twitter:description" content="Platform untuk trading umum, ZEOLIT, dan komoditas ekspor terbaik.">
+        <meta name="twitter:image" content="{{ asset('assets/images/twitter-image.png') }}">
+    
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,7 +36,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
         @yield('css')
-    </head>
+    </head>    
 
     <body>
         @yield('header')

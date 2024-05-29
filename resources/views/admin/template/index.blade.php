@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets-admin/css/app.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropify/dist/css/dropify.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-center">
-                    <a href="./index.html" class="text-nowrap logo-img">
+                    <a href="{{ route('dashboard') }}" class="text-nowrap logo-img">
                         <img src="{{ asset('assets/images/logo.png') }}" width="100"
                             alt="" />
                     </a>

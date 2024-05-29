@@ -32,9 +32,7 @@ Route::get('/', function () {
     return redirect()->route('landing');
 });
 
-Route::get('locale/{lang}', [LocaleController::class, 'setLocale']);
-
-Route::view('detail-product-knowledge', 'pages.detail-product-knowledge')->name('detail-product-knowledge');
+Route::get('/locale/{lang}', [LocaleController::class, 'setLocale']);
 
 Route::prefix('/general-trading')->middleware('localize')->group(function () {
     Route::get('/', [HomeController::class, 'landingPage'])->name('landing');

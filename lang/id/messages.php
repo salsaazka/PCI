@@ -1,7 +1,35 @@
 <?php
 
 return [
-    'welcome' => 'Selamat Datang di Aplikasi Laravel',
+    'HOME' => 'BERANDA',
+    'PRODUCTS' => 'PRODUK',
+    'PRODUCTKNOWLEDGE' => 'KETERANGAN PRODUK',
+    'CONTACTUS' => 'KONTAK KAMI',
+    'SIGNIN' => 'MASUK',
+    'BestSeller' => 'Terlaris',
+    'Comprehensive'=> 'Solusi Komprehensif untuk Anda',
+    'Business'=> 'Bisnis',
+    'Variant'=> 'Varian',
+    'ofGoods'=> 'Barang',
+    'Distributor'=> '150 Distributor',
+    'Around'=> 'Di Seluruh Dunia',
+    'Users'=> 'Peringkat Pengguna',
+    'ZEOLITES'=> 'BERBASIS-ZEOLIT',
+    'DETAILS'=> 'RINCIAN',
+    'Shopping'=> 'Belanja Sekarang',
+    'EXPORT'=> 'KOMODITAS EKSPOR',
+    'TOPPRODUCT'=> 'PRODUK TERBAIK',
+    'KNOWLEDGE'=> 'PENGETAHUAN PRODUK',
+    'GetinTouch'=> 'Hubungi',
+    'LetsTalk'=> 'Mari kita bicara',
+    'ViaWhatsapp'=> 'Dengan saya',
+    'ContactMe'=> 'Hubungi Saya',
+    'business'=> 'Untuk bisnis lebih lanjut',
+    'ExploreOurPage'=> 'Jelajahi Halaman Kami',
+    'ContactUs'=> 'Kontak Kami',
+    'BrowseProducts' => 'Jelajahi Produk',
+    'kembali' => 'Kembali',
+    'productKnowledge' => 'Pengetahuan Produk',
 ];
 
 ?>

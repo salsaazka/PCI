@@ -19,6 +19,11 @@
 
 @section('header')
     @include('template.header')
+    <style>
+        .text-desc {
+            font-family: 'poppins' !important;
+        }
+    </style>
 @endsection
 
 
@@ -28,14 +33,45 @@
             <div class="row first-line">
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="card">
+                        @if ($product['category_id'] == 1)
+                            <a class="d-flex align-items-center gap-1 text-decoration-none"
+                                href="{{ route('list-product') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#dc3545"
+                                    class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                                </svg>
+                                <i class="text-danger">@lang('messages.kembali')</i>
+                            </a>
+                        @else
+                            <a class="d-flex align-items-center gap-1 text-decoration-none"
+                                href="{{ route('list-product2') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#dc3545"
+                                    class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                                </svg>
+                                <i class="text-danger">@lang('messages.kembali')</i>
+                            </a>
+                        @endif
                         <div class="descripsi-product">
                             <div class="tab-pane fade show active" id="nav-detail" role="tabpanel"
                                 aria-labelledby="nav-detail-tab">
-                                <b>Item Name : <span class="primary-text">{{ $product['title'] }}</span></b>
+                                <b>Item Name : <span class="primary-text">
+                                        @if (session('locale') == 'id')
+                                            {{ $product['title'] }}
+                                        @else
+                                            {{ $product['title_en'] }}
+                                        @endif
+                                    </span></b>
                                 <div class="desc-section">
                                     <b>Description :</b>
                                     <p class="text-desc">
-                                        {{ $product['desc'] }}
+                                        @if (session('locale') == 'id')
+                                            {!! $product['desc'] !!}
+                                        @else
+                                            {!! $product['desc_en'] !!}
+                                        @endif
                                     </p>
                                 </div>
                             </div>
@@ -78,7 +114,11 @@
                                                         <p>{{ $no++ }}</p>
                                                     </td>
                                                     <td class="">
-                                                        <p>{{ $product['title'] }}</p>
+                                                        @if (session('locale') == 'id')
+                                                            <p>{{ $product['title'] }}</p>
+                                                        @else
+                                                            <p>{{ $product['title_en'] }}</p>
+                                                        @endif
                                                     </td>
                                                     <td class="">
                                                         <p>{{ $items->title }}</p>
@@ -90,7 +130,11 @@
                                                         <p>{{ $items->size_min }} - {{ $items->size_max }}</p>
                                                     </td>
                                                     <td class="">
-                                                        <p>{{ $items->measurement }}</p>
+                                                        @if (session('locale') == 'id')
+                                                            <p>{{ $items->measurement }}</p>
+                                                        @else
+                                                            <p>{{ $items->measurement_en }}</p>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -131,7 +175,13 @@
                                                         <p>{{ $no++ }}</p>
                                                     </td>
                                                     <td class="">
-                                                        <p>{{$product['title'] }}</p>
+                                                        <p>
+                                                            @if (session('locale') == 'id')
+                                                                {{ $product['title'] }}
+                                                            @else
+                                                                {{ $product['title_en'] }}
+                                                            @endif
+                                                        </p>
                                                     </td>
                                                     <td class="">
                                                         <p>{{ $items->container }}</p>
@@ -170,10 +220,17 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <button class="button button-primary w-100 mt-3" id="order-button">
-                                <img src="{{ asset('/assets/img/icon/shopping-cart-white.svg') }}" alt="">
-                                <span id="order-text">Continue to WhatsApp</span>
-                            </button>
+                            <?php
+                            $mail = collect($contactEmail)->where('title', 'Email')->first();
+                            $email = $mail['contact'];
+                            $emailSubject = 'Pertanyaan Tentang Produk';
+                            $emailBody = 'Halo! Saya ingin mengetahui lebih banyak tentang produk Anda.';
+                            $emailLink = 'mailto:' . $email . '?subject=' . rawurlencode($emailSubject) . '&body=' . rawurlencode($emailBody);
+                            ?>
+                            <a href="{{ $emailLink }}" class="button button-primary w-100 mt-3 text-decoration-none"
+                                id="order-button">
+                                <span id="order-text">Continue to email</span>
+                            </a>
                         </div>
                         {{-- <div class="card">
                             <h4>Summary</h4>
@@ -206,11 +263,6 @@
 
 
 @section('script')
-    <!--Vendor-->
-    <!--Jquery-->
-    <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
-    <!--Bootstrap-->
-    <script src="{{ asset('/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--Slick Js-->
     <script src="{{ asset('/assets/js/slick/slick.min.js') }}"></script>
     <script src="{{ asset('/assets/js/slick/slick.js') }}"></script>
@@ -343,7 +395,7 @@
                     recordTransaction(productId, qty);
                 });
 
-                $('#order-text').html('Continue to WhatsApp');
+                $('#order-text').html('Continue to email');
 
                 qtyClass.innerHTML = qty;
                 $('#cart-price').html(price * qty);

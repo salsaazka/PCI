@@ -6,7 +6,7 @@
             <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data" class="mb-3 mt-4">
                 @csrf
                 <div class="row">
-                    <div class="col-6">
+                    {{-- <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Satuan</label>
                             <select class="form-select" aria-label="Default select example" name="unit">
@@ -15,8 +15,8 @@
                                 <option value="container">Container</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="col-6">
+                    </div> --}}
+                    <div class="col-12">
                         <div class="mb-3">
                             <label for="" class="form-label">Kategory</label>
                             <select class="form-select" aria-label="Default select example" name="category_id">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Price</label>
@@ -61,7 +61,7 @@
                                 placeholder="Masukan Marketplace Url" />
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="row">
                     <div class="col-6">
@@ -73,8 +73,9 @@
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Description ID</label>
-                            <textarea name="desc" id="" cols="5" rows="5" class="form-control" placeholder="Masukan Description"></textarea>
+                            <label for="" class="form-label">Title EN</label>
+                            <input type="text" class="form-control" name="title_en" aria-describedby="publisher"
+                                placeholder="Masukan title" />
                         </div>
                     </div>
                 </div>
@@ -82,15 +83,16 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Title EN</label>
-                            <input type="text" class="form-control" name="title_en" aria-describedby="publisher"
-                                placeholder="Masukan title" />
+                            <label for="" class="form-label">Description ID</label>
+                            <textarea name="desc" id="editor1" rows="5" cols="5">
+                            </textarea>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Description EN</label>
-                            <textarea name="desc_en" id="" cols="5" rows="5" class="form-control" placeholder="Masukan Description"></textarea>
+                            <textarea name="desc_en" id="editor2" rows="5" cols="5">
+                            </textarea>
                         </div>
                     </div>
                 </div>
@@ -155,5 +157,9 @@
         $(document).ready(function() {
             $('.dropify4').dropify();
         });
+    </script>
+    <script>
+        CKEDITOR.replace('editor1');
+        CKEDITOR.replace('editor2');
     </script>
 @endsection

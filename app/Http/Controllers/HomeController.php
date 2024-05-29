@@ -45,7 +45,7 @@ class HomeController extends Controller
 
     public function productIndex()
     {
-        $products = Product::where('category_id', 1)->limit(4)->get();
+        $products = Product::where('category_id', 1)->limit(99)->get();
         return view('pages.list-product', [
             'products' => $products,
         ]);
@@ -53,7 +53,7 @@ class HomeController extends Controller
 
     public function productIndex2()
     {
-        $products = Product::where('category_id', 3)->limit(4)->get();
+        $products = Product::where('category_id', 3)->limit(99)->get();
         return view('pages.list-product2', [
             'products' => $products,
         ]);
@@ -71,6 +71,7 @@ class HomeController extends Controller
         $product = Product::find($id);
         $productDetail = ProductDetail::where('product_id', $id)->get();
         $contact = Contact::where('title', 'Whatsapp')->first()['contact'];
+        $contactEmail = Contact::all();
 
         $product['image_array'] = [
             $product['image_1'],
@@ -82,6 +83,7 @@ class HomeController extends Controller
         return view('pages.detail-product', [
             'product' => $product,
             'contact' => $contact,
+            'contactEmail' => $contactEmail,
             'productDetail' => $productDetail
         ]);
     }

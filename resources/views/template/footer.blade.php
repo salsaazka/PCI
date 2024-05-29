@@ -1,14 +1,13 @@
 <footer>
-    <div class="footer-container">
+    <div class="footer-container shadow pt-4">
         <div class="footer-social-media-container">
             <div>
-                <div class="footer-title">Explore Our Page</div>
+                <div class="footer-title">@lang('messages.ExploreOurPage')</div>
                 <ul class="footer-list-group">
-                    <li class="footer-list">Home</li>
-                    <li class="footer-list">About Us</li>
-                    <li class="footer-list">Products</li>
-                    <li class="footer-list">News</li>
-                    <li class="footer-list">Contact Us</li>
+                    <li class="footer-list">@lang('messages.HOME')</li>
+                    <li class="footer-list">@lang('messages.PRODUCTS')</li>
+                    <li class="footer-list">@lang('messages.PRODUCTKNOWLEDGE')</li>
+                    <li class="footer-list">@lang('messages.CONTACTUS')</li>
                 </ul>
             </div>
             <div>
@@ -65,7 +64,7 @@
                 </ul>
             </div>
             <div>
-                <div class="footer-title">Contact Us</div>
+                <div class="footer-title">@lang('messages.ContactUs')</div>
                 <ul class="footer-list-group">
                     <li style="cursor: pointer" class="footer-list" onclick="window.location.href='{{ $waLink }}', '_blank'">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -87,12 +86,6 @@
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="footer-brand-container">
-            <img class="footer-brand-image" src="{{ asset('assets/images/logo.png') }}" alt="logo" />
-            <p class="footer-brand-text">
-                Developing effective distribution channels is crucial for reaching customers in foreign markets.
-            </p>
         </div>
     </div>
     <div class="footer-copyright">Copyright © 2024. All rights reserved</div>

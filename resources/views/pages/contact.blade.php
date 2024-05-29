@@ -10,7 +10,7 @@
 <div style="min-height: calc(100vh - 340.5px);">
     <div class="social-media-container mb-5" id="contact">
         <div class="social-media-title">
-            Get in Touch
+            @lang('messages.GetinTouch')
         </div>
         <div class="d-flex gap-4 flex-column align-items-center flex-sm-row justify-content-center">
             <?php
@@ -29,10 +29,10 @@
                     </svg>
                 </div>
                 <div class="social-media-card-title">
-                    Let's Talk
+                    @lang('messages.LetsTalk')
                 </div>
                 <div class="social-media-card-subtitle">
-                    With me via whatsapp
+                    @lang('messages.ViaWhatsapp')
                 </div>
             </div>
             <?php
@@ -52,10 +52,10 @@
                     </svg>
                 </div>
                 <div class="social-media-card-title">
-                    Contact Me
+                    @lang('messages.ContactMe')
                 </div>
                 <div class="social-media-card-subtitle">
-                    For further business
+                    @lang('messages.business')
                 </div>
             </div>
         </div>

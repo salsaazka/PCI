@@ -7,14 +7,20 @@
 @endsection
 
 @section('content')
+    <?php
+    $lang = session('locale');
+    ?>
     <div class="landing-hero d-flex justify-content-center align-items-center gap-5">
         <div class="d-flex flex-column">
-            <div class="hero-title">{{ DB::table('banner-hero')->first()->title }}</div>
-            <div class="hero-badges d-flex align-items-center mt-5">
+            <img class="hero-logo" src="{{ asset('assets/images/logo.png') }}" alt="logo" />
+            <div class="hero-title">
+                {{ $lang == 'id' ? DB::table('banner-hero')->first()->title : DB::table('banner-hero')->first()->title_en }}
+            </div>
+            <div class="hero-badges d-flex align-items-center mt-3">
                 <div class="d-flex align-items-center me-2 me-sm-5">
                     <img src="{{ asset('assets/images/exclusive.svg') }}" alt="">
                     <div class="badge-text">
-                        Best Seller
+                        @lang('messages.BestSeller')
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -25,26 +31,31 @@
                 </div>
             </div>
             <div class="hero-description mt-3">
-                {{ DB::table('banner-hero')->first()->description }}
+                @if (session('locale') == 'id')
+                    {{ DB::table('banner-hero')->first()->description }}
+                @else
+                    {{ DB::table('banner-hero')->first()->desc_en }}
+                @endif
             </div>
             <button class="hero-button mt-4" onclick="window.location.href = '{{ route('list-product') }}'">
-                Browse Product
+                @lang('messages.BrowseProducts')
             </button>
             {{-- <p>@lang('messages.welcome')</p>
             {{ session('locale') }} --}}
         </div>
-        <img src="{{ asset('assets/images/data/' . DB::table('banner-hero')->first()->image) }}" alt="container ship" class="hero-image">
+        <img src="{{ asset('assets/images/data/' . DB::table('banner-hero')->first()->image) }}" alt="container ship"
+            class="hero-image">
 
     </div>
     <?php
-            $mail = collect($contact)->where('title', 'Email')->first();
-            $email = $mail['contact'];
-            $emailSubject = 'Pertanyaan Tentang Produk';
-            $emailBody = 'Halo! Saya ingin mengetahui lebih banyak tentang produk Anda.';
-            $emailLink = 'mailto:' . $email . '?subject=' . rawurlencode($emailSubject) . '&body=' . rawurlencode($emailBody);
+    $mail = collect($contact)->where('title', 'Email')->first();
+    $email = $mail['contact'];
+    $emailSubject = 'Pertanyaan Tentang Produk';
+    $emailBody = 'Halo! Saya ingin mengetahui lebih banyak tentang produk Anda.';
+    $emailLink = 'mailto:' . $email . '?subject=' . rawurlencode($emailSubject) . '&body=' . rawurlencode($emailBody);
     ?>
     <div id="contact-us-hover">
-        <div class="me-2" id="contact-us-text">Contact Us</div>
+        <div class="me-2" id="contact-us-text">@lang('messages.ContactUs')</div>
         <a href="{{ $emailLink }}" id="contact-us-image" class="p-2 rounded-circle" style="background-color: #0b4b9c">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ffffff" class="bi bi-envelope"
                 viewBox="0 0 16 16">
@@ -56,27 +67,27 @@
 
     <div class="d-flex flex-column justify-content-center mb-4 mb-sm-5" id="about">
         <div class="product-title mt-5 mb-3">
-            Comprehensive Solutions for Your <br> Business Growth!
+            @lang('messages.Comprehensive') <br> @lang('messages.Business')
         </div>
         <div class="d-flex justify-content-center gap-2 gap-sm-5 mt-4">
             <div>
-                <p class="product-subtitle">{{ DB::table('products')->count() }} Variant</p>
-                <p class="product-small-subtitle">of Goods</p>
+                <p class="product-subtitle">{{ DB::table('products')->count() }} @lang('messages.Variant') </p>
+                <p class="product-small-subtitle">@lang('messages.ofGoods')</p>
             </div>
             <div>
-                <p class="product-subtitle">150 Distributor</p>
-                <p class="product-small-subtitle">Around the World</p>
+                <p class="product-subtitle">@lang('messages.Distributor')</p>
+                <p class="product-small-subtitle">@lang('messages.Around')</p>
             </div>
             <div>
                 <p class="product-subtitle">4.9</p>
-                <p class="product-small-subtitle">Users Rating</p>
+                <p class="product-small-subtitle">@lang('messages.Users')</p>
             </div>
         </div>
     </div>
 
     <div class="container best-product-catalogue">
         <div class="d-flex justify-content-between align-items-center">
-            <div class="best-selling-product-title">ZEOLITES-BASED</div>
+            <div class="best-selling-product-title">@lang('messages.ZEOLITES')</div>
             {{-- <a href="{{ URL::to('/general-trading/product') }}"
                 class="d-flex view-all-product-link justify-content-end align-items-center">
                 <span class="me-2 d-none d-sm-block">View All Products</span>
@@ -97,21 +108,35 @@
                         <div class="card-image">
                             <img src="{{ asset('assets/images/data/' . $product['image_1']) }}" alt="">
                         </div>
-                        <div class="card-title">
-                            {{ $product['title'] }}
+                        <div class="card-title px-2">
+                            @if (session('locale') == 'id')
+                                {{ $product['title'] }}
+                            @else
+                                {{ $product['title_en'] }}
+                            @endif
                         </div>
                         <div class="card-subtitle px-2">
-                            <?php
-                            $desc = $product['desc'];
-                            if (strlen($desc) > 100) {
-                                $desc = substr($desc, 0, 97) . '...';
-                            }
-                            echo $desc;
-                            ?>
+                            @if (session('locale') == 'id')
+                                <?php
+                                $desc = $product['desc'];
+                                if (strlen($desc) > 100) {
+                                    $desc = substr($desc, 0, 97) . '...';
+                                }
+                                echo $desc;
+                                ?>
+                            @else
+                                <?php
+                                $desc = $product['desc_en'];
+                                if (strlen($desc) > 100) {
+                                    $desc = substr($desc, 0, 97) . '...';
+                                }
+                                echo $desc;
+                                ?>
+                            @endif
                         </div>
                         <a class="card-detail-button text-decoration-none"
                             href="{{ URL::to('/general-trading/detail/' . $product['id']) }}">
-                            DETAILS
+                            @lang('messages.DETAILS')
                         </a>
                     </div>
                 </div>
@@ -125,11 +150,12 @@
                     <img src="{{ asset('assets/images/data/' . $productGrids[0]['image']) }}" alt="Cat Litter"
                         class="image-overlay-image-small">
                     <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); border-radius: 12px">
                     </div>
                     <div class="image-overlay-text">
-                        <div class="image-overlay-product-title">{{ $productGrids[0]['title'] }}</div>
-                        <a class="shop-now-btn text-white">Belanja Sekarang</a>
+                        <div class="image-overlay-product-title">
+                            {{ session('locale') == 'id' ? $productGrids[0]['title'] : strtoupper($productGrids[0]['title_en']) }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,28 +164,30 @@
                     <img src="{{ asset('assets/images/data/' . $productGrids[1]['image']) }}" alt="Cat Litter"
                         class="image-overlay-image-small">
                     <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); border-radius: 12px">
                     </div>
                     <div class="image-overlay-text">
-                        <div class="image-overlay-product-title">{{ $productGrids[1]['title'] }}</div>
-                        <a class="shop-now-btn text-white">Belanja Sekarang</a>
+                        <div class="image-overlay-product-title">
+                            {{ session('locale') == 'id' ? $productGrids[1]['title'] : strtoupper($productGrids[1]['title_en']) }}
+                        </div>
                     </div>
                 </div>
                 <div class="image-overlay-container-small">
                     <img src="{{ asset('assets/images/data/' . $productGrids[2]['image']) }}" alt="Cat Litter"
                         class="image-overlay-image-small">
                     <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); border-radius: 12px">
                     </div>
                     <div class="image-overlay-text">
-                        <div class="image-overlay-product-title">{{ $productGrids[2]['title'] }}</div>
-                        <a class="shop-now-btn text-white">Belanja Sekarang</a>
+                        <div class="image-overlay-product-title">
+                            {{ session('locale') == 'id' ? $productGrids[2]['title'] : strtoupper($productGrids[2]['title_en']) }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="product-catalogue mt-5" id="product">
-            <div class="best-selling-product-title">EXPORT COMMODITIES</div>
+            <div class="best-selling-product-title">@lang('messages.EXPORT')</div>
             <div class="product-catalogue-navbar">
                 <div class="row best-selling-card-group mb-2 mb-sm-5">
                     @foreach ($products as $product)
@@ -169,23 +197,34 @@
                                     <img src="{{ asset('assets/images/data/' . $product['image_1']) }}" alt="">
                                 </div>
                                 <div class="card-title">
-                                    {{ $product['title'] }}
-                                </div>
-                                <div class="card-price">
-                                    Rp. {{ $product['price'] }}
+                                    @if (session('locale') == 'id')
+                                        {{ $product['title'] }}
+                                    @else
+                                        {{ $product['title_en'] }}
+                                    @endif
                                 </div>
                                 <div class="card-subtitle">
-                                    <?php
-                                    $desc = $product['desc'];
-                                    if (strlen($desc) > 100) {
-                                        $desc = substr($desc, 0, 97) . '...';
-                                    }
-                                    echo $desc;
-                                    ?>
+                                    @if (session('locale') == 'id')
+                                        <?php
+                                        $desc = $product['desc'];
+                                        if (strlen($desc) > 100) {
+                                            $desc = substr($desc, 0, 97) . '...';
+                                        }
+                                        echo $desc;
+                                        ?>
+                                    @else
+                                        <?php
+                                        $desc = $product['desc_en'];
+                                        if (strlen($desc) > 100) {
+                                            $desc = substr($desc, 0, 97) . '...';
+                                        }
+                                        echo $desc;
+                                        ?>
+                                    @endif
                                 </div>
                                 <a class="card-detail-button text-decoration-none"
                                     href="{{ URL::to('/general-trading/detail/' . $product['id']) }}">
-                                    DETAILS
+                                    @lang('messages.DETAILS')
                                 </a>
                             </div>
                         </div>
@@ -203,9 +242,21 @@
                         <img src="{{ asset('assets/images/data/' . $banner['image']) }}" alt="">
                     </div>
                     <div class="featured-product-text-group">
-                        <div class="featured-product-subtitle">TOP PRODUCT</div>
-                        <div class="featured-product-title">{{ $banner['title'] }}</div>
-                        <div class="featured-product-description">{{ $banner['desc'] }}</div>
+                        <div class="featured-product-subtitle">@lang('messages.TOPPRODUCT')</div>
+                        <div class="featured-product-title">
+                            @if (session('locale') == 'id')
+                            {{ $banner['title'] }}
+                            @else
+                            {{ $banner['title_en'] }}
+                            @endif
+                        </div>
+                        <div class="featured-product-description">
+                            @if (session('locale') == 'id')
+                            {{ $banner['desc'] }}
+                            @else
+                            {{ $banner['desc_en'] }}
+                            @endif
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -214,7 +265,7 @@
 
     <div class="container best-product-catalogue">
         <div class="product-catalogue mt-5" id="product">
-            <div class="best-selling-product-title">PRODUCT KNOWLEDGE</div>
+            <div class="best-selling-product-title">@lang('messages.KNOWLEDGE')</div>
             <div class="product-catalogue-navbar">
                 <div class="row best-selling-card-group mb-2 mb-sm-5">
                     @foreach ($article as $item)
@@ -225,20 +276,34 @@
                                     <img src="{{ asset('assets/images/data/' . $item['image']) }}" alt="">
                                 </div>
                                 <div class="card-title">
-                                    {{ $item['title'] }}
+                                    @if (session('locale') == 'id')
+                                        {{ $item['title'] }}
+                                    @else
+                                        {{ $item['title_en'] }}
+                                    @endif
                                 </div>
                                 <div class="card-subtitle p-2">
-                                    <?php
-                                    $desc = $item['desc'];
-                                    if (strlen($desc) > 100) {
-                                        $desc = substr($desc, 0, 97) . '...';
-                                    }
-                                    echo $desc;
-                                    ?>
+                                    @if (session('locale') == 'id')
+                                        <?php
+                                        $desc = $item['desc'];
+                                        if (strlen($desc) > 100) {
+                                            $desc = substr($desc, 0, 97) . '...';
+                                        }
+                                        echo $desc;
+                                        ?>
+                                    @else
+                                        <?php
+                                        $desc = $item['desc_en'];
+                                        if (strlen($desc) > 100) {
+                                            $desc = substr($desc, 0, 97) . '...';
+                                        }
+                                        echo $desc;
+                                        ?>
+                                    @endif
                                 </div>
                                 <div class="card-detail-button">
                                     <a href="/general-trading/product-knowledge/detail/{{ $item->id }}"
-                                        class="btn btn-light">Details</a>
+                                        class="btn btn-light">@lang('messages.DETAILS')</a>
                                 </div>
                             </div>
                         </div>
@@ -250,7 +315,7 @@
 
     <div class="social-media-container mb-5" id="contact">
         <div class="social-media-title">
-            Get in Touch
+            @lang('messages.GetinTouch')
         </div>
         <div class="d-flex gap-4 flex-column align-items-center flex-sm-row justify-content-center">
             <?php
@@ -269,10 +334,10 @@
                     </svg>
                 </div>
                 <div class="social-media-card-title">
-                    Let's Talk
+                    @lang('messages.LetsTalk')
                 </div>
                 <div class="social-media-card-subtitle">
-                    With me via whatsapp
+                    @lang('messages.ViaWhatsapp')
                 </div>
             </div>
             <?php
@@ -292,10 +357,10 @@
                     </svg>
                 </div>
                 <div class="social-media-card-title">
-                    Contact Me
+                    @lang('messages.ContactMe')
                 </div>
                 <div class="social-media-card-subtitle">
-                    For further business
+                    @lang('messages.business')
                 </div>
             </div>
         </div>

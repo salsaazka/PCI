@@ -1,7 +1,35 @@
 <?php
 
 return [
-    'welcome' => 'Welcome to PCI',
+    'HOME' => 'HOME',
+    'PRODUCTS' => 'PRODUCTS',
+    'PRODUCTKNOWLEDGE' => 'PRODUCT KNOWLEDGE',
+    'CONTACTUS' => 'CONTACT US',
+    'SIGNIN' => 'SIGN IN',
+    'BestSeller' => 'Best Seller',
+    'Comprehensive' => 'Comprehensive Solutions for Your',
+    'Business'=> 'Business Growth!',
+    'Variant'=> 'Variant',
+    'ofGoods'=> 'of Goods',
+    'Distributor'=> '150 Distributor',
+    'Around'=> 'Around the World',
+    'Users'=> 'Users Rating',
+    'ZEOLITES'=> 'ZEOLITES-BASED',
+    'DETAILS'=> 'DETAILS',
+    'Shopping'=> 'Shop Now',
+    'EXPORT'=> 'EXPORT COMMODITIES',
+    'TOPPRODUCT'=> 'TOP PRODUCT',
+    'KNOWLEDGE'=> 'PRODUCT KNOWLEDGE',
+    'GetinTouch'=> 'Get in Touch',
+    'LetsTalk'=> "Let's Talk",
+    'ViaWhatsapp'=> 'With me',
+    'ContactMe'=> 'Contact Me',
+    'business'=> 'For further business',
+    'ExploreOurPage'=> 'Explore Our Page',
+    'ContactUs'=> 'Contact Us',
+    'BrowseProducts' => 'Browse Products',
+    'kembali' => 'Back',
+    'productKnowledge' => 'Product Knowledge',
 ];
 
 ?>

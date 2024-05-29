@@ -20,7 +20,7 @@
                             <th class="">
                                 <h6 class="fw-semibold mb-0">Desc</h6>
                             </th>
-                            <th class="">
+                            {{-- <th class="">
                                 <h6 class="fw-semibold mb-0">Price</h6>
                             </th>
                             <th class="">
@@ -28,7 +28,7 @@
                             </th>
                             <th class="">
                                 <h6 class="fw-semibold mb-0">Stock</h6>
-                            </th>
+                            </th> --}}
                             <th class="">
                                 <h6 class="fw-semibold mb-0">Image</h6>
                             </th>
@@ -53,7 +53,7 @@
                                 <td class="" style="max-width: 200px;">
                                     <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $product->desc }}</p>
                                 </td>
-                                <td class="">
+                                {{-- <td class="">
                                     <p>{{ $product->price }}</p>
                                 </td>
                                 <td class="">
@@ -61,7 +61,7 @@
                                 </td>
                                 <td class="">
                                     <p>{{ $product->stock }}</p>
-                                </td>
+                                </td> --}}
                                 <td class="">
                                     <button type="button" class="border-0 bg-white">
                                         <div class="d-flex">
