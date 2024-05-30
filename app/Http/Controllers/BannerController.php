@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Banner;
+use App\Models\BannerModel as Banner;
 use Illuminate\Http\Request;
 use Alert;
 class BannerController extends Controller
