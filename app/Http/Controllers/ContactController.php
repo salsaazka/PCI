@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
-
+use Alert;
 class ContactController extends Controller
 {
     /**
@@ -39,6 +39,7 @@ class ContactController extends Controller
             'title' => $request->title,
             'contact' => $request->contact,
         ]);
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('contact.index')->with('add', 'Data berhasil ditambahkan');
     }
 
@@ -73,6 +74,7 @@ class ContactController extends Controller
             'title' => $request->title,
             'contact' => $request->contact,
         ]);
+        Alert::success('Success!', 'Updated Successfully');
         return redirect()->route('contact.index')->with('add', 'Data berhasil ditambahkan');
     }
 
@@ -82,6 +84,9 @@ class ContactController extends Controller
     public function destroy($id)
     {
         Contact::where('id', $id)->delete();
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
          return redirect()->route('contact.index')->with('delete', 'Data berhasil dihapus');
     }
 }

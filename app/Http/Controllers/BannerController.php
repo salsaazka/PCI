@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use Illuminate\Http\Request;
-
+use Alert;
 class BannerController extends Controller
 {
     /**
@@ -50,6 +50,7 @@ class BannerController extends Controller
             'desc' => $request->desc,
             'desc_en' => $request->desc_en,
         ]);
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('banner.index')->with('add', 'Data berhasil ditambahkan');
     }
 
@@ -97,6 +98,7 @@ class BannerController extends Controller
                 'desc_en' => $request->desc_en,
             ]);
         }
+        Alert::success('Success!', 'Updated Successfully');
         return redirect()->route('banner.index')->with('edit', 'Data berhasil diubah');
     }
 
@@ -106,6 +108,9 @@ class BannerController extends Controller
     public function destroy($id)
     {
         Banner::where('id', $id)->delete();
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return redirect()->route('banner.index')->with('delete', 'Data berhasil dihapus');
     }
 }

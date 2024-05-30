@@ -7,7 +7,7 @@ use App\Models\ProductDetail;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use File;
-
+use Alert;
 class ProductDetailController extends Controller
 {
     /**
@@ -58,7 +58,7 @@ class ProductDetailController extends Controller
             'measurement' => $request->measurement,
             'weight' => $request->weight,
         ]);
-
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('productVariant.index')->with('edit', 'Data berhasil ditambah');
     }
 
@@ -74,7 +74,7 @@ class ProductDetailController extends Controller
             'size' => $request->size,
             'bag' => $request->bag,
         ]);
-
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('productVariant.index')->with('edit', 'Data berhasil ditambah');
     }
 
@@ -104,6 +104,7 @@ class ProductDetailController extends Controller
             'measurement' => $request->measurement,
             'measurement_en' => $request->measurement_en,
         ]);
+        Alert::success('Success!', 'Updated Successfully');
 
         return redirect()->route('productVariant.index')->with('edit', 'Data berhasil diubah');
     }
@@ -116,12 +117,16 @@ class ProductDetailController extends Controller
             'size' => $request->size,
             'bag' => $request->bag,
         ]);
+        Alert::success('Success!', 'Updated Successfully');
         return redirect()->route('productVariant.index')->with('edit', 'Data berhasil diubah');
     }
 
     public function destroy($id)
     {
         ProductDetail::where('id', $id)->delete();
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return redirect()->route('productVariant.index')->with('delete', 'Data berhasil dihapus');
     }
 }

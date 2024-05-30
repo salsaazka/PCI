@@ -38,6 +38,7 @@ class CategoryController extends Controller
             'title' => $request->title,
             'desc' => $request->desc,
         ]);
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('category.index')->with('add', 'Data berhasil ditambahkan');
     }
 

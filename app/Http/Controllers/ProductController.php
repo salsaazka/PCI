@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 use File;
-
+use Alert;
 class ProductController extends Controller
 {
     /**
@@ -92,7 +92,7 @@ class ProductController extends Controller
             'min_order' => $request->min_order,
             'marketplace_url' => $request->marketplace_url,
         ]);
-
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('product.index')->with('edit', 'Data berhasil diubah');
     }
 
@@ -177,6 +177,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::where('id', $id)->delete();
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return redirect()->route('product.index')->with('delete', 'Data berhasil dihapus');
     }
 

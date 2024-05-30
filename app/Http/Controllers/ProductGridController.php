@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProductGrid;
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use Alert;
 class ProductGridController extends Controller
 {
     /**
@@ -52,7 +52,7 @@ class ProductGridController extends Controller
             'desc' => $request->desc,
             'desc_en' => $request->desc_en
         ]);
-
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('productgrid.index')->with('add', 'Data berhasil ditambahkan');
     }
 
@@ -109,7 +109,7 @@ class ProductGridController extends Controller
                 'desc_en' => $request->desc_en
             ]);
         }
-
+        Alert::success('Success!', 'Updated Successfully');
         return redirect()->route('productgrid.index')->with('edit', 'Data berhasil diubah');
     }
 
@@ -119,7 +119,9 @@ class ProductGridController extends Controller
     public function destroy($id)
     {
         ProductGrid::where('id', $id)->delete();
-
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return redirect()->route('productgrid.index')->with('delete', 'Data berhasil dihapus');
     }
 }

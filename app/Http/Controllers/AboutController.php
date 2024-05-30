@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use Illuminate\Http\Request;
-
+use Alert;
 class AboutController extends Controller
 {
 
@@ -41,6 +41,7 @@ class AboutController extends Controller
             'desc' => $request->desc,
             'desc_en' => $request->desc_en
         ]);
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('about.index')->with('add', 'Data berhasil ditambahkan');
     }
 
@@ -86,6 +87,7 @@ class AboutController extends Controller
                 'desc_en' => $request->desc_en
             ]);
         }
+        Alert::success('Success!', 'Updated Successfully');
         return redirect()->route('about.index')->with('edit', 'Data berhasil diubah');
     }
 
@@ -95,6 +97,9 @@ class AboutController extends Controller
     public function destroy($id)
     {
         About::where('id', $id)->delete();
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return redirect()->route('about.index')->with('delete', 'Data berhasil dihapus');
     }
 }
