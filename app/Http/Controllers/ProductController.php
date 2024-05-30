@@ -111,9 +111,10 @@ class ProductController extends Controller
             'title_en' => 'required',
             'desc_en' => 'required',
         ]);
-
+    
         $product = Product::findOrFail($id); // Ambil produk yang ingin diupdate
-
+        // dd request all
+        // dd($request->all());
         // Update data produk
         $product->category_id = $request->category_id;
         $product->title = $request->title;
@@ -125,52 +126,60 @@ class ProductController extends Controller
         $product->stock = $request->stock;
         $product->min_order = $request->min_order;
         $product->marketplace_url = $request->marketplace_url;
-
+    
+        $dPath = public_path('/assets/images/data/');
+    
         // Cek apakah ada gambar yang diupload
-        if ($request->hasFile('image_1')) {
+        if ($request->image_1 != null) {
+            // Hapus gambar lama jika ada
+            if ($product->image_1 && file_exists($dPath . $product->image_1)) {
+                unlink($dPath . $product->image_1);
+            }
             $image_1 = $request->file('image_1');
-            $imgExtension = $image_1->getClientOriginalExtension();
-            $imgName_1 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
+            $imgName_1 = time() . rand() . '.' . $image_1->getClientOriginalExtension();
             $image_1->move($dPath, $imgName_1);
-
             $product->image_1 = $imgName_1;
+            dd($imgName_1);
         }
-
+    
         if ($request->hasFile('image_2')) {
+            // Hapus gambar lama jika ada
+            if ($product->image_2 && file_exists($dPath . $product->image_2)) {
+                unlink($dPath . $product->image_2);
+            }
             $image_2 = $request->file('image_2');
-            $imgExtension = $image_2->getClientOriginalExtension();
-            $imgName_2 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
-            $image_2->move($dPath, $imgName_2); 
-
+            $imgName_2 = time() . rand() . '.' . $image_2->getClientOriginalExtension();
+            $image_2->move($dPath, $imgName_2);
             $product->image_2 = $imgName_2;
         }
-
+    
         if ($request->hasFile('image_3')) {
+            // Hapus gambar lama jika ada
+            if ($product->image_3 && file_exists($dPath . $product->image_3)) {
+                unlink($dPath . $product->image_3);
+            }
             $image_3 = $request->file('image_3');
-            $imgExtension = $image_3->getClientOriginalExtension();
-            $imgName_3 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
+            $imgName_3 = time() . rand() . '.' . $image_3->getClientOriginalExtension();
             $image_3->move($dPath, $imgName_3);
-
             $product->image_3 = $imgName_3;
-        }   
-
+        }
+    
         if ($request->hasFile('image_4')) {
+            // Hapus gambar lama jika ada
+            if ($product->image_4 && file_exists($dPath . $product->image_4)) {
+                unlink($dPath . $product->image_4);
+            }
             $image_4 = $request->file('image_4');
-            $imgExtension = $image_4->getClientOriginalExtension();
-            $imgName_4 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
-            $image_4->move($dPath, $imgName_4); 
-
+            $imgName_4 = time() . rand() . '.' . $image_4->getClientOriginalExtension();
+            $image_4->move($dPath, $imgName_4);
             $product->image_4 = $imgName_4;
         }
-
+    
         // Simpan perubahan
         $product->save();
+    
         return redirect()->route('product.index')->with('edit', 'Data berhasil diubah');
-    }
+    }    
     /**
      * Remove the specified resource from storage.
      */

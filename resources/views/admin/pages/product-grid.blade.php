@@ -17,9 +17,9 @@
                             <th class="">
                                 <h6 class="fw-semibold mb-0">Title</h6>
                             </th>
-                            <th class="">
+                            {{-- <th class="">
                                 <h6 class="fw-semibold mb-0">Desc</h6>
-                            </th>
+                            </th> --}}
                             <th class="">
                                 <h6 class="fw-semibold mb-0">Image</h6>
                             </th>
@@ -40,9 +40,9 @@
                                 <td class="">
                                     <p>{{ $product->title }}</p>
                                 </td>
-                                <td class="" style="max-width: 250px;">
+                                {{-- <td class="" style="max-width: 250px;">
                                     <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $product->desc }}</p>
-                                </td>
+                                </td> --}}
                                 <td class="">
                                     <button type="button" class="border-0 bg-white">
                                         <div class="d-flex">
