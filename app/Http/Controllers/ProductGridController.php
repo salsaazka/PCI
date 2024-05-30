@@ -40,8 +40,12 @@ class ProductGridController extends Controller
 
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
+        // when in local environment, use this path
+        // $dPath = public_path('/assets/images/data/');
 
-        $dPath = public_path('/assets/images/data/');
+        //when in hosting environment, use this path
+        $dPath = base_path('../../public_html/assets/images/data');
+
         $image->move($dPath, $imgName);
 
         ProductGrid::create([
@@ -88,7 +92,11 @@ class ProductGridController extends Controller
             $image = $request->file('image');
             $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-            $dPath = public_path('/assets/images/data/');
+            // when in local environment, use this path
+            // $dPath = public_path('/assets/images/data/');
+
+            //when in hosting environment, use this path
+            $dPath = base_path('../../public_html/assets/images/data');
             $image->move($dPath, $imgName);
 
 

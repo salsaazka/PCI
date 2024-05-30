@@ -30,7 +30,12 @@ class AboutController extends Controller
 
         $logo = $request->file('logo');
         $logoName = time() . '.' . $logo->getClientOriginalExtension();
-        $dPath = public_path('/assets/images/data/');
+        // when in local environment, use this path
+        // $dPath = public_path('/assets/images/data/');
+
+        //when in hosting environment, use this path
+        $dPath = base_path('../../public_html/assets/images/data');
+
         $logo->move($dPath, $logoName);
 
         About::create([
@@ -67,7 +72,12 @@ class AboutController extends Controller
 
             $logo = $request->file('logo');
             $logoName = time() . '.' . $logo->getClientOriginalExtension();
-            $dPath = public_path('/assets/images/data/');
+            // when in local environment, use this path
+            // $dPath = public_path('/assets/images/data/');
+
+            //when in hosting environment, use this path
+            $dPath = base_path('../../public_html/assets/images/data');
+            
             $logo->move($dPath, $logoName);
 
             About::where('id', $id)->update([
