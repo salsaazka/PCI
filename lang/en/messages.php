@@ -7,7 +7,7 @@ return [
     'CONTACTUS' => 'CONTACT US',
     'SIGNIN' => 'SIGN IN',
     'BestSeller' => 'Best Seller',
-    'Comprehensive' => 'Comprehensive Solutions for Your',
+    'Comprehensive' => 'Comprehensive Solutions for Your Business',
     'Business'=> 'Business Growth!',
     'Variant'=> 'Variant',
     'ofGoods'=> 'of Goods',

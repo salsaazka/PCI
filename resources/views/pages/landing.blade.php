@@ -67,9 +67,9 @@
 
     <div class="d-flex flex-column justify-content-center mb-4 mb-sm-5" id="about">
         <div class="product-title mt-5 mb-3">
-            @lang('messages.Comprehensive') <br> @lang('messages.Business')
+            @lang('messages.Comprehensive')
         </div>
-        <div class="d-flex justify-content-center gap-2 gap-sm-5 mt-4">
+        {{-- <div class="d-flex justify-content-center gap-2 gap-sm-5 mt-4">
             <div>
                 <p class="product-subtitle">{{ DB::table('products')->count() }} @lang('messages.Variant') </p>
                 <p class="product-small-subtitle">@lang('messages.ofGoods')</p>
@@ -82,7 +82,7 @@
                 <p class="product-subtitle">4.9</p>
                 <p class="product-small-subtitle">@lang('messages.Users')</p>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <div class="container best-product-catalogue">
@@ -103,7 +103,7 @@
         <div class="row best-selling-card-group mt-3 mb-2 mb-sm-5">
             @for ($i = 0; $i < 4 && $i < count($bestSellingProducts); $i++)
                 <?php $product = $bestSellingProducts[$i]; ?>
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4" onclick="window.location='{{ URL::to('/general-trading/product/detail/' . $product['id']) }}'">
                     <div class="product-card">
                         <div class="card-image">
                             <img src="{{ asset('assets/images/data/' . $product['image_1']) }}" alt="">
@@ -135,7 +135,7 @@
                             @endif
                         </div>
                         <a class="card-detail-button text-decoration-none"
-                            href="{{ URL::to('/general-trading/detail/' . $product['id']) }}">
+                            href="{{ URL::to('/general-trading/product/detail/' . $product['id']) }}">
                             @lang('messages.DETAILS')
                         </a>
                     </div>
@@ -191,7 +191,7 @@
             <div class="product-catalogue-navbar">
                 <div class="row best-selling-card-group mb-2 mb-sm-5">
                     @foreach ($products as $product)
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4" onclick="window.location='{{ URL::to('/general-trading/product/detail/' . $product['id']) }}'">
                             <div class="product-card">
                                 <div class="card-image">
                                     <img src="{{ asset('assets/images/data/' . $product['image_1']) }}" alt="">
@@ -223,7 +223,7 @@
                                     @endif
                                 </div>
                                 <a class="card-detail-button text-decoration-none"
-                                    href="{{ URL::to('/general-trading/detail/' . $product['id']) }}">
+                                    href="{{ URL::to('/general-trading/product/detail/' . $product['id']) }}">
                                     @lang('messages.DETAILS')
                                 </a>
                             </div>
@@ -301,10 +301,10 @@
                                         ?>
                                     @endif
                                 </div>
-                                <div class="card-detail-button">
-                                    <a href="/general-trading/product-knowledge/detail/{{ $item->id }}"
-                                        class="btn btn-light">@lang('messages.DETAILS')</a>
-                                </div>
+                                <a class="card-detail-button text-decoration-none"
+                                    href="/general-trading/product-knowledge/detail/{{ $item->id }}">
+                                    @lang('messages.DETAILS')
+                                </a>
                             </div>
                         </div>
                     @endforeach

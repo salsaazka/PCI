@@ -7,7 +7,7 @@ return [
     'CONTACTUS' => 'KONTAK KAMI',
     'SIGNIN' => 'MASUK',
     'BestSeller' => 'Terlaris',
-    'Comprehensive'=> 'Solusi Komprehensif untuk Anda',
+    'Comprehensive'=> 'Solusi Komprehensif untuk Bisnis Anda',
     'Business'=> 'Bisnis',
     'Variant'=> 'Varian',
     'ofGoods'=> 'Barang',
