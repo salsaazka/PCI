@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Alert;
 class BannerHeroController extends Controller
 {
     public function index()
@@ -30,7 +30,11 @@ class BannerHeroController extends Controller
 
         $logo = $request->file('logo');
         $logoName = time() . '.' . $logo->getClientOriginalExtension();
-        $dPath = public_path('/assets/images/data/');
+        // when in local environment, use this path
+        // $dPath = public_path('/assets/images/data/');
+
+        //when in hosting environment, use this path
+        $dPath = base_path('../../public_html/assets/images/data');
         $logo->move($dPath, $logoName);
 
         About::create([
@@ -40,6 +44,7 @@ class BannerHeroController extends Controller
             'email' => $request->email,
             'desc' => $request->desc,
         ]);
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('about.index')->with('add', 'Data berhasil ditambahkan');
     }
 
@@ -65,7 +70,11 @@ class BannerHeroController extends Controller
 
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $dPath = public_path('/assets/images/data/');
+            // when in local environment, use this path
+            // $dPath = public_path('/assets/images/data/');
+
+            //when in hosting environment, use this path
+            $dPath = base_path('../../public_html/assets/images/data');
             $image->move($dPath, $imageName);
 
             DB::table('banner-hero')->where('id', $id)->update([
@@ -84,6 +93,7 @@ class BannerHeroController extends Controller
                 'title_en' => $request->title_en
             ]);
         }
+        Alert::success('Success!', 'Updated Successfully');
         return redirect()->route('banner-hero.index')->with('edit', 'Data berhasil diubah');
     }
 
@@ -93,6 +103,9 @@ class BannerHeroController extends Controller
     public function destroy($id)
     {
         About::where('id', $id)->delete();
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return redirect()->route('banner-hero.index')->with('delete', 'Data berhasil dihapus');
     }
 }

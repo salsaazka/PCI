@@ -40,6 +40,7 @@ class CartController extends Controller
             'user_id' => $request->user_id,
             'product_id' => $request->product_id,
         ]);
+        Alert::success('Success!', 'Post Created Successfully');
         // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 

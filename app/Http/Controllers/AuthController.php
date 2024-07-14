@@ -62,6 +62,7 @@ class AuthController extends Controller
             'division' => $request->division,
             'password' => Hash::make($request->password),
         ]);
+        Alert::success('Success!', 'Successfully');
         return redirect('/sign-in')->with('success', 'Selamat anda berhasil registrasi');
     }
 

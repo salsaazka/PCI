@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TransactionProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use Alert;
 class TransactionProductController extends Controller
 {
     /**
@@ -39,6 +39,7 @@ class TransactionProductController extends Controller
             'product_id' => $request->product_id,
             'count' => $request->count,
         ]);
+        Alert::success('Success!', 'Post Created Successfully');
         // return redirect()->route('')->with('add', 'Data berhasil ditambahkan');
     }
 

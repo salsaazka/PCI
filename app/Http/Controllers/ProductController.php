@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 use File;
-
+use Alert;
 class ProductController extends Controller
 {
     /**
@@ -45,7 +45,11 @@ class ProductController extends Controller
             $image_1 = $request->file('image_1');
             $imgExtension = $image_1->getClientOriginalExtension();
             $imgName_1 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
+            // when in local environment, use this path
+            // $dPath = public_path('/assets/images/data/');
+
+            //when in hosting environment, use this path
+            $dPath = base_path('../../public_html/assets/images/data');
             $image_1->move($dPath, $imgName_1);
         }
 
@@ -54,7 +58,11 @@ class ProductController extends Controller
             $image_2 = $request->file('image_2');
             $imgExtension = $image_2->getClientOriginalExtension();
             $imgName_2 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
+            // when in local environment, use this path
+            // $dPath = public_path('/assets/images/data/');
+
+            //when in hosting environment, use this path
+            $dPath = base_path('../../public_html/assets/images/data');
             $image_2->move($dPath, $imgName_2);
         }
 
@@ -63,7 +71,11 @@ class ProductController extends Controller
             $image_3 = $request->file('image_3');
             $imgExtension = $image_3->getClientOriginalExtension();
             $imgName_3 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
+            // when in local environment, use this path
+            // $dPath = public_path('/assets/images/data/');
+
+            //when in hosting environment, use this path
+            $dPath = base_path('../../public_html/assets/images/data');
             $image_3->move($dPath, $imgName_3);
         }
 
@@ -72,7 +84,11 @@ class ProductController extends Controller
             $image_4 = $request->file('image_4');
             $imgExtension = $image_4->getClientOriginalExtension();
             $imgName_4 = time() . rand() . '.' . $imgExtension;
-            $dPath = public_path('/assets/images/data/');
+            // when in local environment, use this path
+            // $dPath = public_path('/assets/images/data/');
+
+            //when in hosting environment, use this path
+            $dPath = base_path('../../public_html/assets/images/data');
             $image_4->move($dPath, $imgName_4);
         }
 
@@ -92,7 +108,7 @@ class ProductController extends Controller
             'min_order' => $request->min_order,
             'marketplace_url' => $request->marketplace_url,
         ]);
-
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('product.index')->with('edit', 'Data berhasil diubah');
     }
 
@@ -127,8 +143,12 @@ class ProductController extends Controller
         $product->min_order = $request->min_order;
         $product->marketplace_url = $request->marketplace_url;
     
-        $dPath = public_path('/assets/images/data/');
-    
+        // when in local environment, use this path
+        // $dPath = public_path('/assets/images/data/');
+
+        //when in hosting environment, use this path
+        $dPath = base_path('../../public_html/assets/images/data');
+        
         // Cek apakah ada gambar yang diupload
         if ($request->image_1 != null) {
             // Hapus gambar lama jika ada
@@ -186,6 +206,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::where('id', $id)->delete();
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return redirect()->route('product.index')->with('delete', 'Data berhasil dihapus');
     }
 

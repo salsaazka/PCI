@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
-
+use Alert;
 class ArticleController extends Controller
 {
     /**
@@ -40,7 +40,12 @@ class ArticleController extends Controller
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-        $dPath = public_path('/assets/images/data/');
+        // when in local environment, use this path
+        // $dPath = public_path('/assets/images/data/');
+
+        //when in hosting environment, use this path
+        $dPath = base_path('../../public_html/assets/images/data');
+
         $image->move($dPath, $imgName);
 
         Article::create([
@@ -50,6 +55,7 @@ class ArticleController extends Controller
             'desc' => $request->desc,
             'desc_en' => $request->desc_en,
         ]);
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('article.index')->with('add', 'Data berhasil ditambahkan');
     }
 
@@ -81,7 +87,12 @@ class ArticleController extends Controller
             $image = $request->file('image');
             $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
 
-            $dPath = public_path('/assets/images/data/');
+            // when in local environment, use this path
+            // $dPath = public_path('/assets/images/data/');
+
+            //when in hosting environment, use this path
+            $dPath = base_path('../../public_html/assets/images/data');
+            
             $image->move($dPath, $imgName);
 
             Article::where('id', $id)->update([
@@ -101,7 +112,7 @@ class ArticleController extends Controller
             ]);
 
         }
-
+        Alert::success('Success!', 'Updated Successfully');
         return redirect()->route('article.index')->with('edit', 'Data berhasil diubah');
     }
 
@@ -111,6 +122,9 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         Article::where('id', $id)->delete();
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return redirect()->route('article.index')->with('delete', 'Data berhasil dihapus');
     }
 }

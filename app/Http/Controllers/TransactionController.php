@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use Alert;
 class TransactionController extends Controller
 {
     /**
@@ -51,6 +51,7 @@ class TransactionController extends Controller
             'proof_payment' => $request->proof_payment,
 
         ]);
+        Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('transaction.index')->with('add', 'Data berhasil ditambahkan');
     }
 
@@ -104,6 +105,9 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         Transaction::where('id', $id)->delete();
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return redirect()->route('transaction.index')->with('delete', 'Data berhasil dihapus');
     }
     

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Product;
-use App\Models\Banner;
+use App\Models\BannerModel as Banner;
 use App\Models\Category;
 use App\Models\ProductGrid;
 use App\Models\ProductDetail;
