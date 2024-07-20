@@ -14,7 +14,7 @@ return [
     'Distributor'=> '150 Distributor',
     'Around'=> 'Around the World',
     'Users'=> 'Users Rating',
-    'ZEOLITES'=> 'ZEOLITES-BASED',
+    'ZEOLITES'=> 'ZEOLITE-BASED PRODUCTS',
     'DETAILS'=> 'DETAILS',
     'Shopping'=> 'Shop Now',
     'EXPORT'=> 'EXPORT COMMODITIES',
@@ -30,6 +30,15 @@ return [
     'BrowseProducts' => 'Browse Products',
     'kembali' => 'Back',
     'productKnowledge' => 'Product Knowledge',
+    'desc-product' => 'Zeolite is a mineral that has long been known to have various properties that are beneficial for various purposes, ranging from industry, agriculture, fisheries, livestock, and health including cosmetics, especially molecular sieve properties. This mineral has been widely used, both natural and synthetic, for industrial purposes ranging from raw materials to process support materials. This is made possible by the structure of the mineral which has micropore chambers so that it is able to function as a filter for molecules (liquid and/or gas phases). The surface area of zeolite minerals is relatively high, reaching hundreds of square meters in each gram. This property allows zeolite to be used to absorb other molecules smaller than the diameter of their pores, such as water vapor, solutions, and gases.',
+    'desc-product-export' => 'Indonesia, the worlds largest archipelago, is renowned for its bountiful natural resources and agricultural prowess. As a leading exporter of a diverse array of commodities, Indonesia offers a world-class selection of products that cater to the global markets insatiable demand.',
+    'desc-product-export2' => 'We supply for exporting Indonesian Robusta Green Bean Coffee and Yellow Corn with various grades. We facilitate shipping and air freight documents and customs handling.',
+    'highlight1' => 'Cation Exchange Prowess',
+    'highlight2' => 'Versatile Applications',
+    'highlight3' => 'Unparalleled Protection',
+    'item1' => 'Our desiccant silica gel boasts an exceptional cation exchange capacity, enabling it to effectively remove harmful ions and contaminants from various environments.',
+    'item2' => 'This unique property makes our desiccant silica gel a valuable protection for a wide range of products, from Food, Pharmacies, Garments, Shoes and etcetera..',
+    'item3' => 'By effectively trapping and sequestering harmful ions, our desiccant silica gel provides unmatched protection for sensitive materials and environments.',
 ];
 
 ?>

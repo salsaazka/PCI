@@ -20,7 +20,7 @@ class HomeController extends Controller
         $category = Category::all();
         $bestSellingProducts = Product::where('category_id', 1)->limit(4)->get();
         $products = Product::where('category_id', 3)->limit(4)->get();
-        $productGrids = ProductGrid::limit(3)->get();
+        $productGrids = ProductGrid::limit(5)->get();
         $contact = Contact::all();
         $article = Article::all();
 

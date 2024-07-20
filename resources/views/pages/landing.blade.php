@@ -119,16 +119,16 @@
                             @if (session('locale') == 'id')
                                 <?php
                                 $desc = $product['desc'];
-                                if (strlen($desc) > 100) {
-                                    $desc = substr($desc, 0, 97) . '...';
+                                if (strlen($desc) > 88) {
+                                    $desc = substr($desc, 0, 85) . '...';
                                 }
                                 echo $desc;
                                 ?>
                             @else
                                 <?php
                                 $desc = $product['desc_en'];
-                                if (strlen($desc) > 100) {
-                                    $desc = substr($desc, 0, 97) . '...';
+                                if (strlen($desc) > 88) {
+                                    $desc = substr($desc, 0, 85) . '...';
                                 }
                                 echo $desc;
                                 ?>
@@ -143,19 +143,19 @@
             @endfor
 
         </div>
-
         <div class="product-mini-gallery d-flex gap-1 d-flex">
             <div class="large-gallery-container">
                 <div class="image-overlay-container">
                     <img src="{{ asset('assets/images/data/' . $productGrids[0]['image']) }}" alt="Cat Litter"
                         class="image-overlay-image-small">
                     <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); border-radius: 12px">
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
                     </div>
                     <div class="image-overlay-text">
                         <div class="image-overlay-product-title">
                             {{ session('locale') == 'id' ? $productGrids[0]['title'] : strtoupper($productGrids[0]['title_en']) }}
                         </div>
+                       <a href="/general-trading/product/detail/19" class="text-light"><h4>DETAIL</h4></a>
                     </div>
                 </div>
             </div>
@@ -164,30 +164,90 @@
                     <img src="{{ asset('assets/images/data/' . $productGrids[1]['image']) }}" alt="Cat Litter"
                         class="image-overlay-image-small">
                     <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); border-radius: 12px">
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
                     </div>
                     <div class="image-overlay-text">
                         <div class="image-overlay-product-title">
                             {{ session('locale') == 'id' ? $productGrids[1]['title'] : strtoupper($productGrids[1]['title_en']) }}
                         </div>
+                        <a href="/general-trading/product/detail/22" class="text-light"><h4>DETAIL</h4></a>
                     </div>
                 </div>
-                <div class="image-overlay-container-small">
-                    <img src="{{ asset('assets/images/data/' . $productGrids[2]['image']) }}" alt="Cat Litter"
-                        class="image-overlay-image-small">
-                    <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); border-radius: 12px">
-                    </div>
-                    <div class="image-overlay-text">
-                        <div class="image-overlay-product-title">
-                            {{ session('locale') == 'id' ? $productGrids[2]['title'] : strtoupper($productGrids[2]['title_en']) }}
+                <div class="d-flex flex-row justify-content-between w-100" style="height: 49.5%">
+                    <div class="image-overlay-container-small-v2">
+                        <img src="{{ asset('assets/images/data/' . $productGrids[2]['image']) }}" alt="Cat Litter"
+                            class="image-overlay-image-small">
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
+                        </div>
+                        <div class="image-overlay-text">
+                            <div class="image-overlay-product-title-v2">
+                                {{ session('locale') == 'id' ? $productGrids[2]['title'] : strtoupper($productGrids[2]['title_en']) }}
+                            </div>
+                            <a href="/general-trading/product/detail/16" class="text-light"><h6>DETAIL</h6></a>
                         </div>
                     </div>
+                    <div class="image-overlay-container-small-v2">
+                        <img src="{{ asset('assets/images/data/' . $productGrids[3]['image']) }}" alt="Cat Litter"
+                            class="image-overlay-image-small">
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
+                        </div>
+                        <div class="image-overlay-text">
+                            <div class="image-overlay-product-title-v2">
+                                {{ session('locale') == 'id' ? $productGrids[3]['title'] : strtoupper($productGrids[3]['title_en']) }}
+                            </div>
+                            <a href="/general-trading/product/detail/17" class="text-light"><h6>DETAIL</h6></a>
+                        </div>
+                    </div>
+                    <div class="image-overlay-container-small-v2">
+                        <img src="{{ asset('assets/images/data/' . $productGrids[4]['image']) }}" alt="Cat Litter"
+                            class="image-overlay-image-small">
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
+                        </div>
+                        <div class="image-overlay-text">
+                            <div class="image-overlay-product-title-v2">
+                                {{ session('locale') == 'id' ? $productGrids[4]['title'] : strtoupper($productGrids[4]['title_en']) }}
+                            </div>
+                            <a href="/general-trading/product/detail/18" class="text-light"><h6>DETAIL</h6></a>
+                        </div>
+                    </div>
+                    {{-- <div class="image-overlay-container-small-v2">
+                        <img src="{{ asset('assets/images/data/' . $productGrids[2]['image']) }}" alt="Cat Litter"
+                            class="image-overlay-image-small">
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
+                        </div>
+                        <div class="image-overlay-text">
+                            <div class="image-overlay-product-title">
+                                {{ session('locale') == 'id' ? $productGrids[2]['title'] : strtoupper($productGrids[2]['title_en']) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-overlay-container-small-v2">
+                        <img src="{{ asset('assets/images/data/' . $productGrids[2]['image']) }}" alt="Cat Litter"
+                            class="image-overlay-image-small">
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); border-radius: 12px">
+                        </div>
+                        <div class="image-overlay-text">
+                            <div class="image-overlay-product-title">
+                                {{ session('locale') == 'id' ? $productGrids[2]['title'] : strtoupper($productGrids[2]['title_en']) }}
+                            </div>
+                        </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
         <div class="product-catalogue mt-5" id="product">
             <div class="best-selling-product-title">@lang('messages.EXPORT')</div>
+            <p class="mt-1">
+                @lang('messages.desc-product-export')
+            </p>
+            <p class="mt-1 mb-5">
+                @lang('messages.desc-product-export2')
+            </p>
             <div class="product-catalogue-navbar">
                 <div class="row best-selling-card-group mb-2 mb-sm-5">
                     @foreach ($products as $product)
@@ -207,16 +267,16 @@
                                     @if (session('locale') == 'id')
                                         <?php
                                         $desc = $product['desc'];
-                                        if (strlen($desc) > 100) {
-                                            $desc = substr($desc, 0, 97) . '...';
+                                        if (strlen($desc) > 88) {
+                                            $desc = substr($desc, 0, 85) . '...';
                                         }
                                         echo $desc;
                                         ?>
                                     @else
                                         <?php
                                         $desc = $product['desc_en'];
-                                        if (strlen($desc) > 100) {
-                                            $desc = substr($desc, 0, 97) . '...';
+                                        if (strlen($desc) > 88) {
+                                            $desc = substr($desc, 0, 85) . '...';
                                         }
                                         echo $desc;
                                         ?>
@@ -257,9 +317,27 @@
                             {{ $banner['desc_en'] }}
                             @endif
                         </div>
+                        <button onclick="window.location.href = '/general-trading/product/detail/19'" class="btn btn-primary mt-3" style="background-color: #0B4B9C">
+                            @lang('messages.BrowseProducts')
+                        </button>
                     </div>
                 </div>
             @endforeach
+        </div>
+
+        <div class="highlight d-flex align-items-start">
+            <div class="item pe-5">
+                <h4>@lang('messages.highlight1')</h4>
+                <p>@lang('messages.item1')</p>
+            </div>
+            <div class="item pe-5">
+                <h4>@lang('messages.highlight2')</h4>
+                <p>@lang('messages.item2')</p>
+            </div>
+            <div class="item pe-5">
+                <h4>@lang('messages.highlight3')</h4>
+                <p>@lang('messages.item3')</p>
+            </div>
         </div>
     </div>
 

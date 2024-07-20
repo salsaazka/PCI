@@ -9,7 +9,7 @@
 @section('content')
     <div style="min-height: calc(100vh - 340.5px);">
         <div class="landing-hero-v2 flex-column d-flex justify-content-center align-items-center gap-3">
-            <div class="hero-title">List Product</div>
+            <div class="hero-title">Products</div>
             <div class="hero-bradcrumb">
                 <a href="{{ route('landing') }}">Home /</a>
                 <p class="fw-light mb-0">List Product</p>
@@ -17,7 +17,10 @@
         </div>
         <div class="container mb-5">
             <div class="product-catalogue mt-5" id="product">
-                <div class="best-selling-product-title">ZEOLITES BASED PRODUCT MATERIAL</div>
+                <div class="best-selling-product-title">ZEOLITE-BASED PRODUCTS</div>
+                <p class="mt-1 mb-5">
+                    @lang('messages.desc-product')
+                </p>
                 <div class="product-catalogue-navbar">
                     <div class="row best-selling-card-group mb-2 mb-sm-5">
                         @foreach ($products as $product)
@@ -37,16 +40,16 @@
                                         @if (session('locale') == 'id')
                                         <?php
                                         $desc = $product['desc'];
-                                        if (strlen($desc) > 100) {
-                                            $desc = substr($desc, 0, 97) . '...';
+                                        if (strlen($desc) > 95) {
+                                            $desc = substr($desc, 0, 92) . '...';
                                         }
                                         echo $desc;
                                         ?>
                                         @else
                                         <?php
                                         $desc = $product['desc_en'];
-                                        if (strlen($desc) > 100) {
-                                            $desc = substr($desc, 0, 97) . '...';
+                                        if (strlen($desc) > 95) {
+                                            $desc = substr($desc, 0, 92) . '...';
                                         }
                                         echo $desc;
                                         ?>

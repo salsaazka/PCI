@@ -14,7 +14,7 @@ return [
     'Distributor'=> '150 Distributor',
     'Around'=> 'Di Seluruh Dunia',
     'Users'=> 'Peringkat Pengguna',
-    'ZEOLITES'=> 'BERBASIS-ZEOLIT',
+    'ZEOLITES'=> 'PRODUK-BERBASIS-ZEOLIT',
     'DETAILS'=> 'RINCIAN',
     'Shopping'=> 'Belanja Sekarang',
     'EXPORT'=> 'KOMODITAS EKSPOR',
@@ -30,6 +30,15 @@ return [
     'BrowseProducts' => 'Jelajahi Produk',
     'kembali' => 'Kembali',
     'productKnowledge' => 'Pengetahuan Produk',
+    'desc-product' => 'Zeolit merupakan mineral yang sudah lama dikenal memiliki berbagai sifat yang bermanfaat untuk berbagai ragam keperluan, mulai dari industri, pertanian, perikanan, peternakan, dan kesehatan termasuk kosmetik, khususnya sifat penapis molekuler (molecular sieve). Mineral ini sudah banyak dimanfaatkan, baik yang alami maupun yang sintetik, untuk keperluan industri mulai dari sebagai bahan baku hingga bahan pendukung proses. Hal ini dimungkinkan oleh struktur mineralnya yang memiliki ruang pori mikro sehingga mampu berfungsi sebagai penyaring molekul (fase cairan dan/atau gas). Luas permukaan mineral zeolit tergolong tinggi, yaitu mencapai ratusan meter persegi dalam setiap gramnya.  Sifat inilah yang memungkinkan zeolit dimanfaatkan untuk menyerap molekul lain yang ukurannya lebih kecil daripada diameter ruang porinya, seperti uap air, larutan, dan gas.',
+    'desc-product-export' => 'Indonesia, kepulauan terbesar di dunia, terkenal dengan sumber daya alam yang melimpah dan keunggulan pertaniannya. Sebagai pengekspor terkemuka berbagai komoditas, Indonesia menawarkan pilihan produk kelas dunia yang memenuhi permintaan global yang tak terpuaskan.',
+    'desc-product-export2' => 'Kami menyediakan ekspor Kopi Robusta Green Bean Indonesia dan Jagung Kuning dengan berbagai grade. Kami memfasilitasi dokumen pengiriman dan pengangkutan udara serta penanganan bea cukai.',
+    'highlight1' => 'Keunggulan Pertukaran Kation',
+    'highlight2' => 'Aplikasi Serbaguna',
+    'highlight3' => 'Perlindungan Tak Tertandingi',
+    'item1' => 'Silika gel desikan kami memiliki kapasitas pertukaran kation yang luar biasa, memungkinkannya untuk secara efektif menghilangkan ion berbahaya dan kontaminan dari berbagai lingkungan.',
+    'item2' => 'Sifat unik ini menjadikan silika gel desikan kami sebagai perlindungan yang berharga untuk berbagai produk, mulai dari Makanan, Farmasi, Pakaian, Sepatu, dan lain sebagainya.',
+    'item3' => 'Dengan secara efektif menjebak dan menyekuestrasi ion berbahaya, silika gel desikan kami memberikan perlindungan tak tertandingi untuk material dan lingkungan yang sensitif.',
 ];
 
 ?>
