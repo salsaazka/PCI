@@ -16,6 +16,7 @@ return new class extends Migration
             $table->bigInteger('category_id')->nullable();
             $table->string('title');
             $table->text('desc');
+            $table->text('desc_highlight');
             $table->string('price');
             $table->string('unit');
             $table->string('stock');

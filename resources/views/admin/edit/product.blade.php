@@ -101,6 +101,16 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description Highlight</label>
+                            <textarea name="desc_highlight" id="editor3" rows="5" cols="5">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+
                 <hr />
 
                 <div class="row">
@@ -172,5 +182,6 @@
     <script>
         CKEDITOR.replace('editor1');
         CKEDITOR.replace('editor2');
+        CKEDITOR.replace('editor3');
     </script>
 @endsection

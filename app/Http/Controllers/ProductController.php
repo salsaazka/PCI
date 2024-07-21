@@ -97,6 +97,7 @@ class ProductController extends Controller
             'title' => $request->title,
             'title_en' => $request->title_en,
             'desc' => $request->desc,
+            'desc_highlight' => $request->desc_highlight,
             'desc_en' => $request->desc_en,
             'price' => $request->price,
             'unit' => $request->unit,
@@ -136,6 +137,7 @@ class ProductController extends Controller
         $product->title = $request->title;
         $product->title_en = $request->title_en;
         $product->desc = $request->desc;
+        $product->desc_highlight = $request->desc_highlight;
         $product->desc_en = $request->desc_en;
         $product->price = $request->price;
         $product->unit = $request->unit;
