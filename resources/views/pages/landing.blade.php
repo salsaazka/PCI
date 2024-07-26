@@ -32,9 +32,9 @@
             </div>
             <div class="hero-description mt-3">
                 @if (session('locale') == 'id')
-                    {{ DB::table('banner-hero')->first()->description }}
+                    {!! DB::table('banner-hero')->first()->description !!}
                 @else
-                    {{ DB::table('banner-hero')->first()->desc_en }}
+                    {!! DB::table('banner-hero')->first()->desc_en !!}
                 @endif
             </div>
             <button class="hero-button mt-4" onclick="window.location.href = '{{ route('list-product') }}'">
@@ -117,21 +117,9 @@
                         </div>
                         <div class="card-subtitle px-2">
                             @if (session('locale') == 'id')
-                                <?php
-                                $desc = $product['desc'];
-                                if (strlen($desc) > 88) {
-                                    $desc = substr($desc, 0, 85) . '...';
-                                }
-                                echo $desc;
-                                ?>
+                                {!! $product['desc_highlight'] !!}
                             @else
-                                <?php
-                                $desc = $product['desc_en'];
-                                if (strlen($desc) > 88) {
-                                    $desc = substr($desc, 0, 85) . '...';
-                                }
-                                echo $desc;
-                                ?>
+                                {!! $product['desc_highlight_en'] !!}
                             @endif
                         </div>
                         <a class="card-detail-button text-decoration-none"
@@ -256,30 +244,18 @@
                                 <div class="card-image">
                                     <img src="{{ asset('assets/images/data/' . $product['image_1']) }}" alt="">
                                 </div>
-                                <div class="card-title">
+                                <div class="card-title px-2">
                                     @if (session('locale') == 'id')
                                         {{ $product['title'] }}
                                     @else
                                         {{ $product['title_en'] }}
                                     @endif
                                 </div>
-                                <div class="card-subtitle">
+                                <div class="card-subtitle px-2">
                                     @if (session('locale') == 'id')
-                                        <?php
-                                        $desc = $product['desc'];
-                                        if (strlen($desc) > 88) {
-                                            $desc = substr($desc, 0, 85) . '...';
-                                        }
-                                        echo $desc;
-                                        ?>
+                                        {!! $product['desc_highlight'] !!}
                                     @else
-                                        <?php
-                                        $desc = $product['desc_en'];
-                                        if (strlen($desc) > 88) {
-                                            $desc = substr($desc, 0, 85) . '...';
-                                        }
-                                        echo $desc;
-                                        ?>
+                                        {!! $product['desc_highlight_en'] !!}
                                     @endif
                                 </div>
                                 <a class="card-detail-button text-decoration-none"

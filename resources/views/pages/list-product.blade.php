@@ -38,21 +38,9 @@
                                     </div>
                                     <div class="card-subtitle px-2">
                                         @if (session('locale') == 'id')
-                                        <?php
-                                        $desc = $product['desc'];
-                                        if (strlen($desc) > 95) {
-                                            $desc = substr($desc, 0, 92) . '...';
-                                        }
-                                        echo $desc;
-                                        ?>
+                                        {!! $product['desc_highlight'] !!}
                                         @else
-                                        <?php
-                                        $desc = $product['desc_en'];
-                                        if (strlen($desc) > 95) {
-                                            $desc = substr($desc, 0, 92) . '...';
-                                        }
-                                        echo $desc;
-                                        ?>
+                                        {!! $product['desc_highlight_en'] !!}
                                         @endif
                                     </div>
                                     <div class="card-detail-button text-decoration-none">

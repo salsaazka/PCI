@@ -52,10 +52,10 @@
                                             ?>
                                         @endif
                                     </div>
-                                    <div class="card-detail-button">
-                                        <a href="/general-trading/product-knowledge/detail/{{ $item->id }}"
-                                            class="btn btn-light">@lang('messages.DETAILS')</a>
-                                    </div>
+                                    <a class="card-detail-button text-decoration-none"
+                                    href="{{ URL::to('/general-trading/product-knowledge/detail/' .  $item->id) }}">
+                                    @lang('messages.DETAILS')
+                                </a>
                                 </div>
                             </div>
                         @endforeach

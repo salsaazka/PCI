@@ -102,10 +102,19 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Description Highlight</label>
-                            <textarea name="desc_highlight" id="editor3" rows="5" cols="5">
+                            <textarea class="form-control" placeholder="Description Highlight" name="desc_highlight" rows="5" cols="5">
+                                {{ $dataProduct->desc_highlight }}
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description Highlight EN</label>
+                            <textarea class="form-control" placeholder="Description Highlight EN" name="desc_highlight_en" rows="5" cols="5">
+                                {{ $dataProduct->desc_highlight_en }}
                             </textarea>
                         </div>
                     </div>

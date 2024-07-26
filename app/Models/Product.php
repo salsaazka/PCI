@@ -17,6 +17,7 @@ class Product extends Model
         'title_en',
         'desc',
         'desc_highlight',
+        'desc_highlight_en',
         'desc_en',
         'price',
         'unit',
