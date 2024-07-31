@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container-fluid d-flex justify-content-between">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="#">

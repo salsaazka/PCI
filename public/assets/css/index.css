@@ -380,6 +380,12 @@ body {
     color: #45505F;
 }
 
+@media screen and (max-width: 880px) {
+    .product-nav .nav-item .nav-link {
+        font-size: 12px;
+    }
+}
+
 .product-nav .nav-item .nav-link.active {
     font-weight: 600;
     color: #0B4B9C;
@@ -911,5 +917,12 @@ body {
 @media screen and (max-width: 768px) {
     .highlight {
         flex-direction: column;
+    }
+
+    .highlight .item {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 8px;
+        padding: 0 2rem;
     }
 }
