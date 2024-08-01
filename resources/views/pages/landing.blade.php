@@ -143,7 +143,7 @@
                         <div class="image-overlay-product-title">
                             {{ session('locale') == 'id' ? $productGrids[0]['title'] : strtoupper($productGrids[0]['title_en']) }}
                         </div>
-                       <a href="/general-trading/product/detail/19" class="text-light"><h4>DETAIL</h4></a>
+                       <a href="/general-trading/product/detail/{{$productGrids[0]['destination']}}" class="text-light"><h4>DETAIL</h4></a>
                     </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@
                         <div class="image-overlay-product-title">
                             {{ session('locale') == 'id' ? $productGrids[1]['title'] : strtoupper($productGrids[1]['title_en']) }}
                         </div>
-                        <a href="/general-trading/product/detail/22" class="text-light"><h4>DETAIL</h4></a>
+                        <a href="/general-trading/product/detail/{{$productGrids[1]['destination']}}" class="text-light"><h4>DETAIL</h4></a>
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between w-100" style="height: 49.5%">
@@ -172,7 +172,7 @@
                             <div class="image-overlay-product-title-v2">
                                 {{ session('locale') == 'id' ? $productGrids[2]['title'] : strtoupper($productGrids[2]['title_en']) }}
                             </div>
-                            <a href="/general-trading/product/detail/16" class="text-light"><h6>DETAIL</h6></a>
+                            <a href="/general-trading/product/detail/{{$productGrids[2]['destination']}}" class="text-light"><h6>DETAIL</h6></a>
                         </div>
                     </div>
                     <div class="image-overlay-container-small-v2">
@@ -185,7 +185,7 @@
                             <div class="image-overlay-product-title-v2">
                                 {{ session('locale') == 'id' ? $productGrids[3]['title'] : strtoupper($productGrids[3]['title_en']) }}
                             </div>
-                            <a href="/general-trading/product/detail/17" class="text-light"><h6>DETAIL</h6></a>
+                            <a href="/general-trading/product/detail/{{$productGrids[3]['destination']}}" class="text-light"><h6>DETAIL</h6></a>
                         </div>
                     </div>
                     <div class="image-overlay-container-small-v2">
@@ -198,7 +198,7 @@
                             <div class="image-overlay-product-title-v2">
                                 {{ session('locale') == 'id' ? $productGrids[4]['title'] : strtoupper($productGrids[4]['title_en']) }}
                             </div>
-                            <a href="/general-trading/product/detail/18" class="text-light"><h6>DETAIL</h6></a>
+                            <a href="/general-trading/product/detail/{{$productGrids[4]['destination']}}" class="text-light"><h6>DETAIL</h6></a>
                         </div>
                     </div>
                     {{-- <div class="image-overlay-container-small-v2">
