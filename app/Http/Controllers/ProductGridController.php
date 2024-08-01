@@ -6,6 +6,8 @@ use App\Models\ProductGrid;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Alert;
+use App\Models\Product;
+
 class ProductGridController extends Controller
 {
     /**
@@ -74,8 +76,9 @@ class ProductGridController extends Controller
     public function edit($id)
     {
         $dataProductGrid = ProductGrid::where('id', $id)->first();
+        $dataProduct = Product::all();
 
-        return view('admin.edit.product-grid', compact('dataProductGrid'));
+        return view('admin.edit.product-grid', compact('dataProductGrid', 'dataProduct'));
     }
 
     /**
@@ -86,6 +89,7 @@ class ProductGridController extends Controller
         $request->validate([
             'title' => 'required',
             'desc' => 'required',
+            'destination' => 'required',
         ]);
 
         if ($request->file('image')) {
@@ -106,7 +110,8 @@ class ProductGridController extends Controller
                 'title_en' => $request->title_en,
                 'image' =>  $imgName,
                 'desc' => $request->desc,
-                'desc_en' => $request->desc_en
+                'desc_en' => $request->desc_en,
+                'destination' => $request->destination
             ]);
         } else {
             ProductGrid::where('id', $id)->update([
@@ -114,7 +119,8 @@ class ProductGridController extends Controller
                 'title' => $request->title,
                 'title_en' => $request->title_en,
                 'desc' => $request->desc,
-                'desc_en' => $request->desc_en
+                'desc_en' => $request->desc_en,
+                'destination' => $request->destination
             ]);
         }
         Alert::success('Success!', 'Updated Successfully');

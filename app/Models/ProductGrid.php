@@ -15,6 +15,7 @@ class ProductGrid extends Model
         'title_en',
         'desc',
         'desc_en',
-        'image'
+        'image',
+        'destination'
     ];
 }
