@@ -35,7 +35,14 @@ class ArticleController extends Controller
             'desc' => 'required',
             'desc_en' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Tambahkan validasi untuk jenis file dan ukuran maksimum
+            'order' =>'required|numeric'
         ]);
+
+        $checkOrder = Article::where('order', $request->order)->first();
+        if ($checkOrder) {
+            Alert::error('Error!', 'Urutan sudah ada');
+            return redirect()->route('article.create');
+        }
 
         $image = $request->file('image');
         $imgName = time() . rand() . '.' . $image->getClientOriginalExtension();
@@ -54,6 +61,7 @@ class ArticleController extends Controller
             'image' => $imgName,
             'desc' => $request->desc,
             'desc_en' => $request->desc_en,
+            'order' => $request->order
         ]);
         Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('article.index')->with('add', 'Data berhasil ditambahkan');
@@ -82,6 +90,12 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
 
+        $checkOrder = Article::where('order', $request->order)->where('id', '!=', $id)->first();
+        if ($checkOrder) {
+            Alert::error('Error!', 'Urutan sudah ada');
+            return redirect()->route('article.edit', $id);
+        }
+
         if ($request->hasFile('image')) {
 
             $image = $request->file('image');
@@ -92,7 +106,7 @@ class ArticleController extends Controller
 
             //when in hosting environment, use this path
             $dPath = base_path('../../public_html/assets/images/data');
-            
+
             $image->move($dPath, $imgName);
 
             Article::where('id', $id)->update([
@@ -101,6 +115,7 @@ class ArticleController extends Controller
                 'image' => $imgName,
                 'desc' => $request->desc,
                 'desc_en' => $request->desc_en,
+                'order' => $request->order
             ]);
         } else {
 
@@ -109,6 +124,7 @@ class ArticleController extends Controller
                 'title_en' => $request->title_en,
                 'desc' => $request->desc,
                 'desc_en' => $request->desc_en,
+                'order' => $request->order
             ]);
 
         }

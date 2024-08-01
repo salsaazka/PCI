@@ -40,11 +40,20 @@
                 </div>
 
                 <div class="row">
-
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="" class="form-label">Description EN</label>
                             <textarea name="desc_en" id="editor2" cols="5" rows="5">{{ $dataArticle->desc_en }}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Urutan</label>
+                            <input value="{{ $dataArticle->order}}" type="number" class="form-control" name="order" aria-describedby="order"
+                                placeholder="Masukan Urutan" />
                         </div>
                     </div>
                 </div>

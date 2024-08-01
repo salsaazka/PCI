@@ -15,5 +15,6 @@ class Article extends Model
         'desc',
         'desc_en',
         'image',
+        'order'
     ];
 }

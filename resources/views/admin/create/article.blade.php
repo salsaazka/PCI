@@ -48,6 +48,16 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Urutan</label>
+                            <input type="number" class="form-control" name="order" aria-describedby="order"
+                                placeholder="Masukan Urutan" />
+                        </div>
+                    </div>
+                </div>
+
                 <div class="d-flex justify-content-end align-items-center gap-2">
                     <a href="{{ route('article.index') }}" class="btn btn-danger text-white mb-5">
                         Kembali

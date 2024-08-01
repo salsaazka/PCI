@@ -38,7 +38,14 @@ class ProductController extends Controller
             'desc' => 'required',
             'title_en' => 'required',
             'desc_en' => 'required',
+            'order' => 'required|numeric',
         ]);
+
+        $checkOrder = Product::where('order', $request->order)->where('category_id', $request->category_id)->first();
+        if ($checkOrder) {
+            Alert::error('Error!', 'Urutan sudah ada');
+            return redirect()->route('product.create');
+        }
 
         $imgName_1 = null;
         if ($request->hasFile('image_1')) {
@@ -109,6 +116,7 @@ class ProductController extends Controller
             'image_4' => $imgName_4,
             'min_order' => $request->min_order,
             'marketplace_url' => $request->marketplace_url,
+            'order' => $request->order
         ]);
         Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('product.index')->with('edit', 'Data berhasil diubah');
@@ -128,8 +136,15 @@ class ProductController extends Controller
             'desc' => 'required',
             'title_en' => 'required',
             'desc_en' => 'required',
+            'order' => 'required|numeric',
         ]);
-    
+
+        $checkOrder = Product::where('order', $request->order)->where('category_id', $request->category_id)->where('id', '!=', $id)->first();
+        if ($checkOrder) {
+            Alert::error('Error!', 'Urutan sudah ada');
+            return redirect()->route('product.edit', $id);
+        }
+
         $product = Product::findOrFail($id); // Ambil produk yang ingin diupdate
         // dd request all
         // dd($request->all());
@@ -146,13 +161,14 @@ class ProductController extends Controller
         $product->stock = $request->stock;
         $product->min_order = $request->min_order;
         $product->marketplace_url = $request->marketplace_url;
-    
+        $product->order = $request->order;
+
         // when in local environment, use this path
         // $dPath = public_path('/assets/images/data/');
 
         //when in hosting environment, use this path
         $dPath = base_path('../../public_html/assets/images/data');
-        
+
         // Cek apakah ada gambar yang diupload
         if ($request->image_1 != null) {
             // Hapus gambar lama jika ada
@@ -165,7 +181,7 @@ class ProductController extends Controller
             $product->image_1 = $imgName_1;
             dd($imgName_1);
         }
-    
+
         if ($request->hasFile('image_2')) {
             // Hapus gambar lama jika ada
             if ($product->image_2 && file_exists($dPath . $product->image_2)) {
@@ -176,7 +192,7 @@ class ProductController extends Controller
             $image_2->move($dPath, $imgName_2);
             $product->image_2 = $imgName_2;
         }
-    
+
         if ($request->hasFile('image_3')) {
             // Hapus gambar lama jika ada
             if ($product->image_3 && file_exists($dPath . $product->image_3)) {
@@ -187,7 +203,7 @@ class ProductController extends Controller
             $image_3->move($dPath, $imgName_3);
             $product->image_3 = $imgName_3;
         }
-    
+
         if ($request->hasFile('image_4')) {
             // Hapus gambar lama jika ada
             if ($product->image_4 && file_exists($dPath . $product->image_4)) {
@@ -198,12 +214,12 @@ class ProductController extends Controller
             $image_4->move($dPath, $imgName_4);
             $product->image_4 = $imgName_4;
         }
-    
+
         // Simpan perubahan
         $product->save();
-    
+
         return redirect()->route('product.index')->with('edit', 'Data berhasil diubah');
-    }    
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -219,6 +235,6 @@ class ProductController extends Controller
 
     public function createDetail(Request $request)
     {
-        
+
     }
 }
