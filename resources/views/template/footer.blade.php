@@ -3,24 +3,21 @@
         <div class="footer-social-media-container">
             <div>
                 <div class="footer-title">@lang('messages.ExploreOurPage')</div>
-                <ul class="footer-list-group">
-                    <li>
-                        <a class="footer-list" href="{{ route('landing') }}">@lang('messages.HOME')</a>
+                <ul class="footer-list-group" style="list-style-type: none !important; padding: 0 !important">
+                    <li style="margin-bottom: 2px">
+                        <a class="footer-list" style="font-size: 14px; font-weight: 400; text-decoration: none !important; color: #45505f" href="{{ route('landing') }}">@lang('messages.HOME')</a>
                     </li>
-                    {{-- <li class="footer-list">@lang('messages.PRODUCTS')</li> --}}
-                    <li>
-                        <a class="footer-list dropdown-toggle"
-                            href="#" data-bs-toggle="dropdown" aria-expanded="false">@lang('messages.PRODUCTS')</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('list-product') }}">ZEOLITES-BASED</a></li>
-                            <li><a class="dropdown-item" href="{{ route('list-product2') }}">EXPORT COMMODITIES</a></li>
-                        </ul>
+                    <li style="margin-bottom: 2px">
+                        <a class="footer-list" style="font-size: 14px; font-weight: 400; text-decoration: none !important; color: #45505f" href="{{ route('list-product') }}">ZEOLITES-BASED</a>
                     </li>
-                    <li>
-                        <a class="footer-list" href="{{ route('product-knowledge-page') }}">@lang('messages.PRODUCTKNOWLEDGE')</a>
+                    <li style="margin-bottom: 2px">
+                        <a class="footer-list" style="font-size: 14px; font-weight: 400; text-decoration: none !important; color: #45505f" href="{{ route('list-product2') }}">EXPORT COMMODITIES</a>
                     </li>
-                    <li>
-                        <a class="footer-list" href="{{ route('contact-page') }}">@lang('messages.CONTACTUS')</a>
+                    <li style="margin-bottom: 2px">
+                        <a class="footer-list" style="font-size: 14px; font-weight: 400; text-decoration: none !important; color: #45505f" href="{{ route('product-knowledge-page') }}">@lang('messages.PRODUCTKNOWLEDGE')</a>
+                    </li>
+                    <li style="margin-bottom: 2px">
+                        <a class="footer-list" style="font-size: 14px; font-weight: 400; text-decoration: none !important; color: #45505f" href="{{ route('contact-page') }}">@lang('messages.CONTACTUS')</a>
                     </li>
                 </ul>
             </div>
