@@ -154,6 +154,17 @@
                                 class="form-control dropify4" id="inputGroupFile04">
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Urutan</label>
+                                <input type="number" value="{{ $dataProduct->order}}" class="form-control" name="order" aria-describedby="order"
+                                    placeholder="Masukan Urutan" />
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="d-flex justify-content-end align-items-center gap-2">
