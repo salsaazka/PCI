@@ -60,7 +60,7 @@ class HomeController extends Controller
     }
 
     public function productKnowledgePage() {
-        $data = Article::all();
+        $data = Article::orderBy('order', 'ASC')->get();
         return view('pages.list-product-knowledge', [
             'data' => $data
         ]);
