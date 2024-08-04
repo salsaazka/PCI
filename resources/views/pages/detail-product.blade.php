@@ -35,7 +35,7 @@
                     <div class="card">
                         @if ($product['category_id'] == 1)
                             <a class="d-flex align-items-center gap-1 text-decoration-none"
-                                href="{{ route('list-product') }}">
+                                href="{{ url()->previous()}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#dc3545"
                                     class="bi bi-arrow-left" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -45,7 +45,7 @@
                             </a>
                         @else
                             <a class="d-flex align-items-center gap-1 text-decoration-none"
-                                href="{{ route('list-product2') }}">
+                                href="{{ url()->previous() }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#dc3545"
                                     class="bi bi-arrow-left" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -204,6 +204,17 @@
                 <div class="col-12 col-lg-4 col-xl-3">
                     <div class="wrapper-summary">
                         <div class="card">
+                            <div class="image-desc pt-4">
+                                @if (session('locale' == 'id'))
+                                    @foreach ($product['image_desc_array'] as $index => $image_desc)
+                                        <p class="image-desc-text text-center">{{$image_desc}}</p>
+                                    @endforeach
+                                @else
+                                    @foreach ($product['image_desc_array_en'] as $index => $image_desc)
+                                        <p class="image-desc-text text-center">{{$image_desc}}</p>
+                                    @endforeach
+                                @endif
+                            </div>
                             <div class="wrapper-image-product">
                                 <div class="view-Images">
                                     @foreach ($product['image_array'] as $image)
@@ -267,6 +278,7 @@
     <script src="{{ asset('/assets/js/slick/slick.min.js') }}"></script>
     <script src="{{ asset('/assets/js/slick/slick.js') }}"></script>
 
+
     <!--Slick Images Product-->
     <script>
         $('.view-Images').slick({
@@ -280,6 +292,20 @@
             speed: 400,
             asNavFor: '.nav-images',
             cssEase: 'cubic-bezier(0.77, 0, 0.18, 1)',
+        });
+
+        $('.image-desc').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: false,
+            adaptiveHeight: true,
+            infinite: false,
+            useTransform: false,
+            speed: 400,
+            asNavFor: '.nav-images',
+            cssEase: 'cubic-bezier(0.77, 0, 0.18, 1)',
+            draggable: false
         });
 
         $('.nav-images')
@@ -297,6 +323,7 @@
 
         $('.view-Images').on('afterChange', function(event, slick, currentSlide) {
             $('.nav-images').slick('slickGoTo', currentSlide);
+            $('.image-desc').slick('slickGoTo', currentSlide);
             var currrentNavSlideElem = '.nav-images .slick-slide[data-slick-index="' + currentSlide + '"]';
             $('.nav-images .slick-slide.is-active').removeClass('is-active');
             $(currrentNavSlideElem).addClass('is-active');
@@ -307,6 +334,7 @@
             var goToSingleSlide = $(this).data('slick-index');
 
             $('.view-Images').slick('slickGoTo', goToSingleSlide);
+            $('.image-desc').slick('slickGoTo', goToSingleSlide);
         });
     </script>
 

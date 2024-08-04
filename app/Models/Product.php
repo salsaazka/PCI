@@ -28,7 +28,16 @@ class Product extends Model
         'image_4',
         'min_order',
         'marketplace_url',
-        'order'
+        'order',
+        'image_desc_1',
+        'image_desc_2',
+        'image_desc_3',
+        'image_desc_4',
+        'image_desc_1_en',
+        'image_desc_2_en',
+        'image_desc_3_en',
+        'image_desc_4_en'
+
     ];
 
     public function category()

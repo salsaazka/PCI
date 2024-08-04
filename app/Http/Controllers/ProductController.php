@@ -39,6 +39,7 @@ class ProductController extends Controller
             'title_en' => 'required',
             'desc_en' => 'required',
             'order' => 'required|numeric',
+
         ]);
 
         $checkOrder = Product::where('order', $request->order)->where('category_id', $request->category_id)->first();
@@ -116,7 +117,15 @@ class ProductController extends Controller
             'image_4' => $imgName_4,
             'min_order' => $request->min_order,
             'marketplace_url' => $request->marketplace_url,
-            'order' => $request->order
+            'order' => $request->order,
+            'image_desc_1' =>  $request->image_desc_1,
+            'image_desc_2' =>  $request->image_desc_2,
+            'image_desc_3' =>  $request->image_desc_3,
+            'image_desc_4' =>  $request->image_desc_4,
+            'image_desc_1_en' =>  $request->image_desc_1_en,
+            'image_desc_2_en' =>  $request->image_desc_2_en,
+            'image_desc_3_en' =>  $request->image_desc_3_en,
+            'image_desc_4_en' =>  $request->image_desc_4_en,
         ]);
         Alert::success('Success!', 'Post Created Successfully');
         return redirect()->route('product.index')->with('edit', 'Data berhasil diubah');
@@ -162,6 +171,14 @@ class ProductController extends Controller
         $product->min_order = $request->min_order;
         $product->marketplace_url = $request->marketplace_url;
         $product->order = $request->order;
+        $product->image_desc_1 = $request->image_desc_1;
+        $product->image_desc_2 = $request->image_desc_2;
+        $product->image_desc_3 = $request->image_desc_3;
+        $product->image_desc_4 = $request->image_desc_4;
+        $product->image_desc_1_en = $request->image_desc_1_en;
+        $product->image_desc_2_en = $request->image_desc_2_en;
+        $product->image_desc_3_en = $request->image_desc_3_en;
+        $product->image_desc_4_en = $request->image_desc_4_en;
 
         // when in local environment, use this path
         // $dPath = public_path('/assets/images/data/');

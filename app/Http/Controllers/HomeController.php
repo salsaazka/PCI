@@ -80,11 +80,25 @@ class HomeController extends Controller
             $product['image_4'],
         ];
 
+        $product['image_desc_array'] = [
+            $product['image_desc_1'],
+            $product['image_desc_2'],
+            $product['image_desc_3'],
+            $product['image_desc_4'],
+        ];
+
+        $product['image_desc_array_en'] = [
+            $product['image_desc_1_en'],
+            $product['image_desc_2_en'],
+            $product['image_desc_3_en'],
+            $product['image_desc_4_en'],
+        ];
+
         return view('pages.detail-product', [
             'product' => $product,
             'contact' => $contact,
             'contactEmail' => $contactEmail,
-            'productDetail' => $productDetail
+            'productDetail' => $productDetail,
         ]);
     }
 

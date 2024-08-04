@@ -1,7 +1,7 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container-fluid d-flex justify-content-between">
         <!-- Brand/logo -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{route('landing')}}">
             <img class="brand-image" src="{{ asset('assets/images/logo.png') }}" alt="logo" />
         </a>
 

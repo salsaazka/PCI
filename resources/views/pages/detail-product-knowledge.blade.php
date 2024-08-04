@@ -29,7 +29,7 @@
 
             <div class="articel-header mb-5 pt-5">
                 <a class="d-flex align-items-center gap-1 text-decoration-none"
-                    href="{{ route('product-knowledge-page') }}">
+                    href="{{ url()->previous() }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#dc3545"
                         class="bi bi-arrow-left" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"

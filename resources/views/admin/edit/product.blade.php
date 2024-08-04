@@ -113,7 +113,8 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Description Highlight EN</label>
-                            <textarea class="form-control" placeholder="Description Highlight EN" name="desc_highlight_en" rows="5" cols="5">
+                            <textarea class="form-control" placeholder="Description Highlight EN" name="desc_highlight_en" rows="5"
+                                cols="5">
                                 {{ $dataProduct->desc_highlight_en }}
                             </textarea>
                         </div>
@@ -123,18 +124,10 @@
                 <hr />
 
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="mb-3">
-                            <label for="" class="form-label">Image 1</label>
-                            <input type="file" name="image_1" value="{{ $dataProduct->image_1 }}"
-                                class="form-control dropify1" id="inputGroupFile01">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Image 2</label>
-                            <input type="file" name="image_2" value="{{ $dataProduct->image_2 }}"
-                                class="form-control dropify2" id="inputGroupFile02">
+                            <label for="" class="form-label">Gambar 1</label>
+                            <input type="file" name="image_1" class="form-control dropify1" id="inputGroupFile01" value="{{ $dataProduct->image_1 }}">
                         </div>
                     </div>
                 </div>
@@ -142,31 +135,107 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Image 3</label>
-                            <input type="file" name="image_3" value="{{ $dataProduct->image_3 }}"
-                                class="form-control dropify3" id="inputGroupFile03">
+                            <label for="" class="form-label">Description Image 1</label>
+                            <input type="text" class="form-control" name="image_desc_1" aria-describedby="publisher"
+                            placeholder="Masukan Image Description" value="{{$dataProduct->image_desc_1}}"/>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Image 4</label>
-                            <input type="file" name="image_4" value="{{ $dataProduct->image_4 }}"
-                                class="form-control dropify4" id="inputGroupFile04">
+                            <label for="" class="form-label">Description Image 1 EN</label>
+                            <input type="text" class="form-control" name="image_desc_1_en" aria-describedby="publisher"
+                                placeholder="Masukan Image Description" value="{{$dataProduct->image_desc_1_en}}"/>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <label for="" class="form-label">Urutan</label>
-                                <input type="number" value="{{ $dataProduct->order}}" class="form-control" name="order" aria-describedby="order"
-                                    placeholder="Masukan Urutan" />
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Gambar 2</label>
+                            <input type="file" name="image_2" class="form-control dropify2" id="inputGroupFile01" value="{{ $dataProduct->image_2 }}"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description Image 2</label>
+                            <input type="text" class="form-control" name="image_desc_2" aria-describedby="publisher"
+                            placeholder="Masukan Image Description" value="{{$dataProduct->image_desc_2}}"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description Image 2 EN</label>
+                            <input type="text" class="form-control" name="image_desc_2_en" aria-describedby="publisher"
+                                placeholder="Masukan Image Description" value="{{$dataProduct->image_desc_2_en}}"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Gambar 3</label>
+                            <input type="file" name="image_3" class="form-control dropify3" id="inputGroupFile01" value="{{ $dataProduct->image_3 }}"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description Image 3</label>
+                            <input type="text" class="form-control" name="image_desc_3" aria-describedby="publisher"
+                            placeholder="Masukan Image Description" value="{{$dataProduct->image_desc_3}}"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description Image 3 EN</label>
+                            <input type="text" class="form-control" name="image_desc_3_en" aria-describedby="publisher"
+                                placeholder="Masukan Image Description" value="{{$dataProduct->image_desc_3_en}}"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Gambar 4</label>
+                            <input type="file" name="image_4" class="form-control dropify4" id="inputGroupFile01" value="{{ $dataProduct->image_4 }}"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description Image 4</label>
+                            <input type="text" class="form-control" name="image_desc_4" aria-describedby="publisher"
+                            placeholder="Masukan Image Description" value="{{$dataProduct->image_desc_4}}"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Description Image 4 EN</label>
+                            <input type="text" class="form-control" name="image_desc_4_en" aria-describedby="publisher"
+                                placeholder="Masukan Image Description" value="{{$dataProduct->image_desc_4_en}}"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Urutan</label>
+                            <input type="number" value="{{ $dataProduct->order }}" class="form-control" name="order"
+                                aria-describedby="order" placeholder="Masukan Urutan" />
+                        </div>
+                    </div>
+                </div>
                 <div class="d-flex justify-content-end align-items-center gap-2">
                     <a href="{{ route('product.index') }}" class="btn btn-danger text-white mb-5">
                         Kembali

@@ -28,7 +28,7 @@
               </div>
           @endif
               <div class="card-body">
-                <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                <a href="{{route('landing')}}" class="text-nowrap logo-img text-center d-block py-3 w-100">
                     <img src="{{ asset('assets/images/logo.png') }}" width="100"
                     alt="" />
                 </a>
@@ -48,6 +48,7 @@
                     <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
                   </div>
                   <button class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" type="submit">Sign In</button>
+                  <a href="{{ route('landing') }}" class="btn btn-secondary w-100 py-8 fs-4 mb-4 rounded-2" type="submit">Back To Home</a>
                   <p class="mb-4 text-sm mx-auto">
                     Don't have an account?
                     <a href="{{ route('signUp') }}" class="text-primary text-gradient font-weight-bold">Sign up</a>
