@@ -205,7 +205,7 @@
                     <div class="wrapper-summary">
                         <div class="card">
                             <div class="image-desc pt-4">
-                                @if (session('locale' == 'id'))
+                                @if (session('locale') == 'id')
                                     @foreach ($product['image_desc_array'] as $index => $image_desc)
                                         <p class="image-desc-text text-center">{{$image_desc}}</p>
                                     @endforeach
