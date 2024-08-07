@@ -411,7 +411,7 @@ body {
 .featured-product-container {
     background-color: #F5F7FF;
     padding: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 32px;
     border-radius: 12px;
 }
 
@@ -910,6 +910,7 @@ body {
 
 .highlight {
     flex-direction: row;
+    margin-bottom: 64px;
 }
 
 .highlight .item {

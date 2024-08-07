@@ -47,7 +47,7 @@
                   <div class="d-flex align-items-center justify-content-end mb-4">
                     <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
                   </div>
-                  <button class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" type="submit">Sign In</button>
+                  <button class="btn btn-primary w-100 py-8 fs-4 mb-2 rounded-2" type="submit">Sign In</button>
                   <a href="{{ route('landing') }}" class="btn btn-secondary w-100 py-8 fs-4 mb-4 rounded-2" type="submit">Back To Home</a>
                   <p class="mb-4 text-sm mx-auto">
                     Don't have an account?
